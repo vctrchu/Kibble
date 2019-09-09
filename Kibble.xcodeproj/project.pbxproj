@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB2B2F842324A740004AE08D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F822324A740004AE08D /* LaunchScreen.storyboard */; };
+		FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2B2F832324A740004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +48,6 @@
 				9DE8B78784B055A3C88B5D46 /* Pods-Kibble.debug.xcconfig */,
 				D697862B97F739C846220A7E /* Pods-Kibble.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,6 +88,7 @@
 				FB2B2F802324A740004AE08D /* Assets.xcassets */,
 				FB2B2F822324A740004AE08D /* LaunchScreen.storyboard */,
 				FB2B2F852324A740004AE08D /* Info.plist */,
+				FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */,
 			);
 			path = Kibble;
 			sourceTree = "<group>";
@@ -174,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB2B2F842324A740004AE08D /* LaunchScreen.storyboard in Resources */,
+				FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */,
 				FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */,
 				FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */,
 			);

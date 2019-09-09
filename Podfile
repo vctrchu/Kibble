@@ -9,4 +9,8 @@ target 'Kibble' do
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Bolts'
+
 end
