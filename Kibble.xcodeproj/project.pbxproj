@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		149D75D1B68CEE46C2498CC2 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8893CACD09A087F8E264364 /* Pods_Kibble.framework */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
-		FB2B2F7C2324A73F004AE08D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* ViewController.swift */; };
+		FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* LoginVC.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
-		FB2B2F842324A740004AE08D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F822324A740004AE08D /* LaunchScreen.storyboard */; };
 		FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */; };
 		FB437A4E2328191500A54BC7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */; };
 		FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */; };
@@ -22,6 +21,8 @@
 		FB437A532328191500A54BC7 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */; };
 		FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */; };
 		FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */; };
+		FB437A582328445900A54BC7 /* JoinGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* JoinGroupVC.swift */; };
+		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +31,9 @@
 		F8893CACD09A087F8E264364 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB2B2F7B2324A73F004AE08D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB2B2F7B2324A73F004AE08D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FB2B2F7E2324A73F004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FB2B2F832324A740004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
 		FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		FB437A572328445900A54BC7 /* JoinGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupVC.swift; sourceTree = "<group>"; };
+		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,13 +98,12 @@
 		FB2B2F782324A73F004AE08D /* Kibble */ = {
 			isa = PBXGroup;
 			children = (
+				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
 				FB2B2F8D2324B072004AE08D /* Controller */,
-				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FB2B2F7D2324A73F004AE08D /* Main.storyboard */,
 				FB2B2F802324A740004AE08D /* Assets.xcassets */,
-				FB2B2F822324A740004AE08D /* LaunchScreen.storyboard */,
 				FB2B2F852324A740004AE08D /* Info.plist */,
 				FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */,
 				FB437A35232817AE00A54BC7 /* Fonts */,
@@ -127,7 +128,9 @@
 		FB2B2F8D2324B072004AE08D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FB2B2F7B2324A73F004AE08D /* ViewController.swift */,
+				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
+				FB2B2F7B2324A73F004AE08D /* LoginVC.swift */,
+				FB437A572328445900A54BC7 /* JoinGroupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,7 +210,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB2B2F842324A740004AE08D /* LaunchScreen.storyboard in Resources */,
 				FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */,
 				FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */,
 				FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */,
@@ -271,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB2B2F7C2324A73F004AE08D /* ViewController.swift in Sources */,
+				FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
+				FB437A582328445900A54BC7 /* JoinGroupVC.swift in Sources */,
+				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,14 +289,6 @@
 				FB2B2F7E2324A73F004AE08D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FB2B2F822324A740004AE08D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB2B2F832324A740004AE08D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -73,6 +73,9 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
+  - Motion (3.1.1):
+    - Motion/Core (= 3.1.1)
+  - Motion/Core (3.1.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -86,6 +89,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase/Analytics
   - Firebase/Auth
+  - Motion
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -102,6 +106,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - Motion
     - nanopb
 
 SPEC CHECKSUMS:
@@ -118,8 +123,9 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  Motion: f115b33f36cc52472a25a965daa89b3859817de0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 92c17e24155b4e8130167aef15eda356f46b3f97
+PODFILE CHECKSUM: b78f755acfe47fcd39f4cf571c40a0f6244a1bd8
 
 COCOAPODS: 1.7.5

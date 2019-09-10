@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
