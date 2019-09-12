@@ -46,7 +46,7 @@ class LoginVC: UIViewController {
                 }
                 
                 // Present the main view
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "JoinVC") {
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                     self.dismiss(animated: true, completion: nil)
                 }
