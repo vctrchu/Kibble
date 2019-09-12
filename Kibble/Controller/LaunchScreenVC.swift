@@ -19,7 +19,7 @@ class LaunchScreenVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             
             if AccessToken.current != nil {
-                self.presentJoinVC()
+                self.presentMealsVC()
             }
             else {
                 self.presentLoginVC()
@@ -28,10 +28,10 @@ class LaunchScreenVC: UIViewController {
         }
     }
     
-    private func presentJoinVC() {
-        let joinVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinVC")
-        joinVC?.modalTransitionStyle = .crossDissolve
-        self.present(joinVC!, animated: true, completion: nil)
+    private func presentMealsVC() {
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
+        mealsVC?.modalTransitionStyle = .crossDissolve
+        self.present(mealsVC!, animated: true, completion: nil)
     }
     
     private func presentLoginVC() {

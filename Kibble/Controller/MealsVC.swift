@@ -16,6 +16,7 @@ class MealsVC: UIViewController {
         super.viewDidLoad()
         mealTableView.delegate = self
         mealTableView.dataSource = self
+        mealTableView.rowHeight = 150
 
     }
     

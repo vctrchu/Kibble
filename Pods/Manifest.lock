@@ -1,10 +1,4 @@
 PODS:
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
   - FBSDKCoreKit (5.2.3):
     - FBSDKCoreKit/Basics (= 5.2.3)
     - FBSDKCoreKit/Core (= 5.2.3)
@@ -83,7 +77,6 @@ PODS:
   - nanopb/encode (0.3.901)
 
 DEPENDENCIES:
-  - Bolts
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -93,7 +86,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -110,7 +102,6 @@ SPEC REPOS:
     - nanopb
 
 SPEC CHECKSUMS:
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32
   FBSDKLoginKit: dc98b6bf12334f1a42f28d0457fffc9aa3d1eca5
   FBSDKShareKit: 6f9c622f9a5d051f43f2dab6f753d5198422b89c
@@ -126,6 +117,6 @@ SPEC CHECKSUMS:
   Motion: f115b33f36cc52472a25a965daa89b3859817de0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: b78f755acfe47fcd39f4cf571c40a0f6244a1bd8
+PODFILE CHECKSUM: 98876dc09ec8530e9ac857369a843dc6783f9b54
 
 COCOAPODS: 1.7.5

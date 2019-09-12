@@ -21,8 +21,9 @@
 		FB437A532328191500A54BC7 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */; };
 		FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */; };
 		FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */; };
-		FB437A582328445900A54BC7 /* JoinGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* JoinGroupVC.swift */; };
+		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
+		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,9 @@
 		FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
 		FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		FB437A572328445900A54BC7 /* JoinGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupVC.swift; sourceTree = "<group>"; };
+		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		FB2B2F8C2324B06E004AE08D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,7 +133,7 @@
 			children = (
 				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
 				FB2B2F7B2324A73F004AE08D /* LoginVC.swift */,
-				FB437A572328445900A54BC7 /* JoinGroupVC.swift */,
+				FB437A572328445900A54BC7 /* MealsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,8 +278,9 @@
 			files = (
 				FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
-				FB437A582328445900A54BC7 /* JoinGroupVC.swift in Sources */,
+				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
+				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
