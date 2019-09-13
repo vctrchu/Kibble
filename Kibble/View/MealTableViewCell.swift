@@ -8,11 +8,20 @@
 
 import UIKit
 
-class MealTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class MealCell: UITableViewCell {
+    
+    @IBOutlet weak var isFedImage: UIImageView!
+    @IBOutlet weak var mealTitle: UILabel!
+    @IBOutlet weak var mealDescription: UILabel!
+    
+    func configureCell(isFed status: Bool, mealTitle: String, mealDescription: String) {
+        self.mealTitle.text = mealTitle
+        self.mealDescription.text = mealDescription
+        if status {
+            isFedImage.image = UIImage(named: "Check")
+        } else {
+            isFedImage.image = UIImage(named: "Cancel")
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
