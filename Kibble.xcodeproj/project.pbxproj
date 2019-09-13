@@ -12,7 +12,6 @@
 		FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* LoginVC.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
-		FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */; };
 		FB437A4E2328191500A54BC7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */; };
 		FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */; };
 		FB437A502328191500A54BC7 /* Nunito-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A482328191400A54BC7 /* Nunito-Medium.ttf */; };
@@ -22,6 +21,7 @@
 		FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */; };
 		FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
+		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +36,6 @@
 		FB2B2F7E2324A73F004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FB437A482328191400A54BC7 /* Nunito-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Medium.ttf"; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
+		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +107,7 @@
 				FB2B2F7D2324A73F004AE08D /* Main.storyboard */,
 				FB2B2F802324A740004AE08D /* Assets.xcassets */,
 				FB2B2F852324A740004AE08D /* Info.plist */,
-				FB437A332326FAAD00A54BC7 /* GoogleService-Info.plist */,
+				FBA1774C232B467200DD0169 /* GoogleService-Info.plist */,
 				FB437A35232817AE00A54BC7 /* Fonts */,
 			);
 			path = Kibble;
@@ -213,7 +213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB437A342326FAAE00A54BC7 /* GoogleService-Info.plist in Resources */,
 				FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */,
 				FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */,
 				FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */,
@@ -222,6 +221,7 @@
 				FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */,
 				FB437A512328191500A54BC7 /* Nunito-Bold.ttf in Resources */,
 				FB437A4E2328191500A54BC7 /* Nunito-SemiBold.ttf in Resources */,
+				FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */,
 				FB437A522328191500A54BC7 /* Nunito-Black.ttf in Resources */,
 				FB437A532328191500A54BC7 /* Nunito-ExtraLight.ttf in Resources */,
 			);

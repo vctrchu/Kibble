@@ -27,54 +27,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cH5-hc-akd">
-                                <rect key="frame" x="35.666666666666657" y="529" width="343" height="57"/>
+                                <rect key="frame" x="75" y="493" width="264" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="ZO3-g2-mzZ"/>
-                                    <constraint firstAttribute="width" constant="343" id="egc-Xq-mDe"/>
+                                    <constraint firstAttribute="height" constant="43" id="HV2-KX-I9v"/>
+                                    <constraint firstAttribute="width" constant="264" id="Iho-SF-R4Y"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="Facebook_Login_Button"/>
                                 <connections>
                                     <action selector="facebookLoginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HEV-hV-aGP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kibble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-eh-4hh">
-                                <rect key="frame" x="134.33333333333331" y="336.66666666666669" width="145.33333333333331" height="63"/>
-                                <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cat_Login" translatesAutoresizingMaskIntoConstraints="NO" id="4X4-HN-Ke2">
-                                <rect key="frame" x="137.66666666666666" y="172.66666666666666" width="138.99999999999997" height="136.99999999999997"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="4X4-HN-Ke2">
+                                <rect key="frame" x="137.66666666666666" y="120" width="138.99999999999997" height="137"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="1NI-hr-Ao8"/>
-                                    <constraint firstAttribute="height" constant="137" id="Hui-ya-L3j"/>
+                                    <constraint firstAttribute="height" constant="137" id="E2i-fp-9bY"/>
+                                    <constraint firstAttribute="width" constant="139" id="kDV-CG-1vB"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Meal Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ust-W7-u3z">
-                                <rect key="frame" x="146.66666666666666" y="407.66666666666669" width="120.99999999999997" height="20.333333333333314"/>
+                                <rect key="frame" x="146.66666666666666" y="328" width="120.99999999999997" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Nunito-Light" family="Nunito" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kibble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-eh-4hh">
+                                <rect key="frame" x="134.33333333333331" y="257" width="145.33333333333331" height="63"/>
+                                <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.15725767612457275" green="0.82251518964767456" blue="0.36264890432357788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.38039215686274508" green="0.82745098039215681" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ust-W7-u3z" firstAttribute="top" secondItem="7Tg-eh-4hh" secondAttribute="bottom" constant="8" id="6vn-aw-HSC"/>
-                            <constraint firstItem="cH5-hc-akd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NEq-jX-Sme"/>
-                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="top" secondItem="4X4-HN-Ke2" secondAttribute="bottom" constant="27" id="NzU-CV-8z2"/>
-                            <constraint firstItem="ust-W7-u3z" firstAttribute="centerX" secondItem="7Tg-eh-4hh" secondAttribute="centerX" id="PqL-ri-t0y"/>
-                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SU3-Ub-vh6"/>
-                            <constraint firstItem="4X4-HN-Ke2" firstAttribute="centerX" secondItem="7Tg-eh-4hh" secondAttribute="centerX" id="bII-Z6-PUo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cH5-hc-akd" secondAttribute="bottom" constant="150" id="n4G-Ki-Y4n"/>
-                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sgj-NL-a7a"/>
-                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wJY-9z-E59"/>
+                            <constraint firstItem="ust-W7-u3z" firstAttribute="top" secondItem="7Tg-eh-4hh" secondAttribute="bottom" constant="8" id="DOx-wW-1f9"/>
+                            <constraint firstItem="4X4-HN-Ke2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G4j-Wk-1pv"/>
+                            <constraint firstItem="cH5-hc-akd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nnh-9S-MTZ"/>
+                            <constraint firstItem="ust-W7-u3z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ohl-V9-MRe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cH5-hc-akd" secondAttribute="bottom" constant="200" id="k5r-fD-1iM"/>
+                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="top" secondItem="4X4-HN-Ke2" secondAttribute="bottom" id="leQ-d7-slk"/>
+                            <constraint firstItem="7Tg-eh-4hh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="llc-nj-SbB"/>
+                            <constraint firstItem="4X4-HN-Ke2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="sbw-jR-pW0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.40000000000001" y="79.802955665024641"/>
+            <point key="canvasLocation" x="128.98550724637681" y="79.076086956521749"/>
         </scene>
         <!--Launch ScreenVC-->
         <scene sceneID="0Bk-Hc-Gpj">
@@ -84,33 +83,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kibble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg4-Kj-RLa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kibble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EaA-yb-Evm">
                                 <rect key="frame" x="134.33333333333331" y="336.66666666666669" width="145.33333333333331" height="63"/>
                                 <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cat_Login" translatesAutoresizingMaskIntoConstraints="NO" id="WLx-62-z3T">
-                                <rect key="frame" x="137.66666666666666" y="172.66666666666666" width="138.99999999999997" height="136.99999999999997"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="137" id="SAX-gO-TY2"/>
-                                    <constraint firstAttribute="width" constant="139" id="wnj-gb-jto"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.15725767609999999" green="0.82251518960000003" blue="0.36264890430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.38050192594528198" green="0.82762670516967773" blue="0.66854637861251831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zg4-Kj-RLa" firstAttribute="centerY" secondItem="Bal-1V-Fzd" secondAttribute="centerY" id="Ods-2m-z8M"/>
-                            <constraint firstItem="zg4-Kj-RLa" firstAttribute="centerX" secondItem="Bal-1V-Fzd" secondAttribute="centerX" id="Qel-nI-iwA"/>
-                            <constraint firstItem="WLx-62-z3T" firstAttribute="centerX" secondItem="Bal-1V-Fzd" secondAttribute="centerX" id="jEO-f8-UZQ"/>
-                            <constraint firstItem="zg4-Kj-RLa" firstAttribute="top" secondItem="WLx-62-z3T" secondAttribute="bottom" constant="27" id="rnj-qw-KhG"/>
+                            <constraint firstItem="EaA-yb-Evm" firstAttribute="centerX" secondItem="Bal-1V-Fzd" secondAttribute="centerX" id="cDw-nT-Y7b"/>
+                            <constraint firstItem="EaA-yb-Evm" firstAttribute="centerY" secondItem="Bal-1V-Fzd" secondAttribute="centerY" id="cdP-aD-iXR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jet-qV-s8z"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BlF-s4-dzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591" y="81"/>
+            <point key="canvasLocation" x="-591.304347826087" y="80.706521739130437"/>
         </scene>
         <!--MealsVC-->
         <scene sceneID="35k-bc-jV0">
@@ -122,7 +112,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eU-M9-ihn">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <color key="barTintColor" red="0.15902602672576904" green="0.82309728860855103" blue="0.36190846562385559" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.38050192594528198" green="0.82762670516967773" blue="0.66854637861251831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem id="PfE-zI-VRd">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="Wjo-Vd-yZA">
@@ -143,25 +133,25 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhp-qr-FfP">
-                                <rect key="frame" x="0.0" y="64" width="414" height="121"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="R2g-WZ-Onf"/>
+                                    <constraint firstAttribute="height" constant="140" id="R2g-WZ-Onf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-Qq-G7j">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
-                                <color key="backgroundColor" red="0.15902602672576904" green="0.82309728860855103" blue="0.36190846562385559" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.38050192594528198" green="0.82762670516967773" blue="0.66854637861251831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sE1-n3-lqA">
-                                <rect key="frame" x="0.0" y="185" width="414" height="551"/>
+                                <rect key="frame" x="0.0" y="204" width="414" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MealTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="o4t-tB-xh1" customClass="MealTableViewCell" customModule="Kibble" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MealTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="o4t-tB-xh1" customClass="MealTableViewCell" customModule="Kibble" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o4t-tB-xh1" id="xz3-sX-KOe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="149.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -213,8 +203,8 @@
     </scenes>
     <resources>
         <image name="Add" width="25" height="25"/>
-        <image name="Cat_Login" width="170.66667175292969" height="170.66667175292969"/>
         <image name="Facebook_Login_Button" width="159.66667175292969" height="27"/>
+        <image name="Food" width="170.66667175292969" height="170.66667175292969"/>
         <image name="PetHouse" width="25" height="25"/>
     </resources>
 </document>
