@@ -30,12 +30,14 @@ class LaunchScreenVC: UIViewController {
     
     private func presentMealsVC() {
         let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
+        mealsVC?.modalPresentationStyle = .fullScreen
         mealsVC?.modalTransitionStyle = .crossDissolve
         self.present(mealsVC!, animated: true, completion: nil)
     }
     
     private func presentLoginVC() {
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+        loginVC?.modalPresentationStyle = .fullScreen
         loginVC?.modalTransitionStyle = .crossDissolve
         self.present(loginVC!, animated: true, completion: nil)
     }

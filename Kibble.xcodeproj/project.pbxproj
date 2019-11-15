@@ -21,6 +21,7 @@
 		FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */; };
 		FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
+		FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741C83237E772A00B7E7D2 /* Meal.swift */; };
 		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
@@ -45,6 +46,7 @@
 		FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
+		FB741C83237E772A00B7E7D2 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		FB2B2F8B2324B065004AE08D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB741C83237E772A00B7E7D2 /* Meal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
+				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

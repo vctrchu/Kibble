@@ -18,9 +18,9 @@ class MealCell: UITableViewCell {
         self.mealTitle.text = mealTitle
         self.mealDescription.text = mealDescription
         if status {
-            isFedImage.image = UIImage(named: "Check")
+            isFedImage.image = UIImage(named: "true")
         } else {
-            isFedImage.image = UIImage(named: "Cancel")
+            isFedImage.image = UIImage(named: "false")
         }
     }
 
