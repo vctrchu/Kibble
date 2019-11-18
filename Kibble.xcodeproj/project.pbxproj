@@ -25,6 +25,8 @@
 		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
+		FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84202382E10800BD55A9 /* AddMealVC.swift */; };
+		FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		FBBC84202382E10800BD55A9 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
+		FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTapped.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
+				FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
 				FB2B2F8D2324B072004AE08D /* Controller */,
@@ -137,6 +142,7 @@
 				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
 				FB2B2F7B2324A73F004AE08D /* LoginVC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
+				FBBC84202382E10800BD55A9 /* AddMealVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,10 +287,12 @@
 			files = (
 				FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
+				FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
+				FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
