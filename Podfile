@@ -6,12 +6,12 @@ target 'Kibble' do
   use_frameworks!
 
   # Pods for Kibble
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'FBSDKShareKit'
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Motion'
+
+pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 
 end

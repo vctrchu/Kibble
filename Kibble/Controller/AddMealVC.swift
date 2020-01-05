@@ -9,6 +9,9 @@
 import UIKit
 
 class AddMealVC: UIViewController {
+    
+    @IBOutlet weak var mealLabelTextField: UITextField!
+    @IBOutlet weak var extraInfoTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()

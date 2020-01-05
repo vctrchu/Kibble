@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 import Motion
+import Firebase
 
 // This is a custom class which delays the presentation of the next viewcontroller.
 class LaunchScreenVC: UIViewController {
@@ -17,14 +17,11 @@ class LaunchScreenVC: UIViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            
-            if AccessToken.current != nil {
-                self.presentMealsVC()
+            if Auth.auth().currentUser == nil {
+                    self.presentLoginVC()
+            } else {
+            self.presentLoginVC()
             }
-            else {
-                self.presentLoginVC()
-            }
-            
         }
     }
     
