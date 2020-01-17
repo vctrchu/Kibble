@@ -11,13 +11,19 @@ import FirebaseAuth
 
 class LoginVC: UIViewController {
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
     }
     
+    @IBAction func noAccountButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toSignUp1", sender: self)
+    }
     
-
-
 
 }
 

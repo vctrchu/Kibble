@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCV-76-5EF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCV-76-5EF">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -309,44 +309,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="rJ8-FM-FlI">
-                                <rect key="frame" x="181.66666666666666" y="203.66666666666666" width="51" height="48"/>
+                                <rect key="frame" x="181.66666666666666" y="150" width="51" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="51" id="Hyj-3R-4Oo"/>
                                     <constraint firstAttribute="height" constant="48" id="kk7-CQ-R8W"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kibble" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88n-AF-9YA">
-                                <rect key="frame" x="138.66666666666666" y="251.66666666666666" width="136.99999999999997" height="60.333333333333343"/>
+                                <rect key="frame" x="138.66666666666666" y="198" width="136.99999999999997" height="60.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="48"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line Copy" translatesAutoresizingMaskIntoConstraints="NO" id="bZz-4p-HEZ">
-                                <rect key="frame" x="97.666666666666686" y="387" width="219" height="10"/>
+                                <rect key="frame" x="97.666666666666686" y="333.33333333333331" width="219" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="219" id="Bhb-7E-THH"/>
                                     <constraint firstAttribute="height" constant="10" id="Oq0-h2-Qjw"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line Copy" translatesAutoresizingMaskIntoConstraints="NO" id="euA-HF-mxB">
-                                <rect key="frame" x="97.666666666666686" y="441" width="219" height="10"/>
+                                <rect key="frame" x="97.666666666666686" y="387.33333333333331" width="219" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="Oew-If-EYH"/>
                                     <constraint firstAttribute="width" constant="219" id="qEY-c1-CZL"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emailIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2vi-35-4P3">
-                                <rect key="frame" x="97.666666666666671" y="362" width="18" height="20"/>
+                                <rect key="frame" x="97.666666666666671" y="308.33333333333331" width="18" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="thz-z2-JrR"/>
                                     <constraint firstAttribute="width" constant="18" id="twh-H0-fZl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pUo-y3-j2R">
-                                <rect key="frame" x="97.666666666666671" y="414" width="16" height="22"/>
+                                <rect key="frame" x="97.666666666666671" y="360.33333333333331" width="16" height="22"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL ADDRESS" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="G2H-Qg-l6q">
-                                <rect key="frame" x="118.66666666666669" y="362" width="177" height="16"/>
+                                <rect key="frame" x="118.66666666666669" y="308.33333333333331" width="177" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="177" id="EQB-GJ-STd"/>
                                 </constraints>
@@ -360,7 +360,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZ0-pJ-wHQ" customClass="TransitionButton" customModule="TransitionButton">
-                                <rect key="frame" x="97" y="481" width="220" height="38"/>
+                                <rect key="frame" x="97" y="427.33333333333331" width="220" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="3xu-IP-6op"/>
                                     <constraint firstAttribute="height" constant="38" id="iUh-tz-6Zk"/>
@@ -368,7 +368,7 @@
                                 <state key="normal" image="loginBtn"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="94g-ts-rhy">
-                                <rect key="frame" x="118.66666666666669" y="423" width="177" height="14"/>
+                                <rect key="frame" x="118.66666666666669" y="369.33333333333331" width="177" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="177" id="uNj-wh-Lvh"/>
                                 </constraints>
@@ -388,6 +388,9 @@
                                     <constraint firstAttribute="height" constant="22" id="f8Y-yD-KOf"/>
                                 </constraints>
                                 <state key="normal" image="signUpBtn"/>
+                                <connections>
+                                    <action selector="noAccountButtonPressed:" destination="UFl-NM-0ee" eventType="touchUpInside" id="cMH-SU-g3f"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-TH-Ctl">
                                 <rect key="frame" x="207" y="571.66666666666663" width="0.0" height="0.0"/>
@@ -410,7 +413,7 @@
                             <constraint firstItem="pUo-y3-j2R" firstAttribute="leading" secondItem="euA-HF-mxB" secondAttribute="leading" id="Sdw-vr-Trh"/>
                             <constraint firstItem="2vi-35-4P3" firstAttribute="top" secondItem="G2H-Qg-l6q" secondAttribute="top" id="TTV-5M-dPV"/>
                             <constraint firstItem="I4l-nc-E74" firstAttribute="bottom" secondItem="5ss-a7-6Di" secondAttribute="bottom" constant="20" id="bSt-Rh-QPm"/>
-                            <constraint firstItem="rJ8-FM-FlI" firstAttribute="top" secondItem="I4l-nc-E74" secondAttribute="top" constant="203.66999999999999" id="buT-hF-TxZ"/>
+                            <constraint firstItem="rJ8-FM-FlI" firstAttribute="top" secondItem="I4l-nc-E74" secondAttribute="top" constant="150" id="buT-hF-TxZ"/>
                             <constraint firstAttribute="bottom" secondItem="gVd-TH-Ctl" secondAttribute="bottom" constant="164.5" id="cbI-AU-lTv"/>
                             <constraint firstItem="RZ0-pJ-wHQ" firstAttribute="centerX" secondItem="rEe-nP-Heh" secondAttribute="centerX" id="eSS-Mt-qWz"/>
                             <constraint firstItem="bZz-4p-HEZ" firstAttribute="top" secondItem="2vi-35-4P3" secondAttribute="bottom" constant="5" id="fby-fc-dSd"/>
@@ -426,15 +429,18 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="6Ef-i4-uUG" kind="presentation" identifier="toSignUp1" modalPresentationStyle="fullScreen" id="dsO-Lk-4TI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydu-lH-NmW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="81"/>
+            <point key="canvasLocation" x="135" y="81"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up1-->
         <scene sceneID="CqP-Ob-rWj">
             <objects>
-                <viewController storyboardIdentifier="SignUpVC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Ef-i4-uUG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Ef-i4-uUG" customClass="SignUp1" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gF5-hH-QZO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,7 +461,7 @@
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emailIconYellow" translatesAutoresizingMaskIntoConstraints="NO" id="Brs-bT-7hM">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fed" translatesAutoresizingMaskIntoConstraints="NO" id="Brs-bT-7hM">
                                                 <rect key="frame" x="130" y="0.0" width="89" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="LfY-ro-ptY"/>
@@ -572,6 +578,9 @@
                                     <constraint firstAttribute="height" constant="18" id="XUn-gC-Mlf"/>
                                 </constraints>
                                 <state key="normal" image="backBtn"/>
+                                <connections>
+                                    <action selector="backButtonPressedWith_sender:" destination="6Ef-i4-uUG" eventType="touchUpInside" id="kcj-Ko-BGK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drX-eQ-pHM">
                                 <rect key="frame" x="175.33333333333334" y="560" width="63.666666666666657" height="14"/>
@@ -604,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxJ-gB-liu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="755"/>
+            <point key="canvasLocation" x="134.78260869565219" y="751.63043478260875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yfl-Yr-DcW">
@@ -709,7 +718,7 @@
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIconYellow" translatesAutoresizingMaskIntoConstraints="NO" id="G2D-LB-5AM">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PetHouse" translatesAutoresizingMaskIntoConstraints="NO" id="G2D-LB-5AM">
                                                 <rect key="frame" x="130" y="0.0" width="89" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Qky-Az-GmQ"/>
@@ -778,18 +787,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0JW-lQ-9bk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nA1-gk-JTa"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liZ-Xs-GnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="1402"/>
+            <point key="canvasLocation" x="135" y="1427"/>
         </scene>
     </scenes>
     <resources>
         <image name="Add" width="25" height="25"/>
         <image name="AlreadyhaveAccountBtn" width="148" height="9"/>
+        <image name="Fed" width="170.66667175292969" height="170.66667175292969"/>
         <image name="Food" width="170.66667175292969" height="170.66667175292969"/>
         <image name="Line Copy" width="220" height="1"/>
         <image name="PetHouse" width="25" height="25"/>
@@ -799,12 +810,10 @@
         <image name="checkmark.rectangle.fill" catalog="system" width="64" height="46"/>
         <image name="completeBtn" width="220" height="38"/>
         <image name="emailIcon" width="18" height="21"/>
-        <image name="emailIconYellow" width="90" height="100"/>
         <image name="false" width="170.66667175292969" height="170.66667175292969"/>
         <image name="loginBtn" width="220" height="38"/>
         <image name="nextBtn" width="220" height="38"/>
         <image name="passwordIcon" width="16" height="22"/>
-        <image name="passwordIconYellow" width="74" height="99"/>
         <image name="signUpBtn" width="140" height="8"/>
     </resources>
 </document>

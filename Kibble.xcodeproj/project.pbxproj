@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		149D75D1B68CEE46C2498CC2 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8893CACD09A087F8E264364 /* Pods_Kibble.framework */; };
+		FB291EFA23D26134001BC23C /* SignUp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* SignUp1.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
 		FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* LoginVC.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		9DE8B78784B055A3C88B5D46 /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
 		D697862B97F739C846220A7E /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
 		F8893CACD09A087F8E264364 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB291EF923D26134001BC23C /* SignUp1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp1.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2B2F7B2324A73F004AE08D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
 				FB2B2F7B2324A73F004AE08D /* LoginVC.swift */,
+				FB291EF923D26134001BC23C /* SignUp1.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FBBC84202382E10800BD55A9 /* AddMealVC.swift */,
 			);
@@ -305,6 +308,7 @@
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
 				FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */,
+				FB291EFA23D26134001BC23C /* SignUp1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
