@@ -64,6 +64,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
+  - LayoutHelper (0.1.3)
   - leveldb-library (1.22)
   - Motion (3.1.1):
     - Motion/Core (= 3.1.1)
@@ -73,13 +74,16 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - TransitionButton (0.5.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - LayoutHelper
   - Motion
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -96,7 +100,9 @@ SPEC REPOS:
     - nanopb
   trunk:
     - FirebaseDatabase
+    - LayoutHelper
     - leveldb-library
+    - TransitionButton
 
 SPEC CHECKSUMS:
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
@@ -109,10 +115,12 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  LayoutHelper: 89385ca8de2464665b777265da86c84c1a28a128
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   Motion: f115b33f36cc52472a25a965daa89b3859817de0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: 65251eae1bd41473af573a55310aed0858c34d68
+PODFILE CHECKSUM: 0dbfd3574b454eae056dfc14a7eacadcc8781ac6
 
 COCOAPODS: 1.8.4

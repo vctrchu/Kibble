@@ -17,11 +17,7 @@ class LaunchScreenVC: UIViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            if Auth.auth().currentUser == nil {
-                    self.presentLoginVC()
-            } else {
-            self.presentLoginVC()
-            }
+            Auth.auth().currentUser == nil ? self.presentLoginVC() : self.presentLoginVC() // change to presentLoginVC() later
         }
     }
     

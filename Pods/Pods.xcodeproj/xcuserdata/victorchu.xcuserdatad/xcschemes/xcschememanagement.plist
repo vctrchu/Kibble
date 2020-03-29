@@ -54,12 +54,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LayoutHelper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Motion.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Kibble.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TransitionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

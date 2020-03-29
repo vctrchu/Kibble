@@ -9,6 +9,9 @@ target 'Kibble' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Motion'
+pod 'LayoutHelper'
+pod 'TransitionButton'
+
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'
