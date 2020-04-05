@@ -11,10 +11,12 @@ pod 'Firebase/Auth'
 pod 'Motion'
 pod 'LayoutHelper'
 pod 'TransitionButton'
+pod 'IHKeyboardAvoiding'
 
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/Auth'	
 
 
 end

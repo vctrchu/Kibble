@@ -8,23 +8,35 @@
 
 import UIKit
 import TransitionButton
+import IHKeyboardAvoiding
 
 class SignUp1VC: UIViewController {
 
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var nextButton: TransitionButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpAnimations()
 
-        // Do any additional setup after loading the view.
     }
 
-    
-    @IBAction func nextButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "toSignUp2", sender: self)
+    func setUpAnimations() {
+        KeyboardAvoiding.avoidingView = nextButton
+        self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSignUp2" {
+            if let signupVC2 = segue.destination as? SignUp2VC {
+                let fullName = firstNameTextField.text!.capitalized + " " + lastNameTextField.text!.capitalized
+                signupVC2.fullNameText = fullName
+            }
+        }
     }
 }

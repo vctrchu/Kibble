@@ -15,16 +15,16 @@ class Meal {
     private var _description: String
     
     var title: String {
-          return _title
-      }
-      
-      var isFed: Bool {
-          return _isFed
-      }
-      
-      var description: String {
-          return _description
-      }
+        return _title
+    }
+
+    var isFed: Bool {
+        return _isFed
+    }
+
+    var description: String {
+        return _description
+    }
     
     init(title: String, isFed: Bool, description: String) {
         self._title = title

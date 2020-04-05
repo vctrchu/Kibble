@@ -30,6 +30,8 @@
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
 		FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84202382E10800BD55A9 /* AddMealVC.swift */; };
 		FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */; };
+		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
+		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		FBBC84202382E10800BD55A9 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
 		FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTapped.swift; sourceTree = "<group>"; };
+		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		FBC408692439565600DC3ACE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				FB741C83237E772A00B7E7D2 /* Meal.swift */,
+				FBC408692439565600DC3ACE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				FB62A5AF23850B8A00FB5557 /* DataService.swift */,
+				FBC40867243955D500DC3ACE /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -302,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
 				FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
+				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,

@@ -17,7 +17,7 @@ class LaunchScreenVC: UIViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            Auth.auth().currentUser == nil ? self.presentLoginVC() : self.presentLoginVC() // change to presentLoginVC() later
+            Auth.auth().currentUser == nil ? self.presentLoginVC() : self.presentLoginVC() // change to MealsVC
         }
     }
     
