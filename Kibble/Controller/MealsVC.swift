@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MealsVC: UIViewController {
     
@@ -38,6 +39,29 @@ class MealsVC: UIViewController {
         self.present(addMealVC!, animated: true, completion: nil)
     }
     
+    @IBAction func tempLogOut(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure you want to log out of Kibble?", message: nil, preferredStyle: UIAlertController.Style.alert)
+        let logoutFailure = UIAlertController(title: "Logout failed. Please try again or check your connection", message: nil, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+
+        alert.addAction(UIAlertAction(title: "Logout", style: UIAlertAction.Style.default, handler: { (action) in
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print(error)
+                self.present(logoutFailure, animated: true, completion: nil)
+            }
+        }))
+
+        logoutFailure.addAction(UIAlertAction(title: "Dimiss", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 

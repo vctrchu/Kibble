@@ -8,11 +8,11 @@ target 'Kibble' do
   # Pods for Kibble
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
-pod 'Motion'
 pod 'LayoutHelper'
 pod 'TransitionButton'
 pod 'IHKeyboardAvoiding'
-
+pod 'Motion'
+pod 'SimpleAnimation'
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'

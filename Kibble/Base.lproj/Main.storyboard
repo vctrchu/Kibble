@@ -81,6 +81,9 @@
                                                 <rect key="frame" x="344" y="0.0" width="50" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="Add"/>
+                                                <connections>
+                                                    <action selector="tempLogOut:" destination="aNc-sc-R8f" eventType="touchUpInside" id="HnS-B0-Dqi"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -590,7 +593,7 @@
                                 </constraints>
                                 <state key="normal" image="nextBtn"/>
                                 <connections>
-                                    <segue destination="MZI-6J-Viu" kind="presentation" identifier="toSignUp2" modalPresentationStyle="fullScreen" id="Tg6-9v-T5y"/>
+                                    <action selector="nextButtonPressed:" destination="6Ef-i4-uUG" eventType="touchUpInside" id="bzX-wX-qoQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqH-Hb-lQ2">
@@ -623,10 +626,10 @@
                                         <real key="value" value="160"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
-                                        <real key="value" value="170"/>
+                                        <real key="value" value="180"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
-                                        <real key="value" value="180"/>
+                                        <real key="value" value="190"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iPhone8Plus">
                                         <real key="value" value="90"/>
@@ -650,6 +653,7 @@
                         <outlet property="firstNameTextField" destination="JmV-FL-wUF" id="9ra-qM-Tks"/>
                         <outlet property="lastNameTextField" destination="YNy-ZG-2ke" id="aYR-Dv-yFa"/>
                         <outlet property="nextButton" destination="FWi-bN-Q7M" id="wE5-wJ-elZ"/>
+                        <segue destination="MZI-6J-Viu" kind="presentation" identifier="toSignUp2" modalPresentationStyle="fullScreen" id="C5H-nW-l37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxJ-gB-liu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,6 +787,9 @@
                                     <constraint firstAttribute="width" constant="220" id="iM8-Hq-3qs"/>
                                 </constraints>
                                 <state key="normal" image="completeBtn"/>
+                                <connections>
+                                    <action selector="completeButtonPressed:" destination="MZI-6J-Viu" eventType="touchUpInside" id="GMT-gD-0mr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-G7-OVI">
                                 <rect key="frame" x="97.666666666666671" y="182" width="21.333333333333329" height="18"/>
@@ -825,10 +832,10 @@
                                         <real key="value" value="160"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
-                                        <real key="value" value="170"/>
+                                        <real key="value" value="180"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
-                                        <real key="value" value="180"/>
+                                        <real key="value" value="190"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </constraint>
@@ -845,6 +852,11 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="completeButton" destination="ZLz-UM-RhK" id="Bty-iV-rqZ"/>
+                        <outlet property="emailTextField" destination="ehX-qz-6Tp" id="6q1-KV-thx"/>
+                        <outlet property="passwordTextField" destination="ROi-fC-c9Y" id="mLM-QU-PZy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liZ-Xs-GnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

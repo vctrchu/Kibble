@@ -67,14 +67,15 @@ PODS:
   - IHKeyboardAvoiding (4.7)
   - LayoutHelper (0.1.3)
   - leveldb-library (1.22)
-  - Motion (3.1.1):
-    - Motion/Core (= 3.1.1)
-  - Motion/Core (3.1.1)
+  - Motion (3.1.3):
+    - Motion/Core (= 3.1.3)
+  - Motion/Core (3.1.3)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SimpleAnimation (0.4.2)
   - TransitionButton (0.5.2)
 
 DEPENDENCIES:
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - IHKeyboardAvoiding
   - LayoutHelper
   - Motion
+  - SimpleAnimation
   - TransitionButton
 
 SPEC REPOS:
@@ -98,13 +100,14 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
-    - Motion
     - nanopb
   trunk:
     - FirebaseDatabase
     - IHKeyboardAvoiding
     - LayoutHelper
     - leveldb-library
+    - Motion
+    - SimpleAnimation
     - TransitionButton
 
 SPEC CHECKSUMS:
@@ -121,10 +124,11 @@ SPEC CHECKSUMS:
   IHKeyboardAvoiding: 4cae0880c3975feffa278495df894c5166e71ad0
   LayoutHelper: 89385ca8de2464665b777265da86c84c1a28a128
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  Motion: f115b33f36cc52472a25a965daa89b3859817de0
+  Motion: cf1e060e489f6661126374d5c60dbd2ed991605c
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: 29bd9555e305294f9979dc17e7f226f8054a6248
+PODFILE CHECKSUM: 3ce9dc3b42ec547257af5160e3a47683a0f99d0b
 
 COCOAPODS: 1.8.4

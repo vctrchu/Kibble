@@ -29,7 +29,7 @@
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
 		FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84202382E10800BD55A9 /* AddMealVC.swift */; };
-		FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */; };
+		FBBC84232382E2BE00BD55A9 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */; };
 		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
 		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +61,7 @@
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		FBBC84202382E10800BD55A9 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
-		FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTapped.swift; sourceTree = "<group>"; };
+		FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
 		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FBC408692439565600DC3ACE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
-				FBBC84222382E2BE00BD55A9 /* TextFieldTapped.swift */,
+				FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */,
 				FB62A5B123850B9500FB5557 /* Services */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
@@ -318,7 +318,7 @@
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
-				FBBC84232382E2BE00BD55A9 /* TextFieldTapped.swift in Sources */,
+				FBBC84232382E2BE00BD55A9 /* KeyboardExtensions.swift in Sources */,
 				FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */,
 				FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */,
 			);

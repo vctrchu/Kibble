@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import TransitionButton
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,8 +18,20 @@ class LoginVC: UIViewController {
      
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        //isMotionEnabled = true
+        //motionTransitionType = .fade
+        self.setUpAnimation()
+        motionTransitionType = .fade
+        //self.setUpNotifications()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
+
+//    deinit {
+//        // Stop listening for keyboard hide/show events
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
     
     @IBAction func noAccountButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "toSignUp1", sender: self)
@@ -27,6 +39,18 @@ class LoginVC: UIViewController {
 
     @IBAction func loginButtonPressed(_ sender: Any) {
         loginUser()
+    }
+
+    // UITextFieldDelegate method to change textfields when pressing 'return'
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            loginUser()
+        }
+        return true
     }
 
     func loginUser() {
