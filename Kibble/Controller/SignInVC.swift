@@ -11,10 +11,7 @@ import FirebaseAuth
 import TransitionButton
 
 class SignInVC: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: TransitionButton!
+
     @IBOutlet weak var kibbleMainIcon: UIImageView!
     @IBOutlet weak var signInApple: UIButton!
     @IBOutlet weak var signInGoogle: UIButton!
@@ -27,10 +24,6 @@ class SignInVC: UIViewController, UITextFieldDelegate {
 
     override func loadView() {
         super.loadView()
-        setUpAppearance()
-    }
-
-    func setUpAppearance() {
         self.view.addSubview(kibbleMainIcon)
         self.view.addSubview(signInApple)
         self.view.addSubview(signInGoogle)
@@ -55,47 +48,9 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             signInGoogle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
-
-    }
-    
-    @IBAction func noAccountButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "toSignUp1", sender: self)
     }
 
-    @IBAction func loginButtonPressed(_ sender: Any) {
-        loginUser()
-    }
 
-    // UITextFieldDelegate method to change textfields when pressing 'return'
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            textField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            textField.resignFirstResponder()
-            loginUser()
-        }
-        return true
-    }
-
-    func loginUser() {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            loginButton.startAnimation()
-            AuthService.instance.loginUser(withEmail: email, andPassword: password, loginComplete: { (success, loginError) in
-                if success {
-                    self.loginButton.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
-                        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
-                        mealsVC?.modalPresentationStyle = .fullScreen
-                        mealsVC?.modalTransitionStyle = .crossDissolve
-                        self.present(mealsVC!, animated: true, completion: nil)
-                    })
-                } else {
-                    print(String(describing: loginError?.localizedDescription))
-                    self.loginButton.stopAnimation(animationStyle: StopAnimationStyle.shake, revertAfterDelay: 0.75, completion: nil)
-                }
-            })
-        }
-    }
 
 }
 
