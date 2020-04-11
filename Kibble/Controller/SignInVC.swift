@@ -37,23 +37,21 @@ class SignInVC: UIViewController, UITextFieldDelegate {
 
         kibbleMainIcon.translatesAutoresizingMaskIntoConstraints = false
         kibbleMainIcon.contentMode = UIView.ContentMode.scaleAspectFit
-        kibbleMainIcon.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        kibbleMainIcon.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 170.adjusted).isActive = true
+        NSLayoutConstraint.activate([
+            kibbleMainIcon.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            kibbleMainIcon.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 170.adjusted)
+        ])
 
         signInApple.translatesAutoresizingMaskIntoConstraints = false
         signInApple.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            signInApple.widthAnchor.constraint(equalToConstant: 259.adjusted),
-            signInApple.heightAnchor.constraint(equalToConstant: 64.adjusted),
             signInApple.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            signInApple.bottomAnchor.constraint(equalTo: signInGoogle.topAnchor, constant: -5.adjusted)
+            signInApple.bottomAnchor.constraint(equalTo: signInGoogle.topAnchor, constant: -25.adjusted)
         ])
 
         signInGoogle.translatesAutoresizingMaskIntoConstraints = false
         signInGoogle.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            signInGoogle.widthAnchor.constraint(equalToConstant: 259.adjusted),
-            signInGoogle.heightAnchor.constraint(equalToConstant: 64.adjusted),
             signInGoogle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
