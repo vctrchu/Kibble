@@ -10,18 +10,11 @@
 		149D75D1B68CEE46C2498CC2 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8893CACD09A087F8E264364 /* Pods_Kibble.framework */; };
 		FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* SignUp1VC.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
-		FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* LoginVC.swift */; };
+		FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* SignInVC.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */; };
-		FB437A4E2328191500A54BC7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */; };
-		FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */; };
-		FB437A502328191500A54BC7 /* Nunito-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A482328191400A54BC7 /* Nunito-Medium.ttf */; };
-		FB437A512328191500A54BC7 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A492328191500A54BC7 /* Nunito-Bold.ttf */; };
-		FB437A522328191500A54BC7 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4A2328191500A54BC7 /* Nunito-Black.ttf */; };
-		FB437A532328191500A54BC7 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */; };
-		FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */; };
-		FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */; };
+		FB39408424425E88003AD374 /* DeviceRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB39408324425E88003AD374 /* DeviceRatio.swift */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
 		FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741C83237E772A00B7E7D2 /* Meal.swift */; };
@@ -29,7 +22,7 @@
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */; };
 		FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84202382E10800BD55A9 /* AddMealVC.swift */; };
-		FBBC84232382E2BE00BD55A9 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */; };
+		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
 		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
 		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
 /* End PBXBuildFile section */
@@ -41,19 +34,12 @@
 		FB291EF923D26134001BC23C /* SignUp1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp1VC.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB2B2F7B2324A73F004AE08D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FB2B2F7B2324A73F004AE08D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		FB2B2F7E2324A73F004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2VC.swift; sourceTree = "<group>"; };
-		FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
-		FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		FB437A482328191400A54BC7 /* Nunito-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Medium.ttf"; sourceTree = "<group>"; };
-		FB437A492328191500A54BC7 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		FB437A4A2328191500A54BC7 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
-		FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
-		FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
-		FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		FB39408324425E88003AD374 /* DeviceRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRatio.swift; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
 		FB62A5AF23850B8A00FB5557 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FB741C83237E772A00B7E7D2 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -61,7 +47,7 @@
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBAE1657232A0DD30092B1EB /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		FBBC84202382E10800BD55A9 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
-		FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
+		FBBC84222382E2BE00BD55A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FBC408692439565600DC3ACE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
-				FBBC84222382E2BE00BD55A9 /* KeyboardExtensions.swift */,
+				FBBC84222382E2BE00BD55A9 /* Extensions.swift */,
+				FB39408324425E88003AD374 /* DeviceRatio.swift */,
 				FB62A5B123850B9500FB5557 /* Services */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
@@ -152,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
-				FB2B2F7B2324A73F004AE08D /* LoginVC.swift */,
+				FB2B2F7B2324A73F004AE08D /* SignInVC.swift */,
 				FB291EF923D26134001BC23C /* SignUp1VC.swift */,
 				FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
@@ -164,14 +151,6 @@
 		FB437A35232817AE00A54BC7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				FB437A4A2328191500A54BC7 /* Nunito-Black.ttf */,
-				FB437A492328191500A54BC7 /* Nunito-Bold.ttf */,
-				FB437A472328191400A54BC7 /* Nunito-ExtraBold.ttf */,
-				FB437A4B2328191500A54BC7 /* Nunito-ExtraLight.ttf */,
-				FB437A4C2328191500A54BC7 /* Nunito-Light.ttf */,
-				FB437A482328191400A54BC7 /* Nunito-Medium.ttf */,
-				FB437A4D2328191500A54BC7 /* Nunito-Regular.ttf */,
-				FB437A462328191400A54BC7 /* Nunito-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -246,16 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */,
-				FB437A4F2328191500A54BC7 /* Nunito-ExtraBold.ttf in Resources */,
-				FB437A542328191500A54BC7 /* Nunito-Light.ttf in Resources */,
-				FB437A502328191500A54BC7 /* Nunito-Medium.ttf in Resources */,
-				FB437A552328191500A54BC7 /* Nunito-Regular.ttf in Resources */,
 				FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */,
-				FB437A512328191500A54BC7 /* Nunito-Bold.ttf in Resources */,
-				FB437A4E2328191500A54BC7 /* Nunito-SemiBold.ttf in Resources */,
 				FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */,
-				FB437A522328191500A54BC7 /* Nunito-Black.ttf in Resources */,
-				FB437A532328191500A54BC7 /* Nunito-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +281,8 @@
 			files = (
 				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
-				FB2B2F7C2324A73F004AE08D /* LoginVC.swift in Sources */,
+				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
+				FB39408424425E88003AD374 /* DeviceRatio.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
 				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */,
@@ -318,7 +290,7 @@
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
-				FBBC84232382E2BE00BD55A9 /* KeyboardExtensions.swift in Sources */,
+				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
 				FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */,
 				FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */,
 			);

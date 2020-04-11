@@ -16,7 +16,7 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            Auth.auth().currentUser == nil ? self.presentLoginVC() : self.presentMealsVC()
+            Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentSignInVC()//self.presentMealsVC()
         }
     }
     
@@ -28,10 +28,10 @@ class LaunchScreenVC: UIViewController {
         self.present(mealsVC!, animated: true, completion: nil)
     }
     
-    private func presentLoginVC() {
-        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-        loginVC?.modalPresentationStyle = .fullScreen
-        self.present(loginVC!, animated: true, completion: nil)
+    private func presentSignInVC() {
+        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC")
+        signinVC?.modalPresentationStyle = .fullScreen
+        self.present(signinVC!, animated: true, completion: nil)
     }
 
 }

@@ -19,7 +19,7 @@ class SignUp1VC: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpAnimation()
+        //self.setUpAnimation()
         //self.setUpNotifications()
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self

@@ -18,7 +18,7 @@ class SignUp2VC: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpAnimation()
+        //self.setUpAnimation()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         //self.setUpNotifications()
