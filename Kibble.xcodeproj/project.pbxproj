@@ -15,6 +15,7 @@
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */; };
 		FB39408424425E88003AD374 /* DeviceRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB39408324425E88003AD374 /* DeviceRatio.swift */; };
+		FB3940A82442A395003AD374 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3940A72442A395003AD374 /* Nonce.swift */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
 		FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741C83237E772A00B7E7D2 /* Meal.swift */; };
@@ -40,6 +41,8 @@
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2VC.swift; sourceTree = "<group>"; };
 		FB39408324425E88003AD374 /* DeviceRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRatio.swift; sourceTree = "<group>"; };
+		FB3940A62442983D003AD374 /* Kibble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kibble.entitlements; sourceTree = "<group>"; };
+		FB3940A72442A395003AD374 /* Nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonce.swift; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
 		FB62A5AF23850B8A00FB5557 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FB741C83237E772A00B7E7D2 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		FB2B2F782324A73F004AE08D /* Kibble */ = {
 			isa = PBXGroup;
 			children = (
+				FB3940A62442983D003AD374 /* Kibble.entitlements */,
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FBBC84222382E2BE00BD55A9 /* Extensions.swift */,
 				FB39408324425E88003AD374 /* DeviceRatio.swift */,
@@ -160,6 +164,7 @@
 			children = (
 				FB62A5AF23850B8A00FB5557 /* DataService.swift */,
 				FBC40867243955D500DC3ACE /* AuthService.swift */,
+				FB3940A72442A395003AD374 /* Nonce.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
 				FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */,
 				FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */,
+				FB3940A82442A395003AD374 /* Nonce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +437,7 @@
 			baseConfigurationReference = 9DE8B78784B055A3C88B5D46 /* Pods-Kibble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BZ967DRVJD;
 				INFOPLIST_FILE = Kibble/Info.plist;
@@ -450,6 +457,7 @@
 			baseConfigurationReference = D697862B97F739C846220A7E /* Pods-Kibble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BZ967DRVJD;
 				INFOPLIST_FILE = Kibble/Info.plist;
