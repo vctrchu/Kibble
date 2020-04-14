@@ -46,6 +46,12 @@ extension Int {
     }
 }
 
+extension String {
+    var isReallyEmpty: Bool {
+        return self.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+}
+
 extension UIViewController {
 
     func hideKeyboardWhenTappedAround() {

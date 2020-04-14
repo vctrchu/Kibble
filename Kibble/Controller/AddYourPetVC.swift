@@ -90,9 +90,13 @@ class AddYourPetVC: UIViewController {
     }
 
     @objc func nextButtonPressed() {
-        if petnameTextField.text?.isEmpty ?? true || typeOfPetTextField.text?.isEmpty ?? true {
+        if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
             nextButton.shake()
         } else {
+
+            //**** make sure there is no spaces infront of our textfield strings
+            // ex. "__kiko" we want to trim all to "kiko"
+
             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true
