@@ -88,28 +88,80 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGE-W2-dD4">
-                                <rect key="frame" x="36" y="183" width="248" height="34"/>
+                                <rect key="frame" x="36" y="95" width="248" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-Zl-PdU">
+                                <rect key="frame" x="36" y="144" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rb-c9-Xlh">
+                                <rect key="frame" x="-12" y="206" width="335" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="NextButton"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="ty5-Jj-mLT"/>
                     </view>
                     <connections>
                         <outlet property="addYourPetTitleImage" destination="hBg-Mk-t5x" id="tdm-Hg-ZgZ"/>
+                        <outlet property="nextButton" destination="0rb-c9-Xlh" id="YwK-n5-HDM"/>
                         <outlet property="petnameTextField" destination="fGE-W2-dD4" id="1hD-AA-hCY"/>
+                        <outlet property="typeOfPetTextField" destination="RMe-Zl-PdU" id="sfo-EH-gSl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKo-dP-XcK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="819.375" y="79.225352112676063"/>
         </scene>
+        <!--Add YourF Irst MealVC-->
+        <scene sceneID="G58-UJ-8lY">
+            <objects>
+                <viewController storyboardIdentifier="AddYourFirstMealVC" id="PgK-Fs-Wdx" customClass="AddYourFIrstMealVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ick-wW-9Il">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add your pet" translatesAutoresizingMaskIntoConstraints="NO" id="qUh-JU-ZbR">
+                                <rect key="frame" x="55" y="34" width="211" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZR-IZ-AIa">
+                                <rect key="frame" x="36" y="95" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxT-Qz-KF3">
+                                <rect key="frame" x="36" y="144" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88I-Xl-4ae">
+                                <rect key="frame" x="-12" y="206" width="335" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="NextButton"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="RfS-aj-gQV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GbZ-pV-sBr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1502" y="69"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Add your pet" width="208" height="33"/>
         <image name="KibbleAppIcon" width="128" height="128"/>
+        <image name="NextButton" width="317" height="107"/>
         <image name="SignInLogo" width="131" height="107"/>
         <image name="SignInWithAppleButton" width="259" height="38"/>
         <image name="SignInWithGoogleButton" width="259" height="38"/>

@@ -11,7 +11,7 @@ import AuthenticationServices
 import FirebaseAuth
 
 @available(iOS 13.0, *)
-class SignInVC: UIViewController, UITextFieldDelegate {
+class SignInVC: UIViewController {
 
     @IBOutlet weak var kibbleMainIcon: UIImageView!
     @IBOutlet weak var signInApple: UIButton!

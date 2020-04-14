@@ -66,16 +66,4 @@ class SignUp2VC: UIViewController, UITextFieldDelegate {
         registerUser()
     }
 
-    // TextFieldDelegate Method
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            textField.resignFirstResponder()
-            emailTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            textField.resignFirstResponder()
-            registerUser()
-        }
-        return true
-    }
-
 }

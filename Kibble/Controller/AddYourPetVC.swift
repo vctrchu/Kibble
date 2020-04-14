@@ -7,26 +7,35 @@
 //
 
 import UIKit
+import SimpleAnimation
 
 @available(iOS 13.0, *)
-class AddYourPetVC: UIViewController, UITextFieldDelegate {
+class AddYourPetVC: UIViewController {
 
     @IBOutlet weak var addYourPetTitleImage: UIImageView!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var petnameTextField: UITextField! {
         didSet {
             petnameTextField.tintColor = UIColor.gray
             petnameTextField.setIcon(#imageLiteral(resourceName: "PetnameIcon"))
         }
     }
-    @IBOutlet weak var typeOfPetTextField: UITextField!
+    @IBOutlet weak var typeOfPetTextField: UITextField! {
+        didSet {
+            typeOfPetTextField.tintColor = UIColor.gray
+            typeOfPetTextField.setIcon(#imageLiteral(resourceName: "TypeOfPetIcon"))
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        petnameTextField.delegate = self
+        typeOfPetTextField.delegate = self
+        nextButton.addTarget(self, action: #selector(nextButtonSelector(_:)), for: .touchUpInside)
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        // viewDidAppear is charge with animations
+        // viewDidAppear is in charge with animations of the vc before we create it
         petnameTextField.becomeFirstResponder()
     }
 
@@ -39,7 +48,6 @@ class AddYourPetVC: UIViewController, UITextFieldDelegate {
             addYourPetTitleImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60.adjusted)
         ])
         self.view.addSubview(addYourPetTitleImage)
-
 
         NSLayoutConstraint.activate([
             petnameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
@@ -56,5 +64,59 @@ class AddYourPetVC: UIViewController, UITextFieldDelegate {
         petnameTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
         self.view.addSubview(petnameTextField)
 
+        NSLayoutConstraint.activate([
+            typeOfPetTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
+            typeOfPetTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
+            typeOfPetTextField.topAnchor.constraint(equalTo: petnameTextField.bottomAnchor, constant: 15.adjusted),
+            typeOfPetTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        typeOfPetTextField.translatesAutoresizingMaskIntoConstraints = false
+        typeOfPetTextField.layer.backgroundColor = UIColor.white.cgColor
+        typeOfPetTextField.placeholder = "type of pet"
+        typeOfPetTextField.font = Device.roundedFont(ofSize: .title1, weight: .medium)
+        typeOfPetTextField.layer.cornerRadius = 10
+        typeOfPetTextField.clipsToBounds = true
+        typeOfPetTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
+        self.view.addSubview(typeOfPetTextField)
+
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: typeOfPetTextField.bottomAnchor, constant: 30.adjusted),
+            nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.contentMode = UIView.ContentMode.scaleAspectFit
+        self.view.addSubview(petnameTextField)
+
+    }
+
+    @objc func nextButtonSelector(_ sender: UIButton) {
+        nextButtonPressed()
+    }
+
+    func nextButtonPressed() {
+        if petnameTextField.text?.isEmpty ?? true || typeOfPetTextField.text?.isEmpty ?? true {
+            nextButton.shake()
+        } else {
+            let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
+            addFirstMealVC?.modalPresentationStyle = .fullScreen
+            addFirstMealVC?.isMotionEnabled = true
+            addFirstMealVC?.motionTransitionType = .fade
+            self.present(addFirstMealVC!, animated: true, completion: nil)
+        }
+    }
+
+}
+
+@available(iOS 13.0, *)
+extension AddYourPetVC : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == petnameTextField {
+            textField.resignFirstResponder()
+            typeOfPetTextField.becomeFirstResponder()
+        } else if textField == typeOfPetTextField {
+            textField.resignFirstResponder()
+            nextButtonPressed()
+        }
+        return true
     }
 }
