@@ -31,7 +31,7 @@ class AddYourPetVC: UIViewController {
         super.viewDidLoad()
         petnameTextField.delegate = self
         typeOfPetTextField.delegate = self
-        nextButton.addTarget(self, action: #selector(nextButtonSelector(_:)), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -89,11 +89,7 @@ class AddYourPetVC: UIViewController {
 
     }
 
-    @objc func nextButtonSelector(_ sender: UIButton) {
-        nextButtonPressed()
-    }
-
-    func nextButtonPressed() {
+    @objc func nextButtonPressed() {
         if petnameTextField.text?.isEmpty ?? true || typeOfPetTextField.text?.isEmpty ?? true {
             nextButton.shake()
         } else {

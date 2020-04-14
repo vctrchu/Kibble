@@ -21,22 +21,17 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setUpAppearance()
-
     }
 
     override func loadView() {
         super.loadView()
-        self.view.addSubview(kibbleMainIcon)
-        self.view.addSubview(signInApple)
-        self.view.addSubview(signInGoogle)
-
         kibbleMainIcon.translatesAutoresizingMaskIntoConstraints = false
         kibbleMainIcon.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
             kibbleMainIcon.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             kibbleMainIcon.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 170.adjusted)
         ])
+        self.view.addSubview(kibbleMainIcon)
 
         signInApple.translatesAutoresizingMaskIntoConstraints = false
         signInApple.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
@@ -45,6 +40,7 @@ class SignInVC: UIViewController {
             signInApple.bottomAnchor.constraint(equalTo: signInGoogle.topAnchor, constant: -25.adjusted)
         ])
         signInApple.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+        self.view.addSubview(signInApple)
 
         signInGoogle.translatesAutoresizingMaskIntoConstraints = false
         signInGoogle.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
@@ -52,6 +48,7 @@ class SignInVC: UIViewController {
             signInGoogle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
+        self.view.addSubview(signInGoogle)
     }
 
     @objc func appleSignInTapped() {
@@ -75,6 +72,10 @@ class SignInVC: UIViewController {
 
         // show the Sign-in with Apple dialog
         authController.performRequests()
+    }
+
+    @objc func googleSignInTapped() {
+        
     }
 
 }
