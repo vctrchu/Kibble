@@ -48,6 +48,7 @@ class SignInVC: UIViewController {
             signInGoogle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
+        signInGoogle.addTarget(self, action: #selector(googleSignInTapped), for: .touchUpInside)
         self.view.addSubview(signInGoogle)
     }
 

@@ -45,14 +45,14 @@ class AddYourPetVC: UIViewController {
         addYourPetTitleImage.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
             addYourPetTitleImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            addYourPetTitleImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60.adjusted)
+            addYourPetTitleImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110.adjusted)
         ])
         self.view.addSubview(addYourPetTitleImage)
 
         NSLayoutConstraint.activate([
             petnameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
             petnameTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
-            petnameTextField.topAnchor.constraint(equalTo: addYourPetTitleImage.bottomAnchor, constant: 15.adjusted),
+            petnameTextField.topAnchor.constraint(equalTo: addYourPetTitleImage.bottomAnchor, constant: 20.adjusted),
             petnameTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         petnameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class AddYourPetVC: UIViewController {
         ])
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.contentMode = UIView.ContentMode.scaleAspectFit
-        self.view.addSubview(petnameTextField)
+        self.view.addSubview(nextButton)
 
     }
 
@@ -94,13 +94,13 @@ class AddYourPetVC: UIViewController {
             nextButton.shake()
         } else {
 
-            //**** make sure there is no spaces infront of our textfield strings
-            // ex. "__kiko" we want to trim all to "kiko"
+            let petame = petnameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true
-            addFirstMealVC?.motionTransitionType = .fade
+            addFirstMealVC?.motionTransitionType = .slide(direction: .left)
             self.present(addFirstMealVC!, animated: true, completion: nil)
         }
     }
