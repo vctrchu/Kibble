@@ -16,8 +16,16 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentSignInVC()//self.presentMealsVC()
+            Auth.auth().currentUser == nil ? self.presentTestVC() : self.presentTestVC()//self.presentMealsVC()
         }
+    }
+
+    private func presentTestVC() {
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC")
+        mealsVC?.modalPresentationStyle = .fullScreen
+        mealsVC?.isMotionEnabled = true
+        mealsVC?.motionTransitionType = .fade
+        self.present(mealsVC!, animated: true, completion: nil)
     }
     
     private func presentMealsVC() {

@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		149D75D1B68CEE46C2498CC2 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8893CACD09A087F8E264364 /* Pods_Kibble.framework */; };
-		FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* SignUp1VC.swift */; };
+		FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetVC.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
 		FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* SignInVC.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */; };
-		FB39408424425E88003AD374 /* DeviceRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB39408324425E88003AD374 /* DeviceRatio.swift */; };
 		FB3940A82442A395003AD374 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3940A72442A395003AD374 /* Nonce.swift */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
@@ -32,7 +31,7 @@
 		9DE8B78784B055A3C88B5D46 /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
 		D697862B97F739C846220A7E /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
 		F8893CACD09A087F8E264364 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB291EF923D26134001BC23C /* SignUp1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp1VC.swift; sourceTree = "<group>"; };
+		FB291EF923D26134001BC23C /* AddYourPetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetVC.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2B2F7B2324A73F004AE08D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -40,7 +39,6 @@
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2VC.swift; sourceTree = "<group>"; };
-		FB39408324425E88003AD374 /* DeviceRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRatio.swift; sourceTree = "<group>"; };
 		FB3940A62442983D003AD374 /* Kibble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kibble.entitlements; sourceTree = "<group>"; };
 		FB3940A72442A395003AD374 /* Nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonce.swift; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				FB3940A62442983D003AD374 /* Kibble.entitlements */,
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FBBC84222382E2BE00BD55A9 /* Extensions.swift */,
-				FB39408324425E88003AD374 /* DeviceRatio.swift */,
 				FB62A5B123850B9500FB5557 /* Services */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
@@ -144,7 +141,7 @@
 			children = (
 				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
 				FB2B2F7B2324A73F004AE08D /* SignInVC.swift */,
-				FB291EF923D26134001BC23C /* SignUp1VC.swift */,
+				FB291EF923D26134001BC23C /* AddYourPetVC.swift */,
 				FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FBBC84202382E10800BD55A9 /* AddMealVC.swift */,
@@ -287,7 +284,6 @@
 				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
 				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
-				FB39408424425E88003AD374 /* DeviceRatio.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
 				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */,
@@ -296,7 +292,7 @@
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
 				FBAE1658232A0DD30092B1EB /* MealTableViewCell.swift in Sources */,
 				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
-				FB291EFA23D26134001BC23C /* SignUp1VC.swift in Sources */,
+				FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */,
 				FB2E1CE723E1251600AEAFC8 /* SignUp2VC.swift in Sources */,
 				FB3940A82442A395003AD374 /* Nonce.swift in Sources */,
 			);

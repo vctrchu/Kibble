@@ -15,6 +15,17 @@ class Device {
     static var ratio: CGFloat {
         return UIScreen.main.bounds.width / base
     }
+
+    @available(iOS 13.0, *)
+    static func roundedFont(ofSize style: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
+        // Will be SF Compact or standard SF in case of failure.
+        let fontSize = UIFont.preferredFont(forTextStyle: style).pointSize
+        if let descriptor = UIFont.systemFont(ofSize: fontSize, weight: weight).fontDescriptor.withDesign(.rounded) {
+            return UIFont(descriptor: descriptor, size: fontSize)
+        } else {
+            return UIFont.preferredFont(forTextStyle: style)
+        }
+    }
 }
 
 extension CGFloat {
@@ -47,5 +58,19 @@ extension UIViewController {
         view.endEditing(true)
     }
 
+}
+
+extension UITextField {
+    func setIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame:
+            CGRect(x: 20, y: 5, width: 20, height: 20))
+        iconView.image = image
+        iconView.alpha = 0.2
+        let iconContainerView: UIView = UIView(frame:
+            CGRect(x: 20, y: 0, width: 50, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
 }
 

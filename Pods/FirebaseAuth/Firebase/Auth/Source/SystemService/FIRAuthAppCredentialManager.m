@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
+#include <TargetConditionals.h>
+#if !TARGET_OS_OSX
+
 #import "FIRAuthAppCredentialManager.h"
 
 #import "FIRAuthAppCredential.h"
 #import "FIRAuthGlobalWorkQueue.h"
-#import "FIRAuthKeychain.h"
+#import "FIRAuthKeychainServices.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,10 +46,10 @@ static NSString *const kPendingReceiptsKey = @"pending_receipts";
 static const NSUInteger kMaximumNumberOfPendingReceipts = 32;
 
 @implementation FIRAuthAppCredentialManager {
-  /** @var _keychain
+  /** @var _keychainServices
       @brief The keychain for app credentials to load from and to save to.
    */
-  FIRAuthKeychain *_keychain;
+  FIRAuthKeychainServices *_keychainServices;
 
   /** @var _pendingReceipts
       @brief A list of pending receipts sorted in the order they were recorded.
@@ -59,26 +62,25 @@ static const NSUInteger kMaximumNumberOfPendingReceipts = 32;
   NSMutableDictionary<NSString *, FIRAuthAppCredentialCallback> *_callbacksByReceipt;
 }
 
-- (instancetype)initWithKeychain:(FIRAuthKeychain *)keychain {
+- (instancetype)initWithKeychain:(FIRAuthKeychainServices *)keychain {
   self = [super init];
   if (self) {
-    _keychain = keychain;
+    _keychainServices = keychain;
     // Load the credentials from keychain if possible.
     NSError *error;
-    NSData *encodedData = [_keychain dataForKey:kKeychainDataKey error:&error];
+    NSData *encodedData = [_keychainServices dataForKey:kKeychainDataKey error:&error];
     if (!error && encodedData) {
       NSKeyedUnarchiver *unarchiver =
           [[NSKeyedUnarchiver alloc] initForReadingWithData:encodedData];
       FIRAuthAppCredential *credential =
-          [unarchiver decodeObjectOfClass:[FIRAuthAppCredential class]
-                                   forKey:kFullCredentialKey];
+          [unarchiver decodeObjectOfClass:[FIRAuthAppCredential class] forKey:kFullCredentialKey];
       if ([credential isKindOfClass:[FIRAuthAppCredential class]]) {
         _credential = credential;
       }
       NSSet<Class> *allowedClasses =
           [NSSet<Class> setWithObjects:[NSArray class], [NSString class], nil];
-      NSArray<NSString *> *pendingReceipts =
-          [unarchiver decodeObjectOfClasses:allowedClasses forKey:kPendingReceiptsKey];
+      NSArray<NSString *> *pendingReceipts = [unarchiver decodeObjectOfClasses:allowedClasses
+                                                                        forKey:kPendingReceiptsKey];
       if ([pendingReceipts isKindOfClass:[NSArray class]]) {
         _pendingReceipts = [pendingReceipts mutableCopy];
       }
@@ -107,9 +109,9 @@ static const NSUInteger kMaximumNumberOfPendingReceipts = 32;
   _callbacksByReceipt[receipt] = callback;
   [self saveData];
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC)),
-                               FIRAuthGlobalWorkQueue(), ^{
-    [self callBackWithReceipt:receipt];
-  });
+                 FIRAuthGlobalWorkQueue(), ^{
+                   [self callBackWithReceipt:receipt];
+                 });
 }
 
 - (BOOL)canFinishVerificationWithReceipt:(NSString *)receipt secret:(NSString *)secret {
@@ -139,7 +141,7 @@ static const NSUInteger kMaximumNumberOfPendingReceipts = 32;
   [archiver encodeObject:_credential forKey:kFullCredentialKey];
   [archiver encodeObject:_pendingReceipts forKey:kPendingReceiptsKey];
   [archiver finishEncoding];
-  [_keychain setData:archiveData forKey:kKeychainDataKey error:NULL];
+  [_keychainServices setData:archiveData forKey:kKeychainDataKey error:NULL];
 }
 
 /** @fn callBackWithReceipt:
@@ -162,3 +164,5 @@ static const NSUInteger kMaximumNumberOfPendingReceipts = 32;
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif
