@@ -9,6 +9,7 @@
 import UIKit
 import AuthenticationServices
 import FirebaseAuth
+import GoogleSignIn
 
 @available(iOS 13.0, *)
 class SignInVC: UIViewController {
@@ -21,6 +22,8 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
     }
 
     override func loadView() {
@@ -76,13 +79,43 @@ class SignInVC: UIViewController {
     }
 
     @objc func googleSignInTapped() {
-        
+        GIDSignIn.sharedInstance().signIn()
     }
 
+    func presentNextVC() {
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC")
+        mealsVC?.modalPresentationStyle = .fullScreen
+        mealsVC?.isMotionEnabled = true
+        mealsVC?.motionTransitionType = .fade
+        self.present(mealsVC!, animated: true, completion: nil)
+    }
 }
 
 @available(iOS 13.0, *)
-extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate{
+extension SignInVC: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let auth = user.authentication else { return }
+        let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().signIn(with: credentials) { (authResult, error) in
+            guard let user = authResult?.user else {
+                print(error?.localizedDescription)
+                return
+            }
+            let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+            let userData: Dictionary<String, Any> = ["email": googleUser.profile.name!,
+                                                     "fullName": googleUser.profile.email!]
+            DataService.instance.createDBUser(uid: user.uid, userData: userData)
+            self.presentNextVC()
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         // return current view to put up authorization screen
@@ -93,7 +126,6 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
         // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
-
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -121,18 +153,12 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
                 print("********* SUCCESSFULLY SIGNED INTO FIREBASE WTIH APPLE **********")
 
                 let userData: Dictionary<String, Any> = ["email": appleIDCredential.email!,
-                                                         "fullName": (appleIDCredential.fullName?.givenName)!]
+                                                         "fullName": (appleIDCredential.fullName?.givenName)! + " " + (appleIDCredential.fullName?.familyName)!]
                 DataService.instance.createDBUser(uid: user.uid, userData: userData)
-
-                let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC")
-                mealsVC?.modalPresentationStyle = .fullScreen
-                mealsVC?.isMotionEnabled = true
-                mealsVC?.motionTransitionType = .fade
-                self.present(mealsVC!, animated: true, completion: nil)
+                self.presentNextVC()
             }
         }
     }
-
 }
 
 

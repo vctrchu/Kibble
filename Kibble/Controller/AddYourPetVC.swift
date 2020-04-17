@@ -93,7 +93,6 @@ class AddYourPetVC: UIViewController {
         if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
             nextButton.shake()
         } else {
-
             let petname = petnameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
@@ -104,7 +103,6 @@ class AddYourPetVC: UIViewController {
             self.present(addFirstMealVC!, animated: true, completion: nil)
         }
     }
-
 }
 
 @available(iOS 13.0, *)

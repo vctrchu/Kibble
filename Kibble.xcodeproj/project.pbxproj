@@ -183,7 +183,8 @@
 				FB2B2F722324A73F004AE08D /* Sources */,
 				FB2B2F732324A73F004AE08D /* Frameworks */,
 				FB2B2F742324A73F004AE08D /* Resources */,
-				1AE4BCB06DA0F9CD0FA086A0 /* [CP] Embed Pods Frameworks */,
+				7F4657AA3B317D194F4511DE /* [CP] Embed Pods Frameworks */,
+				22968BEAA0CB14CB5E05FA6A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,7 +242,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AE4BCB06DA0F9CD0FA086A0 /* [CP] Embed Pods Frameworks */ = {
+		22968BEAA0CB14CB5E05FA6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F4657AA3B317D194F4511DE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,11 +462,13 @@
 				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BZ967DRVJD;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = Kibble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorchu.Kibble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -464,11 +484,13 @@
 				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BZ967DRVJD;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = Kibble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorchu.Kibble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

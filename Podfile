@@ -8,15 +8,13 @@ target 'Kibble' do
   # Pods for Kibble
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'GoogleSignIn'
+
 pod 'LayoutHelper'
 pod 'TransitionButton'
 pod 'IHKeyboardAvoiding'
 pod 'Motion'
 pod 'SimpleAnimation'
-
-pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'	
-
 
 end
