@@ -8,6 +8,7 @@
 
 import UIKit
 import Motion
+import SimpleAnimation
 
 @available(iOS 13.0, *)
 class AddYourFirstMealVC: UIViewController {
@@ -24,16 +25,17 @@ class AddYourFirstMealVC: UIViewController {
     @IBOutlet weak var wetFoodButton: UIButton!
     @IBOutlet weak var treatFoodButton: UIButton!
     @IBOutlet weak var saveMealButton: UIButton!
-
-    var isHighLighted:Bool = false
+    @IBOutlet weak var selectTypeOfFoodTitle: UIImageView!
+    @IBOutlet weak var orTitle: UIImageView!
+    @IBOutlet weak var joinExistingScheduleButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGenstures()
     }
 
     override func loadView() {
         super.loadView()
-        addGenstures()
 
         almostThereTitle.translatesAutoresizingMaskIntoConstraints = false
         almostThereTitle.contentMode = UIView.ContentMode.scaleAspectFit
@@ -59,10 +61,18 @@ class AddYourFirstMealVC: UIViewController {
         mealNameTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
         self.view.addSubview(mealNameTextField)
 
+        selectTypeOfFoodTitle.translatesAutoresizingMaskIntoConstraints = false
+        selectTypeOfFoodTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        NSLayoutConstraint.activate([
+            selectTypeOfFoodTitle.topAnchor.constraint(equalTo: mealNameTextField.bottomAnchor, constant: 20.adjusted),
+            selectTypeOfFoodTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+        self.view.addSubview(selectTypeOfFoodTitle)
+
         foodButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
         foodButtonsStackView.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            foodButtonsStackView.topAnchor.constraint(equalTo: mealNameTextField.bottomAnchor, constant: 20.adjusted),
+            foodButtonsStackView.topAnchor.constraint(equalTo: selectTypeOfFoodTitle.bottomAnchor, constant: 15.adjusted),
             foodButtonsStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
         self.view.addSubview(foodButtonsStackView)
@@ -70,10 +80,26 @@ class AddYourFirstMealVC: UIViewController {
         saveMealButton.translatesAutoresizingMaskIntoConstraints = false
         saveMealButton.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            saveMealButton.topAnchor.constraint(equalTo: foodButtonsStackView.bottomAnchor, constant: 20.adjusted),
+            saveMealButton.topAnchor.constraint(equalTo: foodButtonsStackView.bottomAnchor, constant: 15.adjusted),
             saveMealButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
         self.view.addSubview(saveMealButton)
+
+        orTitle.translatesAutoresizingMaskIntoConstraints = false
+        orTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        NSLayoutConstraint.activate([
+            orTitle.topAnchor.constraint(equalTo: saveMealButton.bottomAnchor, constant: -20.adjusted),
+            orTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+        self.view.addSubview(orTitle)
+
+        joinExistingScheduleButton.translatesAutoresizingMaskIntoConstraints = false
+        joinExistingScheduleButton.contentMode = UIView.ContentMode.scaleAspectFit
+        NSLayoutConstraint.activate([
+            joinExistingScheduleButton.topAnchor.constraint(equalTo: orTitle.bottomAnchor, constant: 20.adjusted),
+            joinExistingScheduleButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+        self.view.addSubview(joinExistingScheduleButton)
     }
 
     func addGenstures() {
@@ -90,6 +116,7 @@ class AddYourFirstMealVC: UIViewController {
         dryFoodButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         wetFoodButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         treatFoodButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        saveMealButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
     }
 
     @objc func foodTypeTapped(_ button: UIButton) {
@@ -106,7 +133,7 @@ class AddYourFirstMealVC: UIViewController {
             dryFoodButton.isSelected = false
             wetFoodButton.isSelected = false
             treatFoodButton.isSelected = true
-        default: ()m,
+        default: ()
         }
     }
 
@@ -117,5 +144,19 @@ class AddYourFirstMealVC: UIViewController {
         }
     }
 
+    @objc func saveButtonPressed() {
+        if mealNameTextField.text?.isReallyEmpty ?? true ||
+            !(dryFoodButton.isSelected || wetFoodButton.isSelected || treatFoodButton.isSelected){
+            saveMealButton.shake()
+        } else {
+            let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+
+            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC")
+            allowNotificationsVC?.modalPresentationStyle = .fullScreen
+            allowNotificationsVC?.isMotionEnabled = true
+            allowNotificationsVC?.motionTransitionType = .slide(direction: .left)
+            self.present(allowNotificationsVC!, animated: true, completion: nil)
+        }
+    }
 
 }

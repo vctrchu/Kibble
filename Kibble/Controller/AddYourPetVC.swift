@@ -94,7 +94,7 @@ class AddYourPetVC: UIViewController {
             nextButton.shake()
         } else {
 
-            let petame = petnameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            let petname = petnameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")

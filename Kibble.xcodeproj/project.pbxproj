@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		149D75D1B68CEE46C2498CC2 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8893CACD09A087F8E264364 /* Pods_Kibble.framework */; };
 		FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */; };
+		FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */; };
 		FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetVC.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
 		FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* SignInVC.swift */; };
@@ -33,6 +34,7 @@
 		D697862B97F739C846220A7E /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
 		F8893CACD09A087F8E264364 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourFirstMealVC.swift; sourceTree = "<group>"; };
+		FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsVC.swift; sourceTree = "<group>"; };
 		FB291EF923D26134001BC23C /* AddYourPetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetVC.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				FB2B2F7B2324A73F004AE08D /* SignInVC.swift */,
 				FB291EF923D26134001BC23C /* AddYourPetVC.swift */,
 				FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */,
+				FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */,
 				FB2E1CE623E1251600AEAFC8 /* SignUp2VC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FBBC84202382E10800BD55A9 /* AddMealVC.swift */,
@@ -291,6 +294,7 @@
 				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FBBC84212382E10800BD55A9 /* AddMealVC.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
+				FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */,
 				FB741C84237E772A00B7E7D2 /* Meal.swift in Sources */,
