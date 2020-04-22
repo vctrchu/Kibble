@@ -18,15 +18,23 @@ class DataService {
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_PET_INFO = DB_BASE.child("petInfo")
-    private var _REF_MEALS = DB_BASE.child("meals")
-    private var _REF_MEAL_MEMBERS = DB_BASE.child("mealMembers")
+    private var _REF_PET_MEALS = DB_BASE.child("petMeals")
+    private var _REF_PET_MEMBERS = DB_BASE.child("petMembers")
+    private var _REF_PET_NOTIFICATIONS = DB_BASE.child("petNotifications")
 
     var REF_BASE: DatabaseReference { return _REF_BASE }
     var REF_USERS: DatabaseReference { return _REF_USERS }
     var REF_PET_INFO: DatabaseReference { return _REF_PET_INFO }
-    var REF_MEALS: DatabaseReference { return _REF_MEALS }
-    var REF_PET_MEAL_MEMBERS: DatabaseReference { return _REF_MEAL_MEMBERS }
+    var REF_PET_MEALS: DatabaseReference { return _REF_PET_MEALS }
+    var REF_PET_MEMBERS: DatabaseReference { return _REF_PET_MEMBERS }
+    var REF_PET_NOTIFICTAIONS: DatabaseReference { return _REF_PET_NOTIFICATIONS}
 
+    func setup() {
+        let data: Dictionary<String,Any> = ["Test":"Test"]
+        REF_PET_NOTIFICTAIONS.child("Configure").updateChildValues(data)
+        REF_PET_MEMBERS.child("Configure").updateChildValues(data)
+        REF_PET_MEALS.child("Configure").updateChildValues(data)
+    }
 
     /*
         Brute force: checking if a petId exists already on firebase
@@ -51,6 +59,8 @@ class DataService {
     func updatePetInfo(petId: String, petData: Dictionary<String,Any>) {
         var isIdUnique = false
         var currentId = petId
+        // Time Complexity: O(n)
+        // Worst case we reproduce the same random string n times...
         while (!isIdUnique) {
             if LocalStorage.instance.petIds.keys.contains(currentId) {
                 currentId = Device.randomString()
@@ -65,5 +75,21 @@ class DataService {
 
     func updateUser(uid: String, userData: Dictionary <String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
+    }
+
+    func addPetToUser(for uid: String, with petId: String) {
+        REF_USERS.child("\(uid)/pets").updateChildValues([petId: true as Any])
+    }
+
+    func updatePetNotifications(with petId: String, and notificationData: Dictionary<String,Any>) {
+        REF_PET_NOTIFICTAIONS.child(petId).updateChildValues(notificationData)
+    }
+
+    func updatePetMeals(with petId: String, and mealData: Dictionary<String,Any>) {
+        REF_PET_MEALS.child(petId).updateChildValues(mealData)
+    }
+
+    func updatePetMembers(with petId: String, and memberData: Dictionary<String,Any>) {
+        REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Firebase
 
 class AllowNotificationsVC: UIViewController {
 
@@ -16,6 +17,11 @@ class AllowNotificationsVC: UIViewController {
     @IBOutlet weak var noThanksButton: UIButton!
     @IBOutlet weak var yesNotifyMeButton: UIButton!
     @IBOutlet weak var timePickerView: UIDatePicker!
+
+    var petId = ""
+    var petData = Dictionary<String,Any>()
+    var mealName = ""
+    var mealType = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +71,7 @@ class AllowNotificationsVC: UIViewController {
     }
 
     @objc func moveToMealsVC() {
+        sendData()
         let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
         mealsVC?.modalPresentationStyle = .fullScreen
         mealsVC?.isMotionEnabled = true
@@ -88,6 +95,19 @@ class AllowNotificationsVC: UIViewController {
                     self?.moveToMealsVC()
                 }
         }
+    }
+
+    func sendData() {
+        if let uid = Auth.auth().currentUser?.uid {
+            let memberData: Dictionary<String, Any> = [uid: true]
+            DataService.instance.addPetToUser(for: uid, with: petId)
+            DataService.instance.updatePetMembers(with: petId, and: memberData)
+        }
+        let mealData: Dictionary<String, Any> = ["name": mealName, "type": mealType]
+        let notificationData: Dictionary<String, Any> = [getTimePickerValue(): true]
+        DataService.instance.updatePetInfo(petId: petId, petData: petData)
+        DataService.instance.updatePetMeals(with: petId, and: mealData)
+        DataService.instance.updatePetNotifications(with: petId, and: notificationData)
     }
 
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

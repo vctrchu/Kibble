@@ -9,9 +9,9 @@
 import Foundation
 
 struct PetId {
-    var id: String
-    var name: String
-    var type: String
+    private var id: String
+    private var name: String
+    private var type: String
 
     init(_ id: String, _ name: String, _ type: String) {
         self.id = id

@@ -29,6 +29,10 @@ class AddYourFirstMealVC: UIViewController {
     @IBOutlet weak var orTitle: UIImageView!
     @IBOutlet weak var joinExistingScheduleButton: UIButton!
 
+    var petId = ""
+    var petData = Dictionary<String, Any>()
+    var mealType = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addGenstures()
@@ -125,14 +129,17 @@ class AddYourFirstMealVC: UIViewController {
             dryFoodButton.isSelected = true
             wetFoodButton.isSelected = false
             treatFoodButton.isSelected = false
+            mealType = "dry"
         case wetFoodButton:
             dryFoodButton.isSelected = false
             wetFoodButton.isSelected = true
             treatFoodButton.isSelected = false
+            mealType = "wet"
         case treatFoodButton:
             dryFoodButton.isSelected = false
             wetFoodButton.isSelected = false
             treatFoodButton.isSelected = true
+            mealType = "treat"
         default: ()
         }
     }
@@ -151,12 +158,15 @@ class AddYourFirstMealVC: UIViewController {
         } else {
             let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC")
+            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as? AllowNotificationsVC
             allowNotificationsVC?.modalPresentationStyle = .fullScreen
             allowNotificationsVC?.isMotionEnabled = true
             allowNotificationsVC?.motionTransitionType = .slide(direction: .left)
+            allowNotificationsVC?.petId = petId
+            allowNotificationsVC?.petData = petData
+            allowNotificationsVC?.mealName = mealName
+            allowNotificationsVC?.mealType = mealType
             self.present(allowNotificationsVC!, animated: true, completion: nil)
         }
     }
-
 }

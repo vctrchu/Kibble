@@ -98,13 +98,15 @@ class AddYourPetVC: UIViewController {
             let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             let petData: Dictionary<String, Any> = ["name": petname,
                                                     "type": typeOfPet]
-            DataService.instance.updatePetInfo(petId: petID, petData: petData)
+            //            DataService.instance.updatePetInfo(petId: petID, petData: petData)
             
-             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
-             addFirstMealVC?.modalPresentationStyle = .fullScreen
-             addFirstMealVC?.isMotionEnabled = true
-             addFirstMealVC?.motionTransitionType = .slide(direction: .left)
-             self.present(addFirstMealVC!, animated: true, completion: nil)
+            let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as? AddYourFirstMealVC
+            addFirstMealVC?.modalPresentationStyle = .fullScreen
+            addFirstMealVC?.isMotionEnabled = true
+            addFirstMealVC?.motionTransitionType = .slide(direction: .left)
+            addFirstMealVC?.petId = petID
+            addFirstMealVC?.petData = petData
+            self.present(addFirstMealVC!, animated: true, completion: nil)
         }
     }
 }

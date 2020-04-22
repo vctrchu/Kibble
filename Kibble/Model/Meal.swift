@@ -8,27 +8,16 @@
 
 import Foundation
 
-class Meal {
+struct Meal {
+    private var name: String
+    private var type: String
+    private var isFed: Bool
+    private var description: String
     
-    private var _title: String
-    private var _isFed: Bool
-    private var _description: String
-    
-    var title: String {
-        return _title
-    }
-
-    var isFed: Bool {
-        return _isFed
-    }
-
-    var description: String {
-        return _description
-    }
-    
-    init(title: String, isFed: Bool, description: String) {
-        self._title = title
-        self._isFed = isFed
-        self._description = description
+    init(_with name: String, _with type: String) {
+        self.name = name
+        self.type = type
+        self.isFed = false
+        self.description = ""
     }
 }
