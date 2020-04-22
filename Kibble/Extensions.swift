@@ -9,6 +9,13 @@
 import UIKit
 
 class Device {
+
+    static func randomString() -> String {
+        let length = 6;
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+
     // Base width in point, use iPhone 6
     static let base: CGFloat = 375
 

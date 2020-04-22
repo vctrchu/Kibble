@@ -108,7 +108,7 @@ extension SignInVC: GIDSignInDelegate {
             let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
             let userData: Dictionary<String, Any> = ["email": googleUser.profile.name!,
                                                      "fullName": googleUser.profile.email!]
-            DataService.instance.createDBUser(uid: user.uid, userData: userData)
+            DataService.instance.updateUser(uid: user.uid, userData: userData)
             self.presentNextVC()
         }
     }
@@ -154,7 +154,7 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
 
                 let userData: Dictionary<String, Any> = ["email": appleIDCredential.email!,
                                                          "fullName": (appleIDCredential.fullName?.givenName)! + " " + (appleIDCredential.fullName?.familyName)!]
-                DataService.instance.createDBUser(uid: user.uid, userData: userData)
+                DataService.instance.updateUser(uid: user.uid, userData: userData)
                 self.presentNextVC()
             }
         }

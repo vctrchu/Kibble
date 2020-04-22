@@ -16,8 +16,9 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.presentSignInVC()
-            //Auth.auth().currentUser == nil ? self.presentTestVC() : self.presentTestVC()//self.presentMealsVC()
+            Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentTestVC()
+
+            //self.presentSignInVC()
         }
     }
 

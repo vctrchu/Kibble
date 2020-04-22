@@ -93,14 +93,18 @@ class AddYourPetVC: UIViewController {
         if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
             nextButton.shake()
         } else {
+            let petID = Device.randomString()
             let petname = petnameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-
-            let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
-            addFirstMealVC?.modalPresentationStyle = .fullScreen
-            addFirstMealVC?.isMotionEnabled = true
-            addFirstMealVC?.motionTransitionType = .slide(direction: .left)
-            self.present(addFirstMealVC!, animated: true, completion: nil)
+            let petData: Dictionary<String, Any> = ["name": petname,
+                                                    "type": typeOfPet]
+            DataService.instance.updatePetInfo(petId: petID, petData: petData)
+            
+             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC")
+             addFirstMealVC?.modalPresentationStyle = .fullScreen
+             addFirstMealVC?.isMotionEnabled = true
+             addFirstMealVC?.motionTransitionType = .slide(direction: .left)
+             self.present(addFirstMealVC!, animated: true, completion: nil)
         }
     }
 }
