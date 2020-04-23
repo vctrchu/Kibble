@@ -85,8 +85,8 @@ class DataService {
         REF_PET_NOTIFICTAIONS.child(petId).updateChildValues(notificationData)
     }
 
-    func updatePetMeals(with petId: String, and mealData: Dictionary<String,Any>) {
-        REF_PET_MEALS.child(petId).updateChildValues(mealData)
+    func updatePetMeals(with petId: String, with mealName: String, and mealData: Dictionary<String,Any>) {
+        REF_PET_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData)
     }
 
     func updatePetMembers(with petId: String, and memberData: Dictionary<String,Any>) {

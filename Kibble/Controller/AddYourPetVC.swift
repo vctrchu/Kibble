@@ -98,8 +98,7 @@ class AddYourPetVC: UIViewController {
             let typeOfPet = typeOfPetTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             let petData: Dictionary<String, Any> = ["name": petname,
                                                     "type": typeOfPet]
-            //            DataService.instance.updatePetInfo(petId: petID, petData: petData)
-            
+
             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as? AddYourFirstMealVC
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true

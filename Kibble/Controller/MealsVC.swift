@@ -9,27 +9,58 @@
 import UIKit
 import Firebase
 
+@available(iOS 13.0, *)
 class MealsVC: UIViewController {
     
-    @IBOutlet weak var mealTableView: UITableView!
+    @IBOutlet weak var mealsTableView: UITableView!
     @IBOutlet weak var addMealButton: UIButton!
-    
+    @IBOutlet weak var petImage: UIImageView!
+    @IBOutlet weak var petnameLabel: UILabel!
 
-    var mealArray = [Meal]()
+    //var mealArray = [Meal]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        mealTableView.delegate = self
-//        mealTableView.dataSource = self
-//        mealTableView.rowHeight = 120
-//        
-//       // Create some default meals.
-//        let Meal1 = Meal(title: "Breakfast", isFed: false, description: "Half Can.")
-//        let Meal2 = Meal(title: "Lunch", isFed: false, description: "Half Can")
-//        let Meal3 = Meal(title: "Dinner", isFed: false, description: "Full Can")
-//        mealArray.append(Meal1)
-//        mealArray.append(Meal2)
-//        mealArray.append(Meal3)
+                mealsTableView.delegate = self
+                mealsTableView.dataSource = self
+                mealsTableView.rowHeight = 120
+        //
+        //       // Create some default meals.
+        //        let Meal1 = Meal(title: "Breakfast", isFed: false, description: "Half Can.")
+        //        let Meal2 = Meal(title: "Lunch", isFed: false, description: "Half Can")
+        //        let Meal3 = Meal(title: "Dinner", isFed: false, description: "Full Can")
+        //        mealArray.append(Meal1)
+        //        mealArray.append(Meal2)
+        //        mealArray.append(Meal3)
+
+    }
+
+    override func loadView() {
+        super.loadView()
+        petImage.translatesAutoresizingMaskIntoConstraints = false
+        petImage.contentMode = UIView.ContentMode.scaleAspectFill
+        NSLayoutConstraint.activate([
+            petImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70.adjusted),
+            petImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            petImage.heightAnchor.constraint(equalToConstant: 100),
+            petImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        petImage.layer.masksToBounds = false
+        petImage.layer.cornerRadius = petImage.frame.height/2
+        petImage.clipsToBounds = true
+        self.view.addSubview(petImage)
+
+        petnameLabel.translatesAutoresizingMaskIntoConstraints = false
+        petnameLabel.font = Device.roundedFont(ofSize: .largeTitle, weight: .bold)
+        petnameLabel.textAlignment = .center
+        NSLayoutConstraint.activate([
+            petnameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
+        ])
+        self.view.addSubview(petnameLabel)
+
+        mealsTableView.register(MealCell.self, forCellReuseIdentifier: "MealCell")
+        mealsTableView.separatorColor = UIColor.white
 
     }
     
@@ -65,22 +96,35 @@ class MealsVC: UIViewController {
 
 }
 
-//extension MealsVC: UITableViewDelegate, UITableViewDataSource {
+@available(iOS 13.0, *)
+extension MealsVC: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell") as? MealCell else { return UITableViewCell() }
 //
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return mealArray.count
-//    }
+//        let message = messageArray[indexPath.row]
 //
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath) as? MealCell else { return UITableViewCell() }
-//
-//        cell.mealTitle?.text = mealArray[indexPath.row].title
-//        cell.isFedImage.image = UIImage(named: String(mealArray[indexPath.row].isFed))
-//
-//        return cell
-//    }
-//
-//
-//
-//}
+//        cell.configureCell(profileImage: message.senderProfileUrl, fullname: message.senderName, message: message.content)
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        destinationUid = messageArray[indexPath.row].senderId
+//        destinationName = messageArray[indexPath.row].senderName
+//        performSegue(withIdentifier: "FeedToProfile", sender: self)
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.adjusted
+    }
+}

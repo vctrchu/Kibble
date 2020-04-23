@@ -103,10 +103,10 @@ class AllowNotificationsVC: UIViewController {
             DataService.instance.addPetToUser(for: uid, with: petId)
             DataService.instance.updatePetMembers(with: petId, and: memberData)
         }
-        let mealData: Dictionary<String, Any> = ["name": mealName, "type": mealType]
+        let mealData: Dictionary<String, Any> = ["type": mealType]
         let notificationData: Dictionary<String, Any> = [getTimePickerValue(): true]
         DataService.instance.updatePetInfo(petId: petId, petData: petData)
-        DataService.instance.updatePetMeals(with: petId, and: mealData)
+        DataService.instance.updatePetMeals(with: petId, with: mealName, and: mealData)
         DataService.instance.updatePetNotifications(with: petId, and: notificationData)
     }
 
