@@ -28,15 +28,9 @@ class MealsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                tableview.delegate = self
-                tableview.dataSource = self
-               // Create some default meals.
-                let Meal1 = Meal(name: "Breakfast", type: "dry", isFed: "true")
-                let Meal2 = Meal(name: "Lunch", type: "wet", isFed: "true")
-                let Meal3 = Meal(name: "Snack", type: "treat", isFed: "true")
-                mealArray.append(Meal1)
-                mealArray.append(Meal2)
-                mealArray.append(Meal3)
+        tableview.delegate = self
+        tableview.dataSource = self
+        retrieveMealData()
 
     }
 
@@ -77,6 +71,26 @@ class MealsVC: UIViewController {
         ])
         tableview.separatorColor = UIColor.white
 
+    }
+
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .darkContent
+    }
+
+    func retrieveMealData() {
+        guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
+        DataService.instance.retrieveCurrentPet(uid: uid) { (petId) in
+            DataService.instance.retrieveAllPetMeals(petId: petId) { (retreivedMeals) in
+                self.mealArray = retreivedMeals
+                print(self.mealArray.count)
+                self.tableview.reloadData()
+            }
+        }
+//        DataService.instance.retrieveCurrentPet(uid: uid) { (currentPet) in
+//            DataService.instance.retrieveAllPetMeals(petId: currentPet) { (meals) in
+//                self.mealArray = meals
+//            }
+//        }
     }
     
     @IBAction func addMealButtonPressed(_ sender: Any) {
@@ -131,9 +145,9 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        destinationUid = messageArray[indexPath.row].senderId
-//        destinationName = messageArray[indexPath.row].senderName
-//        performSegue(withIdentifier: "FeedToProfile", sender: self)
+        //        destinationUid = messageArray[indexPath.row].senderId
+        //        destinationName = messageArray[indexPath.row].senderName
+        //        performSegue(withIdentifier: "FeedToProfile", sender: self)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

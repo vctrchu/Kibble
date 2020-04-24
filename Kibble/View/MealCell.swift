@@ -17,7 +17,7 @@ class MealCell: UITableViewCell {
     var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = Device.roundedFont(ofSize: .title1, weight: .regular)
+        label.font = Device.roundedFont(ofSize: .title3, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

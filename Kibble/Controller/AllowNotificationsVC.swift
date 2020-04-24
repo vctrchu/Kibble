@@ -98,13 +98,13 @@ class AllowNotificationsVC: UIViewController {
     }
 
     func sendData() {
-        if let uid = Auth.auth().currentUser?.uid {
-            let memberData: Dictionary<String, Any> = [uid: true]
-            DataService.instance.addPetToUser(for: uid, with: petId)
-            DataService.instance.updatePetMembers(with: petId, and: memberData)
-        }
-        let mealData: Dictionary<String, Any> = ["type": mealType]
+        guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
+        let memberData: Dictionary<String, Any> = [uid: true]
+        let mealData: Dictionary<String, Any> = ["type": mealType, "isFed": false]
         let notificationData: Dictionary<String, Any> = [getTimePickerValue(): true]
+        DataService.instance.addPetToUser(for: uid, with: petId)
+        DataService.instance.updateUser(uid: uid, userData: ["currentPet": petId])
+        DataService.instance.updatePetMembers(with: petId, and: memberData)
         DataService.instance.updatePetInfo(petId: petId, petData: petData)
         DataService.instance.updatePetMeals(with: petId, with: mealName, and: mealData)
         DataService.instance.updatePetNotifications(with: petId, and: notificationData)

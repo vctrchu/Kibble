@@ -37,10 +37,10 @@ class DataService {
     }
 
     /*
-        Brute force: checking if a petId exists already on firebase
-        Time and space compleixty: O(n)
-        This is not good because as n gets large we are storing all these into our app memory which we will never use besides to check if a petId exists.
-        Possible fix I can think of: Remove all unused elements from dictionary except the ones associated with the current user.
+     Brute force: checking if a petId exists already on firebase
+     Time and space compleixty: O(n)
+     This is not good because as n gets large we are storing all these into our app memory which we will never use besides to check if a petId exists.
+     Possible fix I can think of: Remove all unused elements from dictionary except the ones associated with the current user.
      */
     func downloadPetIds() {
         REF_PET_INFO.observeSingleEvent(of: .value) { (petInfoSnapshot) in
@@ -91,5 +91,36 @@ class DataService {
 
     func updatePetMembers(with petId: String, and memberData: Dictionary<String,Any>) {
         REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
+    }
+
+    func retrieveCurrentPet(uid: String, handler: @escaping (_ currentPet: String) -> ()) {
+        var currentPetId = ""
+        REF_USERS.child(uid).child("currentPet").observeSingleEvent(of: .value) { (currentPetSnapshot) in
+            currentPetId = currentPetSnapshot.value as! String
+            handler(currentPetId)
+        }
+    }
+
+    func retrieveAllPetMeals(petId: String, handler: @escaping (_ currentPet: [Meal]) -> ()) {
+        var petMeals = [Meal]()
+        REF_PET_MEALS.child(petId).observeSingleEvent(of: .value) { (mealSnapshot) in
+            let meals = mealSnapshot.children
+            for meal in meals {
+                let mealSnap = meal as! DataSnapshot
+                guard let dict = mealSnap.value as? [String:Any] else {
+                    print("Error")
+                    return
+                }
+                let name = mealSnap.key
+                let isFed = dict["isFed"] as! String
+                let type = dict["type"] as! String
+                print(name)
+                print(isFed)
+                print(type)
+                let newMeal = Meal(name: name, type: type, isFed: isFed)
+                petMeals.append(newMeal)
+            }
+            handler(petMeals)
+        }
     }
 }
