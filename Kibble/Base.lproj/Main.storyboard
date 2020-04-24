@@ -246,8 +246,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Kiko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwB-hQ-BJn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kiko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwB-hQ-BJn">
                                 <rect key="frame" x="166" y="158" width="33" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -256,22 +257,11 @@
                                 <rect key="frame" x="137" y="50" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPU-QU-SSY">
-                                <rect key="frame" x="30" y="216" width="315" height="400"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="PPU-QU-SSY" firstAttribute="leading" secondItem="xhH-vs-7rP" secondAttribute="leading" constant="30" id="N3B-rx-bXA"/>
-                            <constraint firstItem="xhH-vs-7rP" firstAttribute="trailing" secondItem="PPU-QU-SSY" secondAttribute="trailing" constant="30" id="TL3-3f-BbM"/>
-                            <constraint firstItem="xhH-vs-7rP" firstAttribute="bottom" secondItem="PPU-QU-SSY" secondAttribute="bottom" constant="50" id="eDy-Ux-Dek"/>
-                            <constraint firstItem="PPU-QU-SSY" firstAttribute="top" secondItem="BwB-hQ-BJn" secondAttribute="bottom" constant="20" id="juv-78-d1r"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xhH-vs-7rP"/>
                     </view>
                     <connections>
-                        <outlet property="mealsTableView" destination="PPU-QU-SSY" id="FqL-gH-C9h"/>
                         <outlet property="petImage" destination="IEg-f1-Iih" id="NrT-MV-Mq6"/>
                         <outlet property="petnameLabel" destination="BwB-hQ-BJn" id="P57-Kq-qas"/>
                     </connections>

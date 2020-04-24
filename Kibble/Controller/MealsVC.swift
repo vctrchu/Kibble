@@ -17,21 +17,26 @@ class MealsVC: UIViewController {
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petnameLabel: UILabel!
 
-    //var mealArray = [Meal]()
+    let tableview: UITableView = {
+        let tv = UITableView()
+        tv.backgroundColor = UIColor.white
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+
+    var mealArray = [Meal]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                mealsTableView.delegate = self
-                mealsTableView.dataSource = self
-                mealsTableView.rowHeight = 120
-        //
-        //       // Create some default meals.
-        //        let Meal1 = Meal(title: "Breakfast", isFed: false, description: "Half Can.")
-        //        let Meal2 = Meal(title: "Lunch", isFed: false, description: "Half Can")
-        //        let Meal3 = Meal(title: "Dinner", isFed: false, description: "Full Can")
-        //        mealArray.append(Meal1)
-        //        mealArray.append(Meal2)
-        //        mealArray.append(Meal3)
+                tableview.delegate = self
+                tableview.dataSource = self
+               // Create some default meals.
+                let Meal1 = Meal(name: "Breakfast", type: "dry", isFed: "true")
+                let Meal2 = Meal(name: "Lunch", type: "wet", isFed: "true")
+                let Meal3 = Meal(name: "Snack", type: "treat", isFed: "true")
+                mealArray.append(Meal1)
+                mealArray.append(Meal2)
+                mealArray.append(Meal3)
 
     }
 
@@ -59,8 +64,18 @@ class MealsVC: UIViewController {
         ])
         self.view.addSubview(petnameLabel)
 
-        mealsTableView.register(MealCell.self, forCellReuseIdentifier: "MealCell")
-        mealsTableView.separatorColor = UIColor.white
+        
+        tableview.register(MealCell.self, forCellReuseIdentifier: "cellId")
+
+        view.addSubview(tableview)
+
+        NSLayoutConstraint.activate([
+            tableview.topAnchor.constraint(equalTo: petnameLabel.bottomAnchor, constant: 10.adjusted),
+            tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50.adjusted),
+            tableview.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            tableview.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+        ])
+        tableview.separatorColor = UIColor.white
 
     }
     
@@ -104,17 +119,14 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return mealArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell") as? MealCell else { return UITableViewCell() }
-//
-//        let message = messageArray[indexPath.row]
-//
-//        cell.configureCell(profileImage: message.senderProfileUrl, fullname: message.senderName, message: message.content)
-
+        let meal = mealArray[indexPath.row]
+        let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MealCell
+        cell.backgroundColor = UIColor.white
+        cell.configureCell(isFed: meal.isFed, name: meal.name, type: meal.type)
         return cell
     }
 
