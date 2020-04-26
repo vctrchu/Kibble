@@ -12,7 +12,6 @@ import Firebase
 @available(iOS 13.0, *)
 class MealsVC: UIViewController {
     
-    @IBOutlet weak var mealsTableView: UITableView!
     @IBOutlet weak var addMealButton: UIButton!
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petnameLabel: UILabel!
@@ -97,7 +96,7 @@ class MealsVC: UIViewController {
 
     @objc func addMealButtonPressed() {
         let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC")
-        addMealVC?.modalPresentationStyle = .fullScreen
+        //addMealVC?.modalPresentationStyle = .fullScreen
         self.present(addMealVC!, animated: true, completion: nil)
     }
     
