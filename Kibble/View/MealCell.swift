@@ -16,8 +16,8 @@ class MealCell: UITableViewCell {
 
     var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = Device.roundedFont(ofSize: .title3, weight: .medium)
+        label.textColor = UIColor.black
+        label.font = Device.roundedFont(ofSize: .title2, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,13 +51,13 @@ class MealCell: UITableViewCell {
             typeImage.heightAnchor.constraint(equalToConstant: 60.adjusted),
             typeImage.widthAnchor.constraint(equalToConstant: 60.adjusted),
             typeImage.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
-            typeImage.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20.adjusted)
+            typeImage.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 10.adjusted)
         ])
 
         nameLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor).isActive = true
-        nameLabel.leftAnchor.constraint(equalTo: typeImage.rightAnchor, constant: 20).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: typeImage.rightAnchor, constant: 10).isActive = true
 
         isFedImage.translatesAutoresizingMaskIntoConstraints = false
         isFedImage.contentMode = UIView.ContentMode.scaleAspectFit

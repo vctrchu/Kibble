@@ -60,7 +60,7 @@ class AllowNotificationsVC: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-        noThanksButton.addTarget(self, action: #selector(moveToMealsVC), for: .touchUpInside)
+        noThanksButton.addTarget(self, action: #selector(noThanksPressed), for: .touchUpInside)
         yesNotifyMeButton.addTarget(self, action: #selector(yesNotifyMePressed), for: .touchUpInside)
     }
 
@@ -70,13 +70,8 @@ class AllowNotificationsVC: UIViewController {
         return dateFormatter.string(from: timePickerView.date)
     }
 
-    @objc func moveToMealsVC() {
-        sendData()
-        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
-        mealsVC?.modalPresentationStyle = .fullScreen
-        mealsVC?.isMotionEnabled = true
-        mealsVC?.motionTransitionType = .fade
-        self.present(mealsVC!, animated: true, completion: nil)
+    @objc func noThanksPressed() {
+        sendData(withNotification: false)
     }
 
     @objc func yesNotifyMePressed(_ button: UIButton) {
@@ -92,22 +87,36 @@ class AllowNotificationsVC: UIViewController {
                     if granted {
                         UIApplication.shared.registerForRemoteNotifications()
                     }
-                    self?.moveToMealsVC()
+                    self?.sendData(withNotification: true)
                 }
         }
     }
 
-    func sendData() {
+    func moveToMealsVC() {
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
+        mealsVC?.modalPresentationStyle = .fullScreen
+        mealsVC?.isMotionEnabled = true
+        mealsVC?.motionTransitionType = .fade
+        self.present(mealsVC!, animated: true, completion: nil)
+    }
+
+    func sendData(withNotification notification: Bool) {
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
         let memberData: Dictionary<String, Any> = [uid: true]
-        let mealData: Dictionary<String, Any> = ["type": mealType, "isFed": false]
-        let notificationData: Dictionary<String, Any> = [getTimePickerValue(): true]
+        let mealData: Dictionary<String, Any> = ["type": mealType, "isFed": "false"]
         DataService.instance.addPetToUser(for: uid, with: petId)
         DataService.instance.updateUser(uid: uid, userData: ["currentPet": petId])
         DataService.instance.updatePetMembers(with: petId, and: memberData)
         DataService.instance.updatePetInfo(petId: petId, petData: petData)
         DataService.instance.updatePetMeals(with: petId, with: mealName, and: mealData)
-        DataService.instance.updatePetNotifications(with: petId, and: notificationData)
+        if notification {
+            let notificationData: Dictionary<String, Any> = ["notification" : getTimePickerValue()]
+            DataService.instance.updatePetMealNotifications(with: petId, with: mealName, and: notificationData) {
+                self.moveToMealsVC()
+            }
+        } else {
+            moveToMealsVC()
+        }
     }
 
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

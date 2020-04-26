@@ -9,13 +9,28 @@
 import Foundation
 
 struct PetId {
-    private var id: String
-    private var name: String
-    private var type: String
+    private var _id: String
+    private var _name: String
+    private var _type: String
+
+    var id: String {
+        set { _id = newValue }
+        get { return _id }
+    }
+
+    var name: String {
+        set { _name = newValue }
+        get { return _name }
+    }
+
+    var type: String {
+        set { _type = newValue }
+        get { return _type }
+    }
 
     init(_ id: String, _ name: String, _ type: String) {
-        self.id = id
-        self.name = name
-        self.type = type
+        self._id = id
+        self._name = name
+        self._type = type
     }
 }

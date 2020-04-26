@@ -246,6 +246,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM6-s5-vcE">
+                                <rect key="frame" x="67" y="150" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="d7p-lo-esA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="OKs-8k-36d"/>
+                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kiko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwB-hQ-BJn">
                                 <rect key="frame" x="166" y="158" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -257,11 +263,17 @@
                                 <rect key="frame" x="137" y="50" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyN-y9-pfw">
+                                <rect key="frame" x="169" y="631" width="36" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="AddMealButton"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xhH-vs-7rP"/>
                     </view>
                     <connections>
+                        <outlet property="addMealButton" destination="CyN-y9-pfw" id="L9e-Db-o4M"/>
                         <outlet property="petImage" destination="IEg-f1-Iih" id="NrT-MV-Mq6"/>
                         <outlet property="petnameLabel" destination="BwB-hQ-BJn" id="P57-Kq-qas"/>
                     </connections>
@@ -285,10 +297,71 @@
             </objects>
             <point key="canvasLocation" x="1369" y="775"/>
         </scene>
+        <!--Add MealVC-->
+        <scene sceneID="ci7-Yv-MCq">
+            <objects>
+                <viewController storyboardIdentifier="AddMealVC" id="OH4-eL-jia" customClass="AddMealVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nuL-Cz-K2N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7c-12-EWv">
+                                <rect key="frame" x="64" y="138" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SelectTypeOfFood" translatesAutoresizingMaskIntoConstraints="NO" id="Igd-ge-35P">
+                                <rect key="frame" x="114" y="180" width="147" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" distribution="equalSpacing" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="8MI-le-dGC">
+                                <rect key="frame" x="36" y="252" width="304" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-Ka-BBd">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="DryFoodIcon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMW-r5-smR">
+                                        <rect key="frame" x="110" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="WetFoodIcon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B91-sk-21n">
+                                        <rect key="frame" x="220" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="TreatFoodIcon"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHq-CH-77H">
+                                <rect key="frame" x="81" y="432" width="214" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="SaveMealButton"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add a Meal" translatesAutoresizingMaskIntoConstraints="NO" id="YkS-Em-0Oe">
+                                <rect key="frame" x="97" y="68" width="182" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXI-O5-BMy">
+                                <rect key="frame" x="28" y="39" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="WWy-gY-UON"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6F-Zy-gY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2702" y="775"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Add a Meal" width="179" height="27"/>
         <image name="Add your pet" width="208" height="33"/>
         <image name="AddFirstMealTitle" width="220" height="86"/>
+        <image name="AddMealButton" width="36" height="24"/>
+        <image name="Cancel" width="22" height="22"/>
         <image name="DryFoodIcon" width="84" height="84"/>
         <image name="JoinExistingScheduleTitle" width="195" height="17"/>
         <image name="KibbleAppIcon" width="128" height="128"/>

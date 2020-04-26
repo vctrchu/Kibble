@@ -31,50 +31,56 @@ class MealsVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         retrieveMealData()
-
     }
 
     override func loadView() {
         super.loadView()
+        self.view.addSubview(petImage)
+        self.view.addSubview(petnameLabel)
+        self.view.addSubview(tableview)
+        self.view.addSubview(addMealButton)
+
         petImage.translatesAutoresizingMaskIntoConstraints = false
         petImage.contentMode = UIView.ContentMode.scaleAspectFill
+        petImage.layer.masksToBounds = false
+        petImage.layer.cornerRadius = petImage.frame.height/2
+        petImage.clipsToBounds = true
         NSLayoutConstraint.activate([
             petImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70.adjusted),
             petImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             petImage.heightAnchor.constraint(equalToConstant: 100),
             petImage.widthAnchor.constraint(equalToConstant: 100)
         ])
-        petImage.layer.masksToBounds = false
-        petImage.layer.cornerRadius = petImage.frame.height/2
-        petImage.clipsToBounds = true
-        self.view.addSubview(petImage)
 
         petnameLabel.translatesAutoresizingMaskIntoConstraints = false
         petnameLabel.font = Device.roundedFont(ofSize: .largeTitle, weight: .bold)
         petnameLabel.textAlignment = .center
+        let currentPet = LocalStorage.instance.currentUser.currentPet
+        petnameLabel.text = LocalStorage.instance.petIds[currentPet]?.name
         NSLayoutConstraint.activate([
             petnameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
         ])
-        self.view.addSubview(petnameLabel)
 
-        
         tableview.register(MealCell.self, forCellReuseIdentifier: "cellId")
-
-        view.addSubview(tableview)
-
+        tableview.separatorColor = UIColor.white
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: petnameLabel.bottomAnchor, constant: 10.adjusted),
-            tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50.adjusted),
+            tableview.bottomAnchor.constraint(equalTo: addMealButton.topAnchor, constant: 10.adjusted),
             tableview.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tableview.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         ])
-        tableview.separatorColor = UIColor.white
 
-    }
+        addMealButton.translatesAutoresizingMaskIntoConstraints = false
+        addMealButton.contentMode = UIView.ContentMode.scaleAspectFit
+        NSLayoutConstraint.activate([
+            addMealButton.heightAnchor.constraint(equalToConstant: 40),
+            addMealButton.widthAnchor.constraint(equalToConstant: 40),
+            addMealButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            addMealButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
+        ])
+        addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
 
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .darkContent
     }
 
     func retrieveMealData() {
@@ -82,18 +88,14 @@ class MealsVC: UIViewController {
         DataService.instance.retrieveCurrentPet(uid: uid) { (petId) in
             DataService.instance.retrieveAllPetMeals(petId: petId) { (retreivedMeals) in
                 self.mealArray = retreivedMeals
+                LocalStorage.instance.currentPetMeals = retreivedMeals
                 print(self.mealArray.count)
                 self.tableview.reloadData()
             }
         }
-//        DataService.instance.retrieveCurrentPet(uid: uid) { (currentPet) in
-//            DataService.instance.retrieveAllPetMeals(petId: currentPet) { (meals) in
-//                self.mealArray = meals
-//            }
-//        }
     }
-    
-    @IBAction func addMealButtonPressed(_ sender: Any) {
+
+    @objc func addMealButtonPressed() {
         let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC")
         addMealVC?.modalPresentationStyle = .fullScreen
         self.present(addMealVC!, animated: true, completion: nil)
