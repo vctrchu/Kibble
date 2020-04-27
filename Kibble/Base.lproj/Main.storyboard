@@ -379,12 +379,62 @@
             </objects>
             <point key="canvasLocation" x="2702" y="775"/>
         </scene>
+        <!--Add ReminderVC-->
+        <scene sceneID="j19-ow-BVG">
+            <objects>
+                <viewController storyboardIdentifier="AddReminderVC" id="B9v-zw-3Ov" customClass="AddReminderVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lw5-dr-Dsx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="x0j-bB-BHf">
+                                <rect key="frame" x="36" y="194" width="295" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5q-J6-c3K">
+                                <rect key="frame" x="110" y="419" width="146" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="AddButton"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddReminderTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qFo-He-57F">
+                                <rect key="frame" x="67" y="48" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrB-du-6Rf">
+                                <rect key="frame" x="20" y="20" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="1U9-67-TMV"/>
+                                    <constraint firstAttribute="width" constant="33" id="E22-9z-ui6"/>
+                                </constraints>
+                                <state key="normal" image="Cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="hrB-du-6Rf" firstAttribute="leading" secondItem="23Y-Vd-xjF" secondAttribute="leading" constant="20" id="Qga-1E-d3z"/>
+                            <constraint firstItem="hrB-du-6Rf" firstAttribute="top" secondItem="23Y-Vd-xjF" secondAttribute="top" constant="20" id="esm-TM-E3H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="23Y-Vd-xjF"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="b5q-J6-c3K" id="zKe-c6-3pv"/>
+                        <outlet property="addReminderTitle" destination="qFo-He-57F" id="C9B-bo-SfD"/>
+                        <outlet property="cancelButton" destination="hrB-du-6Rf" id="fXf-S1-dJw"/>
+                        <outlet property="datePicker" destination="x0j-bB-BHf" id="abJ-89-kMN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uu-ba-za3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3414" y="775"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Add a Meal" width="179" height="27"/>
         <image name="Add your pet" width="208" height="33"/>
+        <image name="AddButton" width="146" height="46"/>
         <image name="AddFirstMealTitle" width="220" height="86"/>
         <image name="AddMealButton" width="36" height="24"/>
+        <image name="AddReminderTitle" width="259" height="68"/>
         <image name="Cancel" width="22" height="22"/>
         <image name="DryFoodIcon" width="84" height="84"/>
         <image name="JoinExistingScheduleTitle" width="195" height="17"/>

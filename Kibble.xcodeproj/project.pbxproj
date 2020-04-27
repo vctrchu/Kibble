@@ -25,6 +25,7 @@
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
 		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
+		FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderVC.swift */; };
 		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
 		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
 		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
@@ -54,6 +55,7 @@
 		FB62A5AF23850B8A00FB5557 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		FBB37C2F24565FDC000E723B /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 		FBBC84222382E2BE00BD55A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FBC408692439565600DC3ACE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FB414EB2245399F800807085 /* AddMealVC.swift */,
+				FBB37C2F24565FDC000E723B /* AddReminderVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */,
+				FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */,
 				FB414EAF2451362E00807085 /* MealCell.swift in Sources */,
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */,

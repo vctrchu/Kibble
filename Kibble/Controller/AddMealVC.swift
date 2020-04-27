@@ -86,6 +86,7 @@ class AddMealVC: UIViewController {
         addReminderButton.contentMode = UIView.ContentMode.scaleAspectFit
         addReminderButton.setTitle("Add Reminder", for: .normal)
         addReminderButton.setTitleColor(UIColor.white, for: .normal)
+        addReminderButton.addTarget(self, action: #selector(addReminderPressed), for: .touchUpInside)
         NSLayoutConstraint.activate([
             addReminderButton.topAnchor.constraint(equalTo: typeFoodStackView.bottomAnchor, constant: 20.adjusted),
             addReminderButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -97,6 +98,12 @@ class AddMealVC: UIViewController {
             saveButton.topAnchor.constraint(equalTo: addReminderButton.bottomAnchor, constant: 20.adjusted),
             saveButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
+    }
+
+    @objc func addReminderPressed() {
+        let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderVC
+        addReminderVC.delegate = self
+        self.present(addReminderVC, animated: true, completion: nil)
     }
 
     @objc func cancelButtonPressed() {
@@ -139,4 +146,13 @@ class AddMealVC: UIViewController {
     }
 
 
+}
+
+@available(iOS 13.0, *)
+extension AddMealVC: AddNotificationDelegate {
+    func addNotification(withTime time: String) {
+        self.dismiss(animated: true) {
+            self.addReminderButton.setTitle("Remind me at: " + time, for: .normal)
+        }
+    }
 }

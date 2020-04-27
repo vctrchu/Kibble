@@ -93,11 +93,11 @@ class MealsVC: UIViewController {
                 self.mealArray = retreivedMeals
                 LocalStorage.instance.currentPetMeals = retreivedMeals
                 print(self.mealArray.count)
-//                UIView.transition(with: self.tableview,
-//                                  duration: 0.5,
-//                                  options: .transitionCrossDissolve,
-//                                  animations: { self.tableview.reloadData() })
-                self.tableview.reloadData()
+                UIView.transition(with: self.tableview,
+                                  duration: 0.3,
+                                  options: .transitionCrossDissolve,
+                                  animations: { self.tableview.reloadData() })
+                //self.tableview.reloadData()
                 self.refreshControl.endRefreshing()
             }
         }
