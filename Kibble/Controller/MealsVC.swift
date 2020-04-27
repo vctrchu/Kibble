@@ -16,6 +16,8 @@ class MealsVC: UIViewController {
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petnameLabel: UILabel!
 
+    private let refreshControl = UIRefreshControl()
+
     let tableview: UITableView = {
         let tv = UITableView()
         tv.backgroundColor = UIColor.white
@@ -63,6 +65,8 @@ class MealsVC: UIViewController {
 
         tableview.register(MealCell.self, forCellReuseIdentifier: "cellId")
         tableview.separatorColor = UIColor.white
+        tableview.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(mealDataRefresh), for: .valueChanged)
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: petnameLabel.bottomAnchor, constant: 10.adjusted),
             tableview.bottomAnchor.constraint(equalTo: addMealButton.topAnchor, constant: 10.adjusted),
@@ -89,9 +93,18 @@ class MealsVC: UIViewController {
                 self.mealArray = retreivedMeals
                 LocalStorage.instance.currentPetMeals = retreivedMeals
                 print(self.mealArray.count)
+//                UIView.transition(with: self.tableview,
+//                                  duration: 0.5,
+//                                  options: .transitionCrossDissolve,
+//                                  animations: { self.tableview.reloadData() })
                 self.tableview.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
+    }
+
+    @objc func mealDataRefresh() {
+        retrieveMealData()
     }
 
     @objc func addMealButtonPressed() {

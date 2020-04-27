@@ -111,9 +111,9 @@ class AddMealVC: UIViewController {
         wetButton.setImage(#imageLiteral(resourceName: "WetFoodIconSelected"), for: .selected)
         treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIcon"), for: .normal)
         treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIconSelected"), for: .selected)
-        dryButton.addTarget(self, action: #selector(foodTypeTapped(_:)), for: .touchUpInside)
-        wetButton.addTarget(self, action: #selector(foodTypeTapped(_:)), for: .touchUpInside)
-        treatButton.addTarget(self, action: #selector(foodTypeTapped(_:)), for: .touchUpInside)
+        dryButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        wetButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        treatButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         //saveMealButton.addTarget(self, action: #selector(super.saveButtonPressed), for: .touchUpInside)
     }
 
