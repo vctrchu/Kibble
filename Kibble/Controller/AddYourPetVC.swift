@@ -8,10 +8,12 @@
 
 import UIKit
 import SimpleAnimation
+import Pastel
 
 @available(iOS 13.0, *)
 class AddYourPetVC: UIViewController {
 
+    @IBOutlet var pastelView: PastelView!
     @IBOutlet weak var addYourPetTitleImage: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var petnameTextField: UITextField! {
@@ -27,6 +29,8 @@ class AddYourPetVC: UIViewController {
         }
     }
 
+    var lastPastelView: PastelView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         petnameTextField.delegate = self
@@ -37,12 +41,26 @@ class AddYourPetVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // viewDidAppear is in charge with animations of the vc before we create it
         petnameTextField.becomeFirstResponder()
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        pastelView.animationDuration = 3
+        pastelView.setColors([#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1),#colorLiteral(red: 0.3843137255, green: 0.1529411765, blue: 0.4549019608, alpha: 1),#colorLiteral(red: 0.09019607843, green: 0.9176470588, blue: 0.8509803922, alpha: 1),#colorLiteral(red: 0.3764705882, green: 0.4705882353, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2588235294, green: 0.9019607843, blue: 0.5843137255, alpha: 1),#colorLiteral(red: 0.231372549, green: 0.6980392157, blue: 0.7215686275, alpha: 1)])
+        pastelView.startAnimation()
+        addYourPetTitleImage.fadeIn(duration: 1, delay: 0) { (Bool) in
+            self.petnameTextField.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                self.typeOfPetTextField.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                    self.nextButton.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                    }
+                }
+            }
+        }
     }
 
     override func loadView() {
         super.loadView()
         addYourPetTitleImage.translatesAutoresizingMaskIntoConstraints = false
         addYourPetTitleImage.contentMode = UIView.ContentMode.scaleAspectFit
+        addYourPetTitleImage.alpha = 0
         NSLayoutConstraint.activate([
             addYourPetTitleImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             addYourPetTitleImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110.adjusted)
@@ -55,6 +73,7 @@ class AddYourPetVC: UIViewController {
             petnameTextField.topAnchor.constraint(equalTo: addYourPetTitleImage.bottomAnchor, constant: 20.adjusted),
             petnameTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        petnameTextField.alpha = 0
         petnameTextField.translatesAutoresizingMaskIntoConstraints = false
         petnameTextField.layer.backgroundColor = UIColor.white.cgColor
         petnameTextField.placeholder = "pet name"
@@ -70,6 +89,7 @@ class AddYourPetVC: UIViewController {
             typeOfPetTextField.topAnchor.constraint(equalTo: petnameTextField.bottomAnchor, constant: 15.adjusted),
             typeOfPetTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        typeOfPetTextField.alpha = 0
         typeOfPetTextField.translatesAutoresizingMaskIntoConstraints = false
         typeOfPetTextField.layer.backgroundColor = UIColor.white.cgColor
         typeOfPetTextField.placeholder = "type of pet"
@@ -83,6 +103,7 @@ class AddYourPetVC: UIViewController {
             nextButton.topAnchor.constraint(equalTo: typeOfPetTextField.bottomAnchor, constant: 30.adjusted),
             nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        nextButton.alpha = 0
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.contentMode = UIView.ContentMode.scaleAspectFit
         self.view.addSubview(nextButton)
@@ -102,7 +123,7 @@ class AddYourPetVC: UIViewController {
             let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as? AddYourFirstMealVC
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true
-            addFirstMealVC?.motionTransitionType = .slide(direction: .left)
+            addFirstMealVC?.motionTransitionType = .fade
             addFirstMealVC?.petId = petID
             addFirstMealVC?.petData = petData
             self.present(addFirstMealVC!, animated: true, completion: nil)

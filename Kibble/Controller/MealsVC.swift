@@ -15,7 +15,6 @@ class MealsVC: UIViewController {
     @IBOutlet weak var addMealButton: UIButton!
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petnameLabel: UILabel!
-
     private let refreshControl = UIRefreshControl()
 
     let tableview: UITableView = {
@@ -31,6 +30,7 @@ class MealsVC: UIViewController {
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
+
         retrieveMealData()
     }
 
@@ -69,21 +69,11 @@ class MealsVC: UIViewController {
         refreshControl.addTarget(self, action: #selector(mealDataRefresh), for: .valueChanged)
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: petnameLabel.bottomAnchor, constant: 10.adjusted),
-            tableview.bottomAnchor.constraint(equalTo: addMealButton.topAnchor, constant: 10.adjusted),
+            tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             tableview.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tableview.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         ])
-
-        addMealButton.translatesAutoresizingMaskIntoConstraints = false
-        addMealButton.contentMode = UIView.ContentMode.scaleAspectFit
-        NSLayoutConstraint.activate([
-            addMealButton.heightAnchor.constraint(equalToConstant: 40),
-            addMealButton.widthAnchor.constraint(equalToConstant: 40),
-            addMealButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            addMealButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
-        ])
         addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
-
     }
 
     func retrieveMealData() {

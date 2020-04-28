@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCV-76-5EF">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,7 @@
         <scene sceneID="0Bk-Hc-Gpj">
             <objects>
                 <viewController id="aCV-76-5EF" customClass="LaunchScreenVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bal-1V-Fzd">
+                    <view key="view" contentMode="scaleToFill" id="Bal-1V-Fzd" customClass="PastelView" customModule="Pastel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -24,13 +23,15 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="heP-gp-tkf" firstAttribute="centerY" secondItem="Bal-1V-Fzd" secondAttribute="centerY" id="Npm-6B-ntP"/>
                             <constraint firstItem="heP-gp-tkf" firstAttribute="centerX" secondItem="Bal-1V-Fzd" secondAttribute="centerX" id="s0U-i6-rOY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jet-qV-s8z"/>
                     </view>
+                    <connections>
+                        <outlet property="pastelView" destination="Bal-1V-Fzd" id="AxG-dE-8mV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BlF-s4-dzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,26 +41,25 @@
         <scene sceneID="eoL-uT-4nK">
             <objects>
                 <viewController storyboardIdentifier="SignInVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UFl-NM-0ee" customClass="SignInVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rEe-nP-Heh" userLabel="BackgroundColorView">
+                    <view key="view" contentMode="scaleToFill" id="rEe-nP-Heh" userLabel="BackgroundColorView" customClass="PastelView" customModule="Pastel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SignInLogo" translatesAutoresizingMaskIntoConstraints="NO" id="UJC-6b-hAF">
-                                <rect key="frame" x="95" y="170" width="131" height="107"/>
+                                <rect key="frame" x="94" y="161" width="131" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUd-V4-jvw">
-                                <rect key="frame" x="1" y="407" width="321" height="107"/>
+                                <rect key="frame" x="0.0" y="398" width="321" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="SignInWithGoogleButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtD-9M-bqi">
-                                <rect key="frame" x="1" y="345" width="321" height="107"/>
+                                <rect key="frame" x="0.0" y="336" width="321" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="SignInWithAppleButton"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.072263441979999996" green="0.6568900943" blue="0.95689815280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="I4l-nc-E74"/>
                     </view>
                     <userDefinedRuntimeAttributes>
@@ -67,6 +67,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="kibbleMainIcon" destination="UJC-6b-hAF" id="Zo1-Zi-1Hh"/>
+                        <outlet property="pastelView" destination="rEe-nP-Heh" id="mI4-dR-qfI"/>
                         <outlet property="signInApple" destination="GtD-9M-bqi" id="6g6-Hd-YSU"/>
                         <outlet property="signInGoogle" destination="TUd-V4-jvw" id="bof-eu-Pzg"/>
                     </connections>
@@ -79,7 +80,7 @@
         <scene sceneID="pLj-W2-ypX">
             <objects>
                 <viewController storyboardIdentifier="AddYourPetVC" id="lWW-Dv-6Hc" customClass="AddYourPetVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5Xn-8D-PXY">
+                    <view key="view" contentMode="scaleToFill" id="5Xn-8D-PXY" customClass="PastelView" customModule="Pastel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -105,12 +106,12 @@
                                 <state key="normal" image="NextButton"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="ty5-Jj-mLT"/>
                     </view>
                     <connections>
                         <outlet property="addYourPetTitleImage" destination="hBg-Mk-t5x" id="tdm-Hg-ZgZ"/>
                         <outlet property="nextButton" destination="0rb-c9-Xlh" id="YwK-n5-HDM"/>
+                        <outlet property="pastelView" destination="5Xn-8D-PXY" id="r1E-iV-rTJ"/>
                         <outlet property="petnameTextField" destination="fGE-W2-dD4" id="1hD-AA-hCY"/>
                         <outlet property="typeOfPetTextField" destination="RMe-Zl-PdU" id="sfo-EH-gSl"/>
                     </connections>
@@ -123,7 +124,7 @@
         <scene sceneID="G58-UJ-8lY">
             <objects>
                 <viewController storyboardIdentifier="AddYourFirstMealVC" id="PgK-Fs-Wdx" customClass="AddYourFirstMealVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ick-wW-9Il">
+                    <view key="view" contentMode="scaleToFill" id="ick-wW-9Il" customClass="PastelView" customModule="Pastel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -173,7 +174,6 @@
                                 <state key="normal" image="JoinExistingScheduleTitle"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="RfS-aj-gQV"/>
                     </view>
                     <connections>
@@ -183,6 +183,7 @@
                         <outlet property="joinExistingScheduleButton" destination="0jn-en-ZSi" id="byH-fB-gBM"/>
                         <outlet property="mealNameTextField" destination="mZR-IZ-AIa" id="Sld-uz-Hwa"/>
                         <outlet property="orTitle" destination="isE-Zr-WSl" id="RxB-e1-sux"/>
+                        <outlet property="pastelView" destination="ick-wW-9Il" id="X6G-ao-fPF"/>
                         <outlet property="saveMealButton" destination="llX-VM-4uH" id="SCJ-21-vk0"/>
                         <outlet property="selectTypeOfFoodTitle" destination="Igp-t7-Zru" id="m9E-BB-g9k"/>
                         <outlet property="treatFoodButton" destination="18n-1u-apk" id="aly-MH-Lta"/>
@@ -263,13 +264,20 @@
                                 <rect key="frame" x="137" y="50" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyN-y9-pfw">
-                                <rect key="frame" x="169" y="631" width="36" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="AddMealButton"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyN-y9-pfw">
+                                <rect key="frame" x="294" y="582" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="8HS-5R-a0J"/>
+                                    <constraint firstAttribute="height" constant="65" id="zsc-Fi-f78"/>
+                                </constraints>
+                                <state key="normal" image="ActionButton"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xhH-vs-7rP" firstAttribute="bottom" secondItem="CyN-y9-pfw" secondAttribute="bottom" constant="20" id="0nq-d7-ARu"/>
+                            <constraint firstItem="xhH-vs-7rP" firstAttribute="trailing" secondItem="CyN-y9-pfw" secondAttribute="trailing" constant="16" id="uYh-4T-Nnu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xhH-vs-7rP"/>
                     </view>
                     <connections>
@@ -429,11 +437,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ActionButton" width="79" height="79"/>
         <image name="Add a Meal" width="179" height="27"/>
         <image name="Add your pet" width="208" height="33"/>
         <image name="AddButton" width="146" height="46"/>
         <image name="AddFirstMealTitle" width="220" height="86"/>
-        <image name="AddMealButton" width="36" height="24"/>
         <image name="AddReminderTitle" width="259" height="68"/>
         <image name="Cancel" width="22" height="22"/>
         <image name="DryFoodIcon" width="84" height="84"/>

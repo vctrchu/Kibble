@@ -104,6 +104,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Pastel (0.6.0)
   - PromisesObjC (1.2.8)
   - SimpleAnimation (0.4.2)
   - TransitionButton (0.5.2)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - IHKeyboardAvoiding
   - LayoutHelper
   - Motion
+  - Pastel
   - SimpleAnimation
   - TransitionButton
 
@@ -143,6 +145,7 @@ SPEC REPOS:
     - leveldb-library
     - Motion
     - nanopb
+    - Pastel
     - PromisesObjC
     - SimpleAnimation
     - TransitionButton
@@ -170,10 +173,11 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   Motion: cf1e060e489f6661126374d5c60dbd2ed991605c
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: b12b76acd724868065f5a2ca0781cf8a383175f3
+PODFILE CHECKSUM: 991c7b2c69caf4aaf3745423b5b611ff4ff08dd0
 
 COCOAPODS: 1.8.4

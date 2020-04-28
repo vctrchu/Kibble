@@ -16,5 +16,6 @@ pod 'TransitionButton'
 pod 'IHKeyboardAvoiding'
 pod 'Motion'
 pod 'SimpleAnimation'
+pod 'Pastel'
 
 end

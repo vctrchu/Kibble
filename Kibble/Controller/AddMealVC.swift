@@ -192,7 +192,6 @@ class AddMealVC: UIViewController {
         }
     }
 
-
 }
 
 @available(iOS 13.0, *)

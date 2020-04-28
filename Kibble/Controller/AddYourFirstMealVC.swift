@@ -9,10 +9,12 @@
 import UIKit
 import Motion
 import SimpleAnimation
+import Pastel
 
 @available(iOS 13.0, *)
 class AddYourFirstMealVC: UIViewController {
 
+    @IBOutlet var pastelView: PastelView!
     @IBOutlet weak var almostThereTitle: UIImageView!
     @IBOutlet weak var mealNameTextField: UITextField! {
         didSet {
@@ -38,11 +40,38 @@ class AddYourFirstMealVC: UIViewController {
         addGenstures()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        pastelView.animationDuration = 3
+        pastelView.setColors([#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1),#colorLiteral(red: 0.3843137255, green: 0.1529411765, blue: 0.4549019608, alpha: 1),#colorLiteral(red: 0.09019607843, green: 0.9176470588, blue: 0.8509803922, alpha: 1),#colorLiteral(red: 0.3764705882, green: 0.4705882353, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2588235294, green: 0.9019607843, blue: 0.5843137255, alpha: 1),#colorLiteral(red: 0.231372549, green: 0.6980392157, blue: 0.7215686275, alpha: 1)])
+        pastelView.startAnimation()
+        almostThereTitle.fadeIn(duration: 1, delay: 0) { (Bool) in
+            self.mealNameTextField.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                self.selectTypeOfFoodTitle.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                    self.foodButtonsStackView.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                        self.saveMealButton.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                            self.orTitle.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                                self.joinExistingScheduleButton.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     override func loadView() {
         super.loadView()
-
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1)]
+        gradientLayer.frame = view.bounds
+        pastelView.layer.insertSublayer(gradientLayer, at: 0)
+        
         almostThereTitle.translatesAutoresizingMaskIntoConstraints = false
         almostThereTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        almostThereTitle.alpha = 0
         NSLayoutConstraint.activate([
             almostThereTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110.adjusted),
             almostThereTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -51,6 +80,7 @@ class AddYourFirstMealVC: UIViewController {
 
         mealNameTextField.translatesAutoresizingMaskIntoConstraints = false
         mealNameTextField.contentMode = UIView.ContentMode.scaleAspectFit
+        mealNameTextField.alpha = 0
         NSLayoutConstraint.activate([
             mealNameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
             mealNameTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
@@ -67,6 +97,7 @@ class AddYourFirstMealVC: UIViewController {
 
         selectTypeOfFoodTitle.translatesAutoresizingMaskIntoConstraints = false
         selectTypeOfFoodTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        selectTypeOfFoodTitle.alpha = 0
         NSLayoutConstraint.activate([
             selectTypeOfFoodTitle.topAnchor.constraint(equalTo: mealNameTextField.bottomAnchor, constant: 20.adjusted),
             selectTypeOfFoodTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -75,6 +106,7 @@ class AddYourFirstMealVC: UIViewController {
 
         foodButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
         foodButtonsStackView.contentMode = UIView.ContentMode.scaleAspectFit
+        foodButtonsStackView.alpha = 0
         NSLayoutConstraint.activate([
             foodButtonsStackView.topAnchor.constraint(equalTo: selectTypeOfFoodTitle.bottomAnchor, constant: 15.adjusted),
             foodButtonsStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -83,6 +115,7 @@ class AddYourFirstMealVC: UIViewController {
 
         saveMealButton.translatesAutoresizingMaskIntoConstraints = false
         saveMealButton.contentMode = UIView.ContentMode.scaleAspectFit
+        saveMealButton.alpha = 0
         NSLayoutConstraint.activate([
             saveMealButton.topAnchor.constraint(equalTo: foodButtonsStackView.bottomAnchor, constant: 15.adjusted),
             saveMealButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -91,6 +124,7 @@ class AddYourFirstMealVC: UIViewController {
 
         orTitle.translatesAutoresizingMaskIntoConstraints = false
         orTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        orTitle.alpha = 0
         NSLayoutConstraint.activate([
             orTitle.topAnchor.constraint(equalTo: saveMealButton.bottomAnchor, constant: -20.adjusted),
             orTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -99,6 +133,7 @@ class AddYourFirstMealVC: UIViewController {
 
         joinExistingScheduleButton.translatesAutoresizingMaskIntoConstraints = false
         joinExistingScheduleButton.contentMode = UIView.ContentMode.scaleAspectFit
+        joinExistingScheduleButton.alpha = 0
         NSLayoutConstraint.activate([
             joinExistingScheduleButton.topAnchor.constraint(equalTo: orTitle.bottomAnchor, constant: 20.adjusted),
             joinExistingScheduleButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),

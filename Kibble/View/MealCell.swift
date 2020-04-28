@@ -39,9 +39,9 @@ class MealCell: UITableViewCell {
         self.selectionStyle = .none
 
         NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20.adjusted),
-            cellView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20.adjusted),
-            cellView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.adjusted),
+            cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16.adjusted),
+            cellView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16.adjusted),
+            cellView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.adjusted),
             cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
 
