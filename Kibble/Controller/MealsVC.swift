@@ -88,8 +88,8 @@ class MealsVC: UIViewController {
 
     func retrieveMealData() {
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
-        DataService.instance.retrieveCurrentPet(uid: uid) { (petId) in
-            DataService.instance.retrieveAllPetMeals(petId: petId) { (retreivedMeals) in
+        DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
+            DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
                 self.mealArray = retreivedMeals
                 LocalStorage.instance.currentPetMeals = retreivedMeals
                 print(self.mealArray.count)
@@ -97,7 +97,6 @@ class MealsVC: UIViewController {
                                   duration: 0.3,
                                   options: .transitionCrossDissolve,
                                   animations: { self.tableview.reloadData() })
-                //self.tableview.reloadData()
                 self.refreshControl.endRefreshing()
             }
         }
@@ -108,9 +107,9 @@ class MealsVC: UIViewController {
     }
 
     @objc func addMealButtonPressed() {
-        let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC")
-        //addMealVC?.modalPresentationStyle = .fullScreen
-        self.present(addMealVC!, animated: true, completion: nil)
+        let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC") as! AddMealVC
+        addMealVC.delegate = self
+        self.present(addMealVC, animated: true, completion: nil)
     }
     
     @IBAction func tempLogOut(_ sender: Any) {
@@ -166,5 +165,11 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.adjusted
+    }
+}
+
+extension MealsVC: AddMealDelegate {
+    func refreshTableView() {
+        retrieveMealData()
     }
 }

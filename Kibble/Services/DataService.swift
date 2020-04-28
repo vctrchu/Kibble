@@ -57,7 +57,7 @@ class DataService {
         }
     }
 
-    func updatePetInfo(petId: String, petData: Dictionary<String,Any>) {
+    func updatePetInfo(withPetId petId: String, andPetData petData: Dictionary<String,Any>) {
         var isIdUnique = false
         var currentId = petId
         // Time Complexity: O(n)
@@ -74,29 +74,29 @@ class DataService {
         LocalStorage.instance.petIds[currentId] = petId
     }
 
-    func updateUser(uid: String, userData: Dictionary <String, Any>) {
+    func updateUser(withUid uid: String, withUserData userData: Dictionary <String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
 
-    func addPetToUser(for uid: String, with petId: String) {
+    func addPetToUser(forUid uid: String, withPetId petId: String) {
         REF_USERS.child("\(uid)/pets").updateChildValues([petId: true as Any])
     }
 
-    func updatePetMeals(with petId: String, with mealName: String, and mealData: Dictionary<String,Any>) {
+    func updatePetMeals(withPetId petId: String, withMealName mealName: String, andMealData mealData: Dictionary<String,Any>) {
         REF_PET_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData)
     }
 
-    func updatePetMealNotifications(with petId: String, with mealName: String, and notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
+    func updatePetMealNotifications(withPetId petId: String, withMealName mealName: String, andNotificationData notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
         REF_PET_MEALS.child("\(petId)/\(mealName)").updateChildValues(notificationData) { (error, snapshot) in
             handler()
         }
     }
 
-    func updatePetMembers(with petId: String, and memberData: Dictionary<String,Any>) {
+    func updatePetMembers(withPetId petId: String, andMemberData memberData: Dictionary<String,Any>) {
         REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
     }
 
-    func retrieveUserFullName(uid: String, handler: @escaping (_ fullname: String) -> ()) {
+    func retrieveUserFullName(withUid uid: String, handler: @escaping (_ fullname: String) -> ()) {
         REF_USERS.child("\(uid)/fullName").observeSingleEvent(of: .value) { (fullNameSnapShot) in
             let fullName = fullNameSnapShot.value as! String
             handler(fullName)
@@ -104,7 +104,20 @@ class DataService {
     }
 
     func retrieveAllUserInfo(withUid uid: String, handler: @escaping () -> ()) {
-        REF_USERS.child(uid).observeSingleEvent(of: .value) { (userSnapShot) in
+        //        REF_USERS.child(uid).observeSingleEvent(of: .value) { (userSnapShot) in
+        //            guard let userDict = userSnapShot.value as? [String : Any] else {
+        //                print("Could not retrieve user info")
+        //                return
+        //            }
+        //            LocalStorage.instance.currentUser = User(withId: uid,
+        //                                                     withName: userDict["fullName"] as! String,
+        //                                                     withEmail: userDict["email"] as! String,
+        //                                                     withCurrentPet: userDict["currentPet"] as! String,
+        //                                                     withPets: userDict["pets"] as! Dictionary<String,Any>)
+        //            handler()
+        //        }
+
+         REF_USERS.child(uid).observe(.value) { (userSnapShot) in
             guard let userDict = userSnapShot.value as? [String : Any] else {
                 print("Could not retrieve user info")
                 return
@@ -119,16 +132,27 @@ class DataService {
     }
 
 
-    func retrieveCurrentPet(uid: String, handler: @escaping (_ currentPet: String) -> ()) {
-        REF_USERS.child("\(uid)/currentPet").observeSingleEvent(of: .value) { (currentPetSnapshot) in
+    func retrieveCurrentPet(forUid uid: String, handler: @escaping (_ currentPet: String) -> ()) {
+        //        REF_USERS.child("\(uid)/currentPet").observeSingleEvent(of: .value) { (currentPetSnapshot) in
+        //            let currentPetId = currentPetSnapshot.value as! String
+        //            handler(currentPetId)
+        //        }
+        REF_USERS.child("\(uid)/currentPet").observe(.value) { (currentPetSnapshot) in
             let currentPetId = currentPetSnapshot.value as! String
             handler(currentPetId)
         }
     }
 
     func retrieveAllPetsForUser(withUid uid: String) {
-        REF_USERS.child("\(uid)/pets").observeSingleEvent(of: .value) { (petSnapShot) in
-            guard let dict = petSnapShot.value as? [String:Any] else {
+        //        REF_USERS.child("\(uid)/pets").observeSingleEvent(of: .value) { (petSnapShot) in
+        //            guard let dict = petSnapShot.value as? [String:Any] else {
+        //                print("Could not retrive all pets for user")
+        //                return
+        //            }
+        //            LocalStorage.instance.userAllPets = dict
+        //        }
+        REF_USERS.child("\(uid)/pets").observe(.value) { (petSnapshot) in
+            guard let dict = petSnapshot.value as? [String:Any] else {
                 print("Could not retrive all pets for user")
                 return
             }
@@ -136,7 +160,7 @@ class DataService {
         }
     }
 
-    func retrieveAllPetMeals(petId: String, handler: @escaping (_ currentPet: [Meal]) -> ()) {
+    func retrieveAllPetMeals(forPetId petId: String, handler: @escaping (_ currentPet: [Meal]) -> ()) {
         var petMeals = [Meal]()
         REF_PET_MEALS.child(petId).observeSingleEvent(of: .value) { (mealSnapshot) in
             let meals = mealSnapshot.children

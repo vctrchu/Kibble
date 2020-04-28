@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddMealDelegate {
+    func refreshTableView()
+}
+
 @available(iOS 13.0, *)
 class AddMealVC: UIViewController {
 
@@ -27,7 +31,9 @@ class AddMealVC: UIViewController {
     @IBOutlet weak var wetButton: UIButton!
     @IBOutlet weak var treatButton: UIButton!
 
-    var mealType = ""
+    var mealType: String?
+    var reminderTime: String?
+    var delegate: AddMealDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +116,47 @@ class AddMealVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc func saveButtonPressed() {
+
+        if mealNameTextField.text?.isReallyEmpty ?? true ||
+            !(dryButton.isSelected || wetButton.isSelected || treatButton.isSelected){
+            saveButton.shake()
+        } else {
+            if (reminderTime == nil) {
+                let alert = UIAlertController(title: "Add a Reminder?",
+                                              message: "Did you forget to add a reminder?",
+                                              preferredStyle: UIAlertController.Style.alert)
+
+                let noThanksAction = UIAlertAction(title: "No Thanks", style: .default) { _ in
+                    self.dismissVC()
+                }
+                alert.addAction(noThanksAction)
+
+                let addAction = UIAlertAction(title: "Add", style: .default) { _ in
+                    self.addReminderPressed()
+                }
+                alert.addAction(addAction)
+                alert.preferredAction = addAction
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                dismissVC()
+            }
+        }
+    }
+
+    func dismissVC() {
+        let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+         let petId = LocalStorage.instance.currentUser.currentPet
+         let mealData = ["isFed": "false", "type": mealType]
+         DataService.instance.updatePetMeals(withPetId: petId , withMealName: mealName, andMealData: mealData)
+         let notificationData: Dictionary<String, Any> = ["notification" : reminderTime]
+         DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
+             self.dismiss(animated: true) {
+                 self.delegate?.refreshTableView()
+             }
+         }
+    }
+
     func addGenstures() {
         self.hideKeyboardWhenTappedAround()
         dryButton.setImage(#imageLiteral(resourceName: "DryFoodIcon"), for: .normal)
@@ -121,7 +168,7 @@ class AddMealVC: UIViewController {
         dryButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         wetButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         treatButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
-        //saveMealButton.addTarget(self, action: #selector(super.saveButtonPressed), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
     }
 
     @objc func foodTypeTapped(_ button: UIButton) {
@@ -152,6 +199,7 @@ class AddMealVC: UIViewController {
 extension AddMealVC: AddNotificationDelegate {
     func addNotification(withTime time: String) {
         self.dismiss(animated: true) {
+            self.reminderTime = time
             self.addReminderButton.setTitle("Remind me at: " + time, for: .normal)
         }
     }

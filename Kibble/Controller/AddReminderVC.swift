@@ -73,7 +73,6 @@ class AddReminderVC: UIViewController {
     @objc func addButtonPressed() {
         print("\(getTimePickerValue())")
         if UIApplication.shared.isRegisteredForRemoteNotifications {
-            // We want to send our picker date data back to previous viewcontroller and set the button label to "Remind me at: 6:53pm"
             delegate?.addNotification(withTime: getTimePickerValue())
         } else {
             let alert = UIAlertController(title: "Unable to add reminder",
