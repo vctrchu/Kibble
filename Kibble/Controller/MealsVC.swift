@@ -8,18 +8,39 @@
 
 import UIKit
 import Firebase
+import Pastel
 
 @available(iOS 13.0, *)
 class MealsVC: UIViewController {
     
     @IBOutlet weak var addMealButton: UIButton!
-    @IBOutlet weak var petImage: UIImageView!
-    @IBOutlet weak var petnameLabel: UILabel!
+    @IBOutlet var pastelView: PastelView!
     private let refreshControl = UIRefreshControl()
 
-    let tableview: UITableView = {
-        let tv = UITableView()
-        tv.backgroundColor = UIColor.white
+    let petImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        image.image = #imageLiteral(resourceName: "cat")
+        image.contentMode = UIView.ContentMode.scaleAspectFill
+        image.layer.masksToBounds = false
+        image.layer.cornerRadius = image.frame.height / 2
+        image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+
+    let petnameLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.font = Device.roundedFont(ofSize: .largeTitle, weight: .bold)
+        label.textAlignment = .center
+        return label
+    }()
+
+    let tableView: UITableView = {
+        let tv = UITableView(frame: CGRect.zero, style: .grouped)
+        let tableViewPastelView = PastelView()
+        tableViewPastelView.setColors([#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1)])
+        tv.backgroundView = tableViewPastelView
+        tv.backgroundColor = UIColor.clear
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -28,52 +49,42 @@ class MealsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.delegate = self
-        tableview.dataSource = self
-
-        retrieveMealData()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.sectionHeaderHeight = 250.adjusted
+        //retrieveMealData()
     }
 
     override func loadView() {
         super.loadView()
-        self.view.addSubview(petImage)
-        self.view.addSubview(petnameLabel)
-        self.view.addSubview(tableview)
-        self.view.addSubview(addMealButton)
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1)]
+        gradientLayer.frame = view.bounds
+        view.layer.insertSublayer(gradientLayer, at: 0)
 
-        petImage.translatesAutoresizingMaskIntoConstraints = false
-        petImage.contentMode = UIView.ContentMode.scaleAspectFill
-        petImage.layer.masksToBounds = false
-        petImage.layer.cornerRadius = petImage.frame.height/2
-        petImage.clipsToBounds = true
-        NSLayoutConstraint.activate([
-            petImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70.adjusted),
-            petImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            petImage.heightAnchor.constraint(equalToConstant: 100),
-            petImage.widthAnchor.constraint(equalToConstant: 100)
-        ])
+//        self.pastelView.addSubview(tableView)
+//        self.pastelView.addSubview(addMealButton)
+//        tableView.register(MealCell.self, forCellReuseIdentifier: "cellId")
+//        tableView.separatorColor = UIColor.clear
+//        tableView.addSubview(refreshControl)
+//        refreshControl.addTarget(self, action: #selector(mealDataRefresh), for: .valueChanged)
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//            tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+//        ])
+//        addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
+    }
 
-        petnameLabel.translatesAutoresizingMaskIntoConstraints = false
-        petnameLabel.font = Device.roundedFont(ofSize: .largeTitle, weight: .bold)
-        petnameLabel.textAlignment = .center
-        let currentPet = LocalStorage.instance.currentUser.currentPet
-        petnameLabel.text = LocalStorage.instance.petIds[currentPet]?.name
-        NSLayoutConstraint.activate([
-            petnameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
-        ])
-
-        tableview.register(MealCell.self, forCellReuseIdentifier: "cellId")
-        tableview.separatorColor = UIColor.white
-        tableview.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(mealDataRefresh), for: .valueChanged)
-        NSLayoutConstraint.activate([
-            tableview.topAnchor.constraint(equalTo: petnameLabel.bottomAnchor, constant: 10.adjusted),
-            tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            tableview.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            tableview.leftAnchor.constraint(equalTo: self.view.leftAnchor)
-        ])
-        addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
+    override func viewDidAppear(_ animated: Bool) {
+        let tableViewPastelView = PastelView()
+        tableView.backgroundView = tableViewPastelView
+        tableViewPastelView.startPastelPoint = .bottomLeft
+        tableViewPastelView.endPastelPoint = .topRight
+        tableViewPastelView.animationDuration = 3
+        tableViewPastelView.setColors([#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1),#colorLiteral(red: 0.3843137255, green: 0.1529411765, blue: 0.4549019608, alpha: 1),#colorLiteral(red: 0.09019607843, green: 0.9176470588, blue: 0.8509803922, alpha: 1),#colorLiteral(red: 0.3764705882, green: 0.4705882353, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2588235294, green: 0.9019607843, blue: 0.5843137255, alpha: 1),#colorLiteral(red: 0.231372549, green: 0.6980392157, blue: 0.7215686275, alpha: 1)])
+        tableViewPastelView.startAnimation()
     }
 
     func retrieveMealData() {
@@ -83,10 +94,10 @@ class MealsVC: UIViewController {
                 self.mealArray = retreivedMeals
                 LocalStorage.instance.currentPetMeals = retreivedMeals
                 print(self.mealArray.count)
-                UIView.transition(with: self.tableview,
+                UIView.transition(with: self.tableView,
                                   duration: 0.3,
                                   options: .transitionCrossDissolve,
-                                  animations: { self.tableview.reloadData() })
+                                  animations: { self.tableView.reloadData() })
                 self.refreshControl.endRefreshing()
             }
         }
@@ -131,6 +142,28 @@ class MealsVC: UIViewController {
 @available(iOS 13.0, *)
 extension MealsVC: UITableViewDelegate, UITableViewDataSource {
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect.zero)
+        headerView.backgroundColor = UIColor.clear
+        headerView.addSubview(self.petImage)
+        headerView.addSubview(self.petnameLabel)
+        NSLayoutConstraint.activate([
+            petImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 70.adjusted),
+            petImage.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            petImage.heightAnchor.constraint(equalToConstant: 100),
+            petImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
+
+        petnameLabel.translatesAutoresizingMaskIntoConstraints = false
+        let currentPet = LocalStorage.instance.currentUser.currentPet
+        petnameLabel.text = LocalStorage.instance.petIds[currentPet]?.name
+        NSLayoutConstraint.activate([
+            petnameLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
+        ])
+        return headerView
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -141,20 +174,14 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = mealArray[indexPath.row]
-        let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MealCell
-        cell.backgroundColor = UIColor.white
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MealCell
+        cell.backgroundColor = UIColor.clear
         cell.configureCell(isFed: meal.isFed, name: meal.name, type: meal.type)
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        destinationUid = messageArray[indexPath.row].senderId
-        //        destinationName = messageArray[indexPath.row].senderName
-        //        performSegue(withIdentifier: "FeedToProfile", sender: self)
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.adjusted
+        return 100
     }
 }
 

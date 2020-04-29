@@ -16,7 +16,7 @@ class MealCell: UITableViewCell {
 
     var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.font = Device.roundedFont(ofSize: .title2, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -24,14 +24,17 @@ class MealCell: UITableViewCell {
 
     let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0, green: 0.6765974164, blue: 1, alpha: 1)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         view.layer.cornerRadius = 12
+        view.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        view.layer.borderWidth = 2.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         addSubview(cellView)
         cellView.addSubview(nameLabel)
         cellView.addSubview(typeImage)
