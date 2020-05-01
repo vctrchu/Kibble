@@ -242,8 +242,8 @@
         <!--MealsVC-->
         <scene sceneID="Enr-Hq-zDS">
             <objects>
-                <viewController storyboardIdentifier="MealsVC" id="zcx-Fp-9OZ" customClass="MealsVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UW7-ES-ZJH" customClass="PastelView" customModule="Pastel">
+                <viewController storyboardIdentifier="MealsVC" modalPresentationStyle="fullScreen" id="zcx-Fp-9OZ" customClass="MealsVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UW7-ES-ZJH" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -255,16 +255,27 @@
                                 </constraints>
                                 <state key="normal" image="ActionButton"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyT-54-0et">
+                                <rect key="frame" x="319" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mev-cM-NvY"/>
+                                    <constraint firstAttribute="width" constant="40" id="tTI-zt-QHs"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xhH-vs-7rP" firstAttribute="bottom" secondItem="CyN-y9-pfw" secondAttribute="bottom" constant="20" id="0nq-d7-ARu"/>
+                            <constraint firstItem="xhH-vs-7rP" firstAttribute="trailing" secondItem="AyT-54-0et" secondAttribute="trailing" constant="16" id="cL9-1W-7c9"/>
+                            <constraint firstItem="AyT-54-0et" firstAttribute="top" secondItem="xhH-vs-7rP" secondAttribute="top" constant="20" id="lQp-Y7-McD"/>
                             <constraint firstItem="xhH-vs-7rP" firstAttribute="trailing" secondItem="CyN-y9-pfw" secondAttribute="trailing" constant="16" id="uYh-4T-Nnu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xhH-vs-7rP"/>
                     </view>
                     <connections>
                         <outlet property="addMealButton" destination="CyN-y9-pfw" id="L9e-Db-o4M"/>
-                        <outlet property="pastelView" destination="UW7-ES-ZJH" id="Am6-Hd-h9b"/>
+                        <outlet property="pastelView" destination="UW7-ES-ZJH" id="xhg-Pa-n6G"/>
+                        <outlet property="settingsButton" destination="AyT-54-0et" id="aSv-dY-Q64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yog-av-XcP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -366,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6F-Zy-gY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="775"/>
+            <point key="canvasLocation" x="2702" y="788"/>
         </scene>
         <!--Add ReminderVC-->
         <scene sceneID="j19-ow-BVG">
@@ -416,6 +427,99 @@
             </objects>
             <point key="canvasLocation" x="3414" y="775"/>
         </scene>
+        <!--Edit MealVC-->
+        <scene sceneID="aWv-Yf-W2v">
+            <objects>
+                <viewController storyboardIdentifier="EditMealVC" id="Ys5-OF-YMd" customClass="EditMealVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hg5-My-ut1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-yW-R3B">
+                                <rect key="frame" x="64" y="138" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SelectTypeOfFood" translatesAutoresizingMaskIntoConstraints="NO" id="zSE-2D-xhI">
+                                <rect key="frame" x="114" y="180" width="147" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" distribution="equalSpacing" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="RBt-CW-fzF">
+                                <rect key="frame" x="36" y="252" width="304" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccc-j8-Hcz">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="DryFoodIcon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjE-Yo-qiy">
+                                        <rect key="frame" x="110" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="WetFoodIcon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3s-Z2-OF9">
+                                        <rect key="frame" x="220" y="0.0" width="84" height="84"/>
+                                        <state key="normal" image="TreatFoodIcon"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zv3-JT-aa3">
+                                <rect key="frame" x="81" y="433" width="214" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="SaveMealButton"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EditMeal" translatesAutoresizingMaskIntoConstraints="NO" id="25M-qf-CaI">
+                                <rect key="frame" x="97" y="68" width="182" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NF-LD-Rxx">
+                                <rect key="frame" x="20" y="20" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="eQN-pb-bqY"/>
+                                    <constraint firstAttribute="width" constant="33" id="uMg-2f-jwz"/>
+                                </constraints>
+                                <state key="normal" image="Cancel"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gX-cx-chE">
+                                <rect key="frame" x="165" y="373" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtm-ZC-J02">
+                                <rect key="frame" x="322" y="20" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="Y5Y-Jk-ttG"/>
+                                    <constraint firstAttribute="height" constant="33" id="oUb-pn-ucC"/>
+                                </constraints>
+                                <state key="normal" image="deleteButton"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="4NF-LD-Rxx" firstAttribute="top" secondItem="JWC-tP-Pv8" secondAttribute="top" constant="20" id="4Fa-i3-27X"/>
+                            <constraint firstItem="4NF-LD-Rxx" firstAttribute="leading" secondItem="JWC-tP-Pv8" secondAttribute="leading" constant="20" id="HoI-M1-0iY"/>
+                            <constraint firstItem="gtm-ZC-J02" firstAttribute="top" secondItem="JWC-tP-Pv8" secondAttribute="top" constant="20" id="Jil-Gl-7xg"/>
+                            <constraint firstItem="JWC-tP-Pv8" firstAttribute="trailing" secondItem="gtm-ZC-J02" secondAttribute="trailing" constant="20" id="viF-8p-Ter"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JWC-tP-Pv8"/>
+                    </view>
+                    <connections>
+                        <outlet property="addMealTitle" destination="25M-qf-CaI" id="WMe-68-OUo"/>
+                        <outlet property="addReminderButton" destination="5gX-cx-chE" id="yuW-nD-9ES"/>
+                        <outlet property="cancelButton" destination="4NF-LD-Rxx" id="wW6-P6-YUP"/>
+                        <outlet property="deleteButton" destination="gtm-ZC-J02" id="3FZ-5q-oYp"/>
+                        <outlet property="dryButton" destination="ccc-j8-Hcz" id="qaR-dS-FtV"/>
+                        <outlet property="mealNameTextField" destination="0cH-yW-R3B" id="dEI-3e-ezb"/>
+                        <outlet property="saveButton" destination="Zv3-JT-aa3" id="oFk-mR-ZuI"/>
+                        <outlet property="treatButton" destination="l3s-Z2-OF9" id="lJT-a8-WvV"/>
+                        <outlet property="typeFoodStackView" destination="RBt-CW-fzF" id="Co7-56-8ST"/>
+                        <outlet property="typeOfFoodTitle" destination="zSE-2D-xhI" id="FiK-Zf-PJz"/>
+                        <outlet property="wetButton" destination="SjE-Yo-qiy" id="qx7-O7-wCh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vV2-my-0lA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2702" y="-624"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ActionButton" width="79" height="79"/>
@@ -426,6 +530,7 @@
         <image name="AddReminderTitle" width="259" height="68"/>
         <image name="Cancel" width="22" height="22"/>
         <image name="DryFoodIcon" width="84" height="84"/>
+        <image name="EditMeal" width="147" height="28"/>
         <image name="JoinExistingScheduleTitle" width="195" height="17"/>
         <image name="KibbleAppIcon" width="128" height="128"/>
         <image name="NextButton" width="317" height="107"/>
@@ -440,5 +545,6 @@
         <image name="TreatFoodIcon" width="84" height="84"/>
         <image name="WetFoodIcon" width="84" height="84"/>
         <image name="YesNotifyMe" width="146" height="46"/>
+        <image name="deleteButton" width="28" height="33"/>
     </resources>
 </document>

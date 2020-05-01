@@ -17,5 +17,6 @@ pod 'IHKeyboardAvoiding'
 pod 'Motion'
 pod 'SimpleAnimation'
 pod 'Pastel'
+pod 'SwipeCellKit'
 
 end

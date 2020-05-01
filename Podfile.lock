@@ -107,6 +107,7 @@ PODS:
   - Pastel (0.6.0)
   - PromisesObjC (1.2.8)
   - SimpleAnimation (0.4.2)
+  - SwipeCellKit (2.7.1)
   - TransitionButton (0.5.2)
 
 DEPENDENCIES:
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - Motion
   - Pastel
   - SimpleAnimation
+  - SwipeCellKit
   - TransitionButton
 
 SPEC REPOS:
@@ -148,6 +150,7 @@ SPEC REPOS:
     - Pastel
     - PromisesObjC
     - SimpleAnimation
+    - SwipeCellKit
     - TransitionButton
 
 SPEC CHECKSUMS:
@@ -176,8 +179,9 @@ SPEC CHECKSUMS:
   Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: 991c7b2c69caf4aaf3745423b5b611ff4ff08dd0
+PODFILE CHECKSUM: 9a978512bee9a46766c357f2c4b22ee197836741
 
 COCOAPODS: 1.8.4

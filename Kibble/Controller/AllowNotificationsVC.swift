@@ -33,8 +33,8 @@ class AllowNotificationsVC: UIViewController {
         notificationTitle.translatesAutoresizingMaskIntoConstraints = false
         notificationTitle.contentMode = UIView.ContentMode.scaleAspectFill
         NSLayoutConstraint.activate([
-            notificationTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            notificationTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100.adjusted),
+            notificationTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            notificationTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.adjusted),
         ])
         self.view.addSubview(notificationTitle)
 
@@ -42,8 +42,8 @@ class AllowNotificationsVC: UIViewController {
         timePickerView.setValue(UIColor.white, forKey: "textColor")
         timePickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            timePickerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            timePickerView.topAnchor.constraint(equalTo: self.notificationTitle.bottomAnchor, constant: 40.adjusted)
+            timePickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timePickerView.topAnchor.constraint(equalTo: notificationTitle.bottomAnchor, constant: 40.adjusted)
         ])
         self.view.addSubview(timePickerView)
 

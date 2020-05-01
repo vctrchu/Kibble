@@ -7,30 +7,15 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 @available(iOS 13.0, *)
-class MealCell: UITableViewCell {
+class MealCell: SwipeTableViewCell {
 
-    var isFedImage: UIImageView = UIImageView()
-    var typeImage: UIImageView = UIImageView()
-
-    var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = Device.roundedFont(ofSize: .title2, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-        view.layer.cornerRadius = 12
-        view.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        view.layer.borderWidth = 2.0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let isFedImage = UIImageView()
+    let typeImage = UIImageView()
+    let nameLabel = UILabel()
+    let cellView = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,12 +24,44 @@ class MealCell: UITableViewCell {
         cellView.addSubview(nameLabel)
         cellView.addSubview(typeImage)
         cellView.addSubview(isFedImage)
-        self.selectionStyle = .none
+        selectionStyle = .none
+        backgroundColor = .clear
 
+        cellView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        cellView.layer.cornerRadius = 12
+        cellView.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        cellView.layer.borderWidth = 2.0
+        cellView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.textColor = UIColor.black
+        nameLabel.font = Device.roundedFont(ofSize: .title2, weight: .medium)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        setupConstraints()
+    }
+
+    func configureCell(isFed status: String, name: String, type: String) {
+        nameLabel.text = name
+        switch type {
+        case "dry":
+            typeImage.image = #imageLiteral(resourceName: "DryFoodIcon")
+        case "wet":
+            typeImage.image = #imageLiteral(resourceName: "WetFoodIcon")
+        default:
+            typeImage.image = #imageLiteral(resourceName: "TreatFoodIcon")
+        }
+        if status == "true" {
+            isFedImage.isHidden = false
+            isFedImage.image = #imageLiteral(resourceName: "isFedCheckmark")
+        } else {
+            isFedImage.isHidden = true
+        }
+    }
+
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16.adjusted),
-            cellView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16.adjusted),
-            cellView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.adjusted),
+            cellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16.adjusted),
+            cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16.adjusted),
             cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
 
@@ -70,34 +87,10 @@ class MealCell: UITableViewCell {
             isFedImage.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
             isFedImage.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20.adjusted)
         ])
-
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func configureCell(isFed status: String, name: String, type: String) {
-        nameLabel.text = name
-        switch type {
-        case "dry":
-            typeImage.image = #imageLiteral(resourceName: "DryFoodIcon")
-        case "wet":
-            typeImage.image = #imageLiteral(resourceName: "WetFoodIcon")
-        default:
-            typeImage.image = #imageLiteral(resourceName: "TreatFoodIcon")
-        }
-        if status == "true" {
-            isFedImage.isHidden = false
-            isFedImage.image = #imageLiteral(resourceName: "isFedCheckmark")
-        } else {
-            isFedImage.isHidden = true
-        }
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
 }

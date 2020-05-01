@@ -12,6 +12,7 @@ struct Meal {
     private var _name: String
     private var _type: String
     private var _isFed: String
+    private var _notification: String
 
     var name: String {
         return _name
@@ -25,9 +26,14 @@ struct Meal {
         return _isFed
     }
 
-    init(name: String, type: String, isFed: String) {
+    var notification: String? {
+        return _notification
+    }
+
+    init(name: String, type: String, isFed: String, notification: String) {
         self._name = name
         self._type = type
         self._isFed = isFed
+        self._notification = notification
     }
 }

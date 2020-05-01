@@ -55,7 +55,7 @@ class AddMealVC: UIViewController {
         addMealTitle.translatesAutoresizingMaskIntoConstraints = false
         addMealTitle.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            addMealTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50.adjusted),
+            addMealTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100.adjusted),
             addMealTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
 

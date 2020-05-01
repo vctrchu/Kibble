@@ -173,13 +173,25 @@ class DataService {
                 let name = mealSnap.key
                 let isFed = dict["isFed"] as! String
                 let type = dict["type"] as! String
+                var notification = "none"
+                if let tempNotif = dict["notification"] {
+                    notification = tempNotif as! String
+                }
                 print(name)
                 print(isFed)
                 print(type)
-                let newMeal = Meal(name: name, type: type, isFed: isFed)
+                print(notification)
+                print("*****")
+                let newMeal = Meal(name: name, type: type, isFed: isFed, notification: notification)
                 petMeals.append(newMeal)
             }
             handler(petMeals)
+        }
+    }
+
+    func deleteMeal(id: String, mealName: String, handler: @escaping () -> ()) {
+        REF_PET_MEALS.child(id).child(mealName).removeValue { (error, snapshot) in
+            handler()
         }
     }
 }

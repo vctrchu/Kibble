@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99960CF739C92991AD579605 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90B3B36F29C6F7D7D9AE58F /* Pods_Kibble.framework */; };
 		FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */; };
+		FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D59245A641700CB8141 /* EditMealVC.swift */; };
 		FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */; };
 		FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetVC.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
@@ -29,13 +29,15 @@
 		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
 		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
 		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
+		FFCB8744C55BDC549071638F /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585509D978CE3E96B43F62E7 /* Pods_Kibble.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7887BFF7877D936E444A0FA4 /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
-		B90B3B36F29C6F7D7D9AE58F /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F28E4DE135C3128BBEC6C6E7 /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
+		0E370701F461558B15730421 /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
+		585509D978CE3E96B43F62E7 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE70BC7914A8E1834F7DB6BD /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
 		FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourFirstMealVC.swift; sourceTree = "<group>"; };
+		FB098D59245A641700CB8141 /* EditMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealVC.swift; sourceTree = "<group>"; };
 		FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsVC.swift; sourceTree = "<group>"; };
 		FB291EF923D26134001BC23C /* AddYourPetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetVC.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,28 +68,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99960CF739C92991AD579605 /* Pods_Kibble.framework in Frameworks */,
+				FFCB8744C55BDC549071638F /* Pods_Kibble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28C3E4D80F78B2FF90D3E5BC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B90B3B36F29C6F7D7D9AE58F /* Pods_Kibble.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3EC955F8F0E16F3BA2C1A6A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7887BFF7877D936E444A0FA4 /* Pods-Kibble.debug.xcconfig */,
-				F28E4DE135C3128BBEC6C6E7 /* Pods-Kibble.release.xcconfig */,
+				DE70BC7914A8E1834F7DB6BD /* Pods-Kibble.debug.xcconfig */,
+				0E370701F461558B15730421 /* Pods-Kibble.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8642152FA47DF30A2CC235CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				585509D978CE3E96B43F62E7 /* Pods_Kibble.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FB2B2F6D2324A73F004AE08D = {
@@ -96,7 +98,7 @@
 				FB2B2F782324A73F004AE08D /* Kibble */,
 				FB2B2F772324A73F004AE08D /* Products */,
 				3EC955F8F0E16F3BA2C1A6A6 /* Pods */,
-				28C3E4D80F78B2FF90D3E5BC /* Frameworks */,
+				8642152FA47DF30A2CC235CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +158,7 @@
 				FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FB414EB2245399F800807085 /* AddMealVC.swift */,
+				FB098D59245A641700CB8141 /* EditMealVC.swift */,
 				FBB37C2F24565FDC000E723B /* AddReminderVC.swift */,
 			);
 			path = Controller;
@@ -185,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB2B2F882324A740004AE08D /* Build configuration list for PBXNativeTarget "Kibble" */;
 			buildPhases = (
-				C7C24DC2C61F021938B99BD1 /* [CP] Check Pods Manifest.lock */,
+				DA5A06407F214650979174DB /* [CP] Check Pods Manifest.lock */,
 				FB2B2F722324A73F004AE08D /* Sources */,
 				FB2B2F732324A73F004AE08D /* Frameworks */,
 				FB2B2F742324A73F004AE08D /* Resources */,
-				DA0F6AECB4A0177924B0E50E /* [CP] Embed Pods Frameworks */,
-				94260EE0CA00DF9055018FB2 /* [CP] Copy Pods Resources */,
+				7B697A1F4CD8DB4A6440719C /* [CP] Embed Pods Frameworks */,
+				FEF3C7A5AC956F991EE4DA30 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,24 +251,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		94260EE0CA00DF9055018FB2 /* [CP] Copy Pods Resources */ = {
+		7B697A1F4CD8DB4A6440719C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7C24DC2C61F021938B99BD1 /* [CP] Check Pods Manifest.lock */ = {
+		DA5A06407F214650979174DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,21 +290,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA0F6AECB4A0177924B0E50E /* [CP] Embed Pods Frameworks */ = {
+		FEF3C7A5AC956F991EE4DA30 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kibble/Pods-Kibble-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -313,6 +316,7 @@
 			files = (
 				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
+				FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */,
 				FB414EAD244FFB5B00807085 /* PetId.swift in Sources */,
 				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
 				FB414EB12452460C00807085 /* Meal.swift in Sources */,
@@ -464,7 +468,7 @@
 		};
 		FB2B2F892324A740004AE08D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7887BFF7877D936E444A0FA4 /* Pods-Kibble.debug.xcconfig */;
+			baseConfigurationReference = DE70BC7914A8E1834F7DB6BD /* Pods-Kibble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
@@ -487,7 +491,7 @@
 		};
 		FB2B2F8A2324A740004AE08D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F28E4DE135C3128BBEC6C6E7 /* Pods-Kibble.release.xcconfig */;
+			baseConfigurationReference = 0E370701F461558B15730421 /* Pods-Kibble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Kibble/Kibble.entitlements;
