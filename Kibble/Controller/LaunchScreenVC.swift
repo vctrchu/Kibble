@@ -22,6 +22,7 @@ class LaunchScreenVC: UIViewController {
             Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentMealsVC()
             //self.presentSignInVC()
             //self.presentTestVC()
+
         }
     }
 

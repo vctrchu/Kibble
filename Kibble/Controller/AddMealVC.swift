@@ -146,15 +146,16 @@ class AddMealVC: UIViewController {
 
     func dismissVC() {
         let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-         let petId = LocalStorage.instance.currentUser.currentPet
-         let mealData = ["isFed": "false", "type": mealType]
-         DataService.instance.updatePetMeals(withPetId: petId , withMealName: mealName, andMealData: mealData)
-         let notificationData: Dictionary<String, Any> = ["notification" : reminderTime]
-         DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
-             self.dismiss(animated: true) {
-                 self.delegate?.refreshTableView()
-             }
-         }
+        let petId = LocalStorage.instance.currentUser.currentPet
+        let mealData = ["isFed": "false", "type": mealType]
+        DataService.instance.updatePetMeals(withPetId: petId , withMealName: mealName, andMealData: mealData) {}
+        DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData)
+        let notificationData: Dictionary<String, Any> = ["notification" : reminderTime]
+        DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
+            self.dismiss(animated: true) {
+                self.delegate?.refreshTableView()
+            }
+        }
     }
 
     func addGenstures() {

@@ -164,7 +164,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         editMealVC.delegate = self
         // this is not nice we should create a method to set these values...
         editMealVC.mealName = meal.name
-        editMealVC.reminderTime = meal.notification!
+        editMealVC.reminderTime = meal.notification
         editMealVC.mealType = meal.type
         //editMealVC.setup(name: meal.name, type: meal.type, notification: meal.notification!)
         self.present(editMealVC, animated: true, completion: nil)
@@ -172,17 +172,29 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
 
     // Swipe Cell
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        let doneAction = SwipeAction(style: .destructive, title: "Done") { action, indexPath in
-            
-            //self.mealArray.remove(at: indexPath.row)
-            //self.tableView.deleteRows(at: [indexPath], with: .fade)
-            self.refreshLocalData()
+        if orientation == .right {
+            let doneAction = SwipeAction(style: .destructive, title: "Done") { action, indexPath in
+                let petId = LocalStorage.instance.currentUser.currentPet
+                let mealName = self.mealArray[indexPath.row].name
+                DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"true"]) {
+                    self.retrieveMealData()
+                }
+            }
+            doneAction.backgroundColor = #colorLiteral(red: 0.6509803922, green: 0.9294117647, blue: 0.4745098039, alpha: 1)
+            return [doneAction]
+        } else if orientation == .left {
+            let undoAction = SwipeAction(style: .destructive, title: "Undo") { action, indexPath in
+                let petId = LocalStorage.instance.currentUser.currentPet
+                let mealName = self.mealArray[indexPath.row].name
+                DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"false"]) {
+                    self.retrieveMealData()
+                }
+            }
+            undoAction.backgroundColor = #colorLiteral(red: 1, green: 0.3400763623, blue: 0.3629676378, alpha: 1)
+            return [undoAction]
+        } else {
+            return nil
         }
-
-        doneAction.backgroundColor = #colorLiteral(red: 0.6509803922, green: 0.9294117647, blue: 0.4745098039, alpha: 1)
-
-        return [doneAction]
     }
 
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

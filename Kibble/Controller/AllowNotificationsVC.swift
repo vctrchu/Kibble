@@ -108,7 +108,8 @@ class AllowNotificationsVC: UIViewController {
         DataService.instance.updateUser(withUid: uid, withUserData: ["currentPet": petId])
         DataService.instance.updatePetMembers(withPetId: petId, andMemberData: memberData)
         DataService.instance.updatePetInfo(withPetId: petId, andPetData: petData)
-        DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData)
+        DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData)
+        DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {}
         if notification {
             let notificationData: Dictionary<String, Any> = ["notification" : getTimePickerValue()]
             DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {

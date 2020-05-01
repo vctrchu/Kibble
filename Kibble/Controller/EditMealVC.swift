@@ -153,9 +153,9 @@ class EditMealVC: UIViewController {
         let petId = LocalStorage.instance.currentUser.currentPet
         let mealData = ["isFed": "false", "type": mealType]
         DataService.instance.deleteMeal(id: petId, mealName: mealName) {
-            DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData)
+            DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {}
             let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
-            DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: self.mealName, andNotificationData: notificationData) {
+            DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
                 self.dismiss(animated: true) {
                     self.delegate?.refreshTableView()
                 }

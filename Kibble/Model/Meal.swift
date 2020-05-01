@@ -15,19 +15,23 @@ struct Meal {
     private var _notification: String
 
     var name: String {
-        return _name
+        set { _name = newValue }
+        get { return _name }
     }
 
     var type: String {
-        return _type
+        set { _type = newValue }
+        get { return _type }
     }
 
     var isFed: String {
-        return _isFed
+        set { _isFed = newValue }
+        get { return _isFed }
     }
 
-    var notification: String? {
-        return _notification
+    var notification: String {
+        set { _notification = newValue }
+        get { return _notification }
     }
 
     init(name: String, type: String, isFed: String, notification: String) {
