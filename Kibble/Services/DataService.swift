@@ -89,8 +89,10 @@ class DataService {
         }
     }
 
-    func updateDefaultPetMeals(withPetId petId: String, withMealName mealName: String, andMealData mealData: Dictionary<String,Any>) {
-        REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData)
+    func updateDefaultPetMeals(withPetId petId: String, withMealName mealName: String, andMealData mealData: Dictionary<String,Any>, handler: @escaping () -> ()) {
+        REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData) { (error, snapshot) in
+            handler()
+        }
     }
 
     func updatePetMealNotifications(withPetId petId: String, withMealName mealName: String, andNotificationData notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
@@ -98,6 +100,12 @@ class DataService {
             handler()
         }
     }
+
+    func updateDefaultPetMealNotifications(withPetId petId: String, withMealName mealName: String, andNotificationData notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
+           REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(notificationData) { (error, snapshot) in
+               handler()
+           }
+       }
 
     func updatePetMembers(withPetId petId: String, andMemberData memberData: Dictionary<String,Any>) {
         REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
@@ -174,6 +182,12 @@ class DataService {
 
     func deleteMeal(id: String, mealName: String, handler: @escaping () -> ()) {
         REF_PET_MEALS.child(id).child(mealName).removeValue { (error, snapshot) in
+            handler()
+        }
+    }
+
+    func deleteDefaultMeal(petId: String, mealName: String, handler: @escaping () -> ()) {
+        REF_PET_DEFAULT_MEALS.child(petId).removeValue { (error, snapshot) in
             handler()
         }
     }

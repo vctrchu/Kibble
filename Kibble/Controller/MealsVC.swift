@@ -16,11 +16,10 @@ class MealsVC: UIViewController {
     
     @IBOutlet weak var addMealButton: UIButton!
     @IBOutlet var pastelView: PastelView!
-    @IBOutlet weak var settingsButton: UIButton!
     private let refreshControl = UIRefreshControl()
 
     let petImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
         image.image = #imageLiteral(resourceName: "cat")
         image.contentMode = UIView.ContentMode.scaleAspectFill
         image.layer.masksToBounds = false
@@ -37,6 +36,18 @@ class MealsVC: UIViewController {
         return label
     }()
 
+    let settingsButton: UIButton = {
+        let button = UIButton(frame: CGRect.zero)
+        button.setImage(#imageLiteral(resourceName: "Settings"), for: .normal)
+        return button
+    }()
+
+    let membersButton: UIButton = {
+        let button = UIButton(frame: CGRect.zero)
+        button.setImage(#imageLiteral(resourceName: "membersButton"), for: .normal)
+        return button
+    }()
+
     let tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
         tv.backgroundColor = UIColor.white
@@ -44,26 +55,24 @@ class MealsVC: UIViewController {
         return tv
     }()
 
-    var mealArray = [Meal]()
+    private var mealArray = [Meal]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.sectionHeaderHeight = 160.adjusted
+        tableView.sectionHeaderHeight = 200
         retrieveMealData()
-
     }
 
     override func loadView() {
         super.loadView()
-        settingsButton.addTarget(self, action: #selector(tempLogOut), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
         addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
         tableView.register(MealCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorColor = UIColor.clear
         tableView.addSubview(refreshControl)
         self.view.addSubview(tableView)
-        self.view.addSubview(settingsButton)
         self.view.addSubview(addMealButton)
         refreshControl.addTarget(self, action: #selector(mealDataRefresh), for: .valueChanged)
         NSLayoutConstraint.activate([
@@ -108,6 +117,15 @@ class MealsVC: UIViewController {
         let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC") as! AddMealVC
         addMealVC.delegate = self
         self.present(addMealVC, animated: true, completion: nil)
+    }
+
+    @objc func settingsButtonPressed() {
+        // Creating a navigation controller with VC1 at the root of the navigation stack.
+        //let settingsVC = self.storyboard!.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        //let navController = UINavigationController(rootViewController: settingsVC)
+        //self.present(settingsVC, animated:true, completion: nil)
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+
     }
     
     @objc func tempLogOut(){
@@ -172,7 +190,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
 
     // Swipe Cell
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        if orientation == .right {
+        if orientation == .left {
             let doneAction = SwipeAction(style: .destructive, title: "Done") { action, indexPath in
                 let petId = LocalStorage.instance.currentUser.currentPet
                 let mealName = self.mealArray[indexPath.row].name
@@ -182,7 +200,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
             }
             doneAction.backgroundColor = #colorLiteral(red: 0.6509803922, green: 0.9294117647, blue: 0.4745098039, alpha: 1)
             return [doneAction]
-        } else if orientation == .left {
+        } else if orientation == .right {
             let undoAction = SwipeAction(style: .destructive, title: "Undo") { action, indexPath in
                 let petId = LocalStorage.instance.currentUser.currentPet
                 let mealName = self.mealArray[indexPath.row].name
@@ -204,25 +222,33 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         return options
     }
 
+    // Header constraints and items added
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect.zero)
         headerView.backgroundColor = UIColor.clear
-        headerView.addSubview(self.petImage)
-        headerView.addSubview(self.petnameLabel)
-        NSLayoutConstraint.activate([
-            petImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20.adjusted),
-            petImage.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            petImage.heightAnchor.constraint(equalToConstant: 100),
-            petImage.widthAnchor.constraint(equalToConstant: 100)
-        ])
+        headerView.addSubview(settingsButton)
+        headerView.addSubview(membersButton)
+        headerView.addSubview(petImage)
+        headerView.addSubview(petnameLabel)
+
+        petImage.translatesAutoresizingMaskIntoConstraints = false
+        let topPetImage = petImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20.adjusted)
+        let centerPetImage = petImage.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        let widthPetImage = petImage.widthAnchor.constraint(equalToConstant: 90)
+        let heightPetImage = petImage.heightAnchor.constraint(equalToConstant: 90)
+        headerView.addConstraints([topPetImage, centerPetImage, widthPetImage, heightPetImage])
 
         petnameLabel.translatesAutoresizingMaskIntoConstraints = false
         let currentPet = LocalStorage.instance.currentUser.currentPet
         petnameLabel.text = LocalStorage.instance.petIds[currentPet]?.name
-        NSLayoutConstraint.activate([
-            petnameLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
-        ])
+        let centerXPetLabel = petnameLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        let topPetLabel = petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
+        headerView.addConstraints([centerXPetLabel, topPetLabel])
+
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        let centerXSetting = settingsButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        let bottomSetting = settingsButton.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 0)
+        headerView.addConstraints([centerXSetting, bottomSetting])
 
         return headerView
     }

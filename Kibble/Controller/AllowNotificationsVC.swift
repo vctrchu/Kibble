@@ -104,14 +104,16 @@ class AllowNotificationsVC: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
         let memberData: Dictionary<String, Any> = [uid: true]
         let mealData: Dictionary<String, Any> = ["type": mealType, "isFed": "false"]
+        let notificationData: Dictionary<String, Any> = ["notification" : getTimePickerValue()]
         DataService.instance.addPetToUser(forUid: uid, withPetId: petId)
         DataService.instance.updateUser(withUid: uid, withUserData: ["currentPet": petId])
         DataService.instance.updatePetMembers(withPetId: petId, andMemberData: memberData)
         DataService.instance.updatePetInfo(withPetId: petId, andPetData: petData)
-        DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData)
+        DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {
+            DataService.instance.updateDefaultPetMealNotifications(withPetId: self.petId, withMealName: self.mealName, andNotificationData: notificationData) {}
+        }
         DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {}
         if notification {
-            let notificationData: Dictionary<String, Any> = ["notification" : getTimePickerValue()]
             DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
                 self.moveToMealsVC()
             }

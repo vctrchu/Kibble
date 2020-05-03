@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */; };
 		FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D59245A641700CB8141 /* EditMealVC.swift */; };
+		FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D5B245E55E600CB8141 /* SettingsVC.swift */; };
+		FB098D5E245E572800CB8141 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D5D245E572800CB8141 /* SettingsCell.swift */; };
+		FB098D60245E668700CB8141 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D5F245E668700CB8141 /* NavigationConfigurator.swift */; };
 		FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */; };
 		FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetVC.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
@@ -38,6 +41,9 @@
 		DE70BC7914A8E1834F7DB6BD /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
 		FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourFirstMealVC.swift; sourceTree = "<group>"; };
 		FB098D59245A641700CB8141 /* EditMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealVC.swift; sourceTree = "<group>"; };
+		FB098D5B245E55E600CB8141 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		FB098D5D245E572800CB8141 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		FB098D5F245E668700CB8141 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsVC.swift; sourceTree = "<group>"; };
 		FB291EF923D26134001BC23C /* AddYourPetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetVC.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +122,7 @@
 				FB3940A62442983D003AD374 /* Kibble.entitlements */,
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FBBC84222382E2BE00BD55A9 /* Extensions.swift */,
+				FB098D5F245E668700CB8141 /* NavigationConfigurator.swift */,
 				FB62A5B123850B9500FB5557 /* Services */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
@@ -144,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				FB414EAE2451362E00807085 /* MealCell.swift */,
+				FB098D5D245E572800CB8141 /* SettingsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,8 +166,9 @@
 				FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */,
 				FB437A572328445900A54BC7 /* MealsVC.swift */,
 				FB414EB2245399F800807085 /* AddMealVC.swift */,
-				FB098D59245A641700CB8141 /* EditMealVC.swift */,
 				FBB37C2F24565FDC000E723B /* AddReminderVC.swift */,
+				FB098D59245A641700CB8141 /* EditMealVC.swift */,
+				FB098D5B245E55E600CB8141 /* SettingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,7 +326,10 @@
 				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
 				FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */,
+				FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */,
 				FB414EAD244FFB5B00807085 /* PetId.swift in Sources */,
+				FB098D5E245E572800CB8141 /* SettingsCell.swift in Sources */,
+				FB098D60245E668700CB8141 /* NavigationConfigurator.swift in Sources */,
 				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
 				FB414EB12452460C00807085 /* Meal.swift in Sources */,
 				FB414EB3245399F800807085 /* AddMealVC.swift in Sources */,
