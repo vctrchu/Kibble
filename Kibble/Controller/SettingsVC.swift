@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MessageUI
+import StoreKit
 
-class SettingsVC: UITableViewController {
+class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
     // MARK: - Properties
     @IBOutlet weak var petCodeLabel: UILabel!
@@ -39,12 +41,48 @@ class SettingsVC: UITableViewController {
         if notificationSwitch.isOn {
 
         } else {
-            
+
         }
     }
 
+    @objc func logOutPressed() {
+
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let cell = tableView.cellForRow(at: indexPath)!
+
+        if indexPath.row == 0 && indexPath.section == 0 {
+            // Pet Code
+            let text = LocalStorage.instance.currentUser.currentPet
+            let textToShare = [ text ]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            self.present(activityViewController, animated: true, completion: nil)
+        } else if indexPath.row == 1 && indexPath.section == 0 {
+            // Manage members
+        } else if indexPath.row == 2 && indexPath.section == 0 {
+            // Edit pet info
+        } else if indexPath.row == 3 && indexPath.section == 0 {
+            // Switch pets
+        } else if indexPath.row == 0 && indexPath.section == 2 {
+            // About
+        } else if indexPath.row == 1 && indexPath.section == 2 {
+            // Contact us
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["victorchu1996@gmail.com"])
+            mail.setSubject("Kibble iOS: Message from User")
+            present(mail, animated: true)
+        } else if indexPath.row == 2 && indexPath.section == 2 {
+            // Rate kibble
+            SKStoreReviewController.requestReview()
+        }
+        cell.isSelected = false
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 
 }

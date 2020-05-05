@@ -164,7 +164,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -198,6 +198,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
                     self.retrieveMealData()
                 }
             }
+            let cell = tableView.cellForRow(at: indexPath)!
             doneAction.backgroundColor = #colorLiteral(red: 0.6509803922, green: 0.9294117647, blue: 0.4745098039, alpha: 1)
             return [doneAction]
         } else if orientation == .right {

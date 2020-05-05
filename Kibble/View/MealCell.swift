@@ -12,7 +12,6 @@ import SwipeCellKit
 @available(iOS 13.0, *)
 class MealCell: SwipeTableViewCell {
 
-    let isFedImage = UIImageView()
     let typeImage = UIImageView()
     let nameLabel = UILabel()
     let cellView = UIView()
@@ -20,44 +19,15 @@ class MealCell: SwipeTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        selectionStyle = .none
+        backgroundColor = .clear
         addSubview(cellView)
         cellView.addSubview(nameLabel)
         cellView.addSubview(typeImage)
-        cellView.addSubview(isFedImage)
-        selectionStyle = .none
-        backgroundColor = .clear
 
-        cellView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        cellView.backgroundColor = UIColor.black.withAlphaComponent(0.05)
         cellView.layer.cornerRadius = 12
-        cellView.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        cellView.layer.borderWidth = 2.0
         cellView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.textColor = UIColor.black
-        nameLabel.font = Device.roundedFont(ofSize: .title2, weight: .medium)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        setupConstraints()
-    }
-
-    func configureCell(isFed status: String, name: String, type: String) {
-        nameLabel.text = name
-        switch type {
-        case "dry":
-            typeImage.image = #imageLiteral(resourceName: "DryFoodIcon")
-        case "wet":
-            typeImage.image = #imageLiteral(resourceName: "WetFoodIcon")
-        default:
-            typeImage.image = #imageLiteral(resourceName: "TreatFoodIcon")
-        }
-        if status == "true" {
-            isFedImage.isHidden = false
-            isFedImage.image = #imageLiteral(resourceName: "isFedCheckmark")
-        } else {
-            isFedImage.isHidden = true
-        }
-    }
-
-    func setupConstraints() {
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16.adjusted),
             cellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16.adjusted),
@@ -68,25 +38,41 @@ class MealCell: SwipeTableViewCell {
         typeImage.translatesAutoresizingMaskIntoConstraints = false
         typeImage.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            typeImage.heightAnchor.constraint(equalToConstant: 60.adjusted),
-            typeImage.widthAnchor.constraint(equalToConstant: 60.adjusted),
+            typeImage.heightAnchor.constraint(equalToConstant: 35),
+            typeImage.widthAnchor.constraint(equalToConstant: 35),
             typeImage.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
             typeImage.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 10.adjusted)
         ])
 
+        nameLabel.textColor = UIColor.black
+        nameLabel.font = Device.roundedFont(ofSize: .title2, weight: .medium)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: typeImage.rightAnchor, constant: 10).isActive = true
 
-        isFedImage.translatesAutoresizingMaskIntoConstraints = false
-        isFedImage.contentMode = UIView.ContentMode.scaleAspectFit
-        NSLayoutConstraint.activate([
-            isFedImage.heightAnchor.constraint(equalToConstant: 30.adjusted),
-            isFedImage.widthAnchor.constraint(equalToConstant: 30.adjusted),
-            isFedImage.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
-            isFedImage.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20.adjusted)
-        ])
+    }
+
+    func configureCell(isFed status: String, name: String, type: String) {
+        nameLabel.text = name
+        switch type {
+        case "dry":
+            typeImage.image = #imageLiteral(resourceName: "Dry")
+        case "wet":
+            typeImage.image = #imageLiteral(resourceName: "Wet")
+        default:
+            typeImage.image = #imageLiteral(resourceName: "Treat")
+        }
+        if status == "true" {
+            typeImage.alpha = 0.3
+            nameLabel.alpha = 0.3
+            cellView.backgroundColor = #colorLiteral(red: 0.6509803922, green: 0.9294117647, blue: 0.4745098039, alpha: 1)
+        } else {
+            typeImage.alpha = 1
+            nameLabel.alpha = 1
+            cellView.backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        }
     }
 
     required init?(coder: NSCoder) {
