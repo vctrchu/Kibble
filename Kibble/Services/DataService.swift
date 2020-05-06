@@ -111,9 +111,15 @@ class DataService {
         REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
     }
 
+    // MARK: - Retrieval Methods
+
     func retrieveUserFullName(withUid uid: String, handler: @escaping (_ fullname: String) -> ()) {
-        REF_USERS.child("\(uid)/fullName").observeSingleEvent(of: .value) { (fullNameSnapShot) in
-            let fullName = fullNameSnapShot.value as! String
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dict = snapshot.value as? [String:Any] else {
+                print("Could not retrieve full name")
+                return
+            }
+            let fullName = dict["fullName"] as! String
             handler(fullName)
         }
     }
@@ -132,7 +138,6 @@ class DataService {
             handler()
         }
     }
-
 
     func retrieveCurrentPet(forUid uid: String, handler: @escaping (_ currentPet: String) -> ()) {
         REF_USERS.child("\(uid)/currentPet").observe(.value) { (currentPetSnapshot) in
@@ -179,6 +184,31 @@ class DataService {
             handler(petMeals)
         }
     }
+
+    func retrieveMembers(forPetId petId: String, handler: @escaping (_ members: [String:Any]) -> ()) {
+        REF_PET_MEMBERS.child(petId).observe(.value) { (memberSnapshot) in
+            guard let dict = memberSnapshot.value as? [String:Any] else {
+                print("Could not retive members for pet id")
+                return
+            }
+            handler(dict)
+        }
+    }
+
+    func retrieveAllMemberNames(forPetId petId: String, handler: @escaping (_ names: [String]) -> ()) {
+        var namesArray = [String]()
+        REF_PET_MEMBERS.child(petId).observeSingleEvent(of: .value) { (snapshot) in
+            let names = snapshot.children
+            for name in names {
+                let nameSnap = name as! DataSnapshot
+                let name = nameSnap.value as! String
+                namesArray.append(name)
+            }
+            handler(namesArray)
+        }
+    }
+
+    // MARK: - Delete Methods
 
     func deleteMeal(id: String, mealName: String, handler: @escaping () -> ()) {
         REF_PET_MEALS.child(id).child(mealName).removeValue { (error, snapshot) in

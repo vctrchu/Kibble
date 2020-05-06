@@ -24,7 +24,11 @@
 		FB414EB12452460C00807085 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB02452460C00807085 /* Meal.swift */; };
 		FB414EB3245399F800807085 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB2245399F800807085 /* AddMealVC.swift */; };
 		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
+		FB5931B624625DDC00349A53 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B524625DDC00349A53 /* MemberCell.swift */; };
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
+		FB9134A824611314005B139A /* MembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9134A724611314005B139A /* MembersVC.swift */; };
+		FB9134AA24611387005B139A /* PetInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9134A924611387005B139A /* PetInfoVC.swift */; };
+		FB9134AC246113A7005B139A /* SwitchPetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9134AB246113A7005B139A /* SwitchPetsVC.swift */; };
 		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderVC.swift */; };
@@ -58,7 +62,11 @@
 		FB414EB02452460C00807085 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		FB414EB2245399F800807085 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
 		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
+		FB5931B524625DDC00349A53 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		FB62A5AF23850B8A00FB5557 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		FB9134A724611314005B139A /* MembersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersVC.swift; sourceTree = "<group>"; };
+		FB9134A924611387005B139A /* PetInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoVC.swift; sourceTree = "<group>"; };
+		FB9134AB246113A7005B139A /* SwitchPetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPetsVC.swift; sourceTree = "<group>"; };
 		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBB37C2F24565FDC000E723B /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
@@ -149,6 +157,7 @@
 			children = (
 				FB414EAE2451362E00807085 /* MealCell.swift */,
 				FB098D5D245E572800CB8141 /* SettingsCell.swift */,
+				FB5931B524625DDC00349A53 /* MemberCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +175,9 @@
 				FBB37C2F24565FDC000E723B /* AddReminderVC.swift */,
 				FB098D59245A641700CB8141 /* EditMealVC.swift */,
 				FB098D5B245E55E600CB8141 /* SettingsVC.swift */,
+				FB9134A724611314005B139A /* MembersVC.swift */,
+				FB9134A924611387005B139A /* PetInfoVC.swift */,
+				FB9134AB246113A7005B139A /* SwitchPetsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +336,7 @@
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
 				FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */,
 				FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */,
+				FB9134A824611314005B139A /* MembersVC.swift in Sources */,
 				FB414EAD244FFB5B00807085 /* PetId.swift in Sources */,
 				FB098D5E245E572800CB8141 /* SettingsCell.swift in Sources */,
 				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
@@ -339,8 +352,11 @@
 				FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */,
 				FB414EAB244FFAEF00807085 /* LocalStorage.swift in Sources */,
 				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
+				FB5931B624625DDC00349A53 /* MemberCell.swift in Sources */,
+				FB9134AC246113A7005B139A /* SwitchPetsVC.swift in Sources */,
 				FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */,
 				FB3940A82442A395003AD374 /* Nonce.swift in Sources */,
+				FB9134AA24611387005B139A /* PetInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

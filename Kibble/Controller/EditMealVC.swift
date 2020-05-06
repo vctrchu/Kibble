@@ -15,6 +15,8 @@ protocol EditMealDelegate {
 @available(iOS 13.0, *)
 class EditMealVC: UIViewController {
 
+    // MARK: - Properties
+
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var addMealTitle: UIImageView!
@@ -36,6 +38,8 @@ class EditMealVC: UIViewController {
     var mealType: String = ""
     var reminderTime: String = "none"
     var delegate: AddMealDelegate?
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +114,44 @@ class EditMealVC: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
     }
+
+    func addGenstures() {
+        self.hideKeyboardWhenTappedAround()
+        dryButton.setImage(#imageLiteral(resourceName: "DryFoodIcon"), for: .normal)
+        dryButton.setImage(#imageLiteral(resourceName: "DryFoodIconSelected"), for: .selected)
+        wetButton.setImage(#imageLiteral(resourceName: "WetFoodIcon"), for: .normal)
+        wetButton.setImage(#imageLiteral(resourceName: "WetFoodIconSelected"), for: .selected)
+        treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIcon"), for: .normal)
+        treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIconSelected"), for: .selected)
+        dryButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        wetButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        treatButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+    }
+
+    func setup(name: String, type: String, notification: String) {
+        mealNameTextField.text = name
+        if (notification != "none") {
+            addReminderButton.setTitle("Remind me at: " + notification, for: .normal)
+        }
+        switch type {
+        case "dry":
+            dryButton.isSelected = true
+            wetButton.isSelected = false
+            treatButton.isSelected = false
+        case "wet":
+            dryButton.isSelected = false
+            wetButton.isSelected = true
+            treatButton.isSelected = false
+        case "treat":
+            dryButton.isSelected = false
+            wetButton.isSelected = false
+            treatButton.isSelected = true
+        default: ()
+        }
+    }
+
+    // MARK: - Target Selectors
     
     @objc func addReminderPressed() {
         let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderVC
@@ -148,62 +190,6 @@ class EditMealVC: UIViewController {
         }
     }
 
-    func dismissVC() {
-        let newMealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let petId = LocalStorage.instance.currentUser.currentPet
-        let mealData = ["isFed": "false", "type": mealType]
-        let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
-        DataService.instance.deleteDefaultMeal(petId: petId, mealName: mealName) {
-            DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: newMealName, andMealData: mealData) {
-                DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {}
-            }
-        }
-        DataService.instance.deleteMeal(id: petId, mealName: mealName) {
-            DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {
-                DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
-                    self.dismiss(animated: true) {
-                        self.delegate?.refreshTableView()
-                    }
-                }
-            }
-        }
-    }
-
-    func addGenstures() {
-        self.hideKeyboardWhenTappedAround()
-        dryButton.setImage(#imageLiteral(resourceName: "DryFoodIcon"), for: .normal)
-        dryButton.setImage(#imageLiteral(resourceName: "DryFoodIconSelected"), for: .selected)
-        wetButton.setImage(#imageLiteral(resourceName: "WetFoodIcon"), for: .normal)
-        wetButton.setImage(#imageLiteral(resourceName: "WetFoodIconSelected"), for: .selected)
-        treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIcon"), for: .normal)
-        treatButton.setImage(#imageLiteral(resourceName: "TreatFoodIconSelected"), for: .selected)
-        dryButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
-        wetButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
-        treatButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
-        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
-    }
-
-    @objc func foodTypeTapped(_ button: UIButton) {
-        switch button {
-        case dryButton:
-            dryButton.isSelected = true
-            wetButton.isSelected = false
-            treatButton.isSelected = false
-            mealType = "dry"
-        case wetButton:
-            dryButton.isSelected = false
-            wetButton.isSelected = true
-            treatButton.isSelected = false
-            mealType = "wet"
-        case treatButton:
-            dryButton.isSelected = false
-            wetButton.isSelected = false
-            treatButton.isSelected = true
-            mealType = "treat"
-        default: ()
-        }
-    }
-
     @objc func deleteButtonPressed() {
         let alert = UIAlertController(title: "Are you sure you want to delete?", message: nil, preferredStyle: UIAlertController.Style.alert)
         let logoutFailure = UIAlertController(title: "Delete failed. Please try again or check your connection", message: nil, preferredStyle: .alert)
@@ -227,29 +213,51 @@ class EditMealVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    func setup(name: String, type: String, notification: String) {
-        mealNameTextField.text = name
-        if (notification != "none") {
-            addReminderButton.setTitle("Remind me at: " + notification, for: .normal)
-        }
-        switch type {
-        case "dry":
+    @objc func foodTypeTapped(_ button: UIButton) {
+        switch button {
+        case dryButton:
             dryButton.isSelected = true
             wetButton.isSelected = false
             treatButton.isSelected = false
-        case "wet":
+            mealType = "dry"
+        case wetButton:
             dryButton.isSelected = false
             wetButton.isSelected = true
             treatButton.isSelected = false
-        case "treat":
+            mealType = "wet"
+        case treatButton:
             dryButton.isSelected = false
             wetButton.isSelected = false
             treatButton.isSelected = true
+            mealType = "treat"
         default: ()
         }
     }
 
+    func dismissVC() {
+        let newMealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let petId = LocalStorage.instance.currentUser.currentPet
+        let mealData = ["isFed": "false", "type": mealType]
+        let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
+        DataService.instance.deleteDefaultMeal(petId: petId, mealName: mealName) {
+            DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: newMealName, andMealData: mealData) {
+                DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {}
+            }
+        }
+        DataService.instance.deleteMeal(id: petId, mealName: mealName) {
+            DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {
+                DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
+                    self.dismiss(animated: true) {
+                        self.delegate?.refreshTableView()
+                    }
+                }
+            }
+        }
+    }
+
 }
+
+    // MARK: - Add Notification Delegate
 
 @available(iOS 13.0, *)
 extension EditMealVC: AddNotificationDelegate {
