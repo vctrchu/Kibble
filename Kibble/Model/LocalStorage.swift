@@ -11,12 +11,12 @@ import Foundation
 class LocalStorage {
     static var instance = LocalStorage()
 
-    private var _petIds = Dictionary<String,PetId>()
+    private var _petIds = Dictionary<String,Pet>()
     private var _userAllPets = Dictionary<String,Any>()
     private var _currentPetMeals = [Meal]()
     private var _currentUser = User(withId: "", withName: "", withEmail: "", withCurrentPet: "", withPets: [:])
 
-    var petIds: Dictionary<String,PetId> {
+    var petIds: Dictionary<String,Pet> {
         set { _petIds = newValue }
         get { return _petIds }
     }

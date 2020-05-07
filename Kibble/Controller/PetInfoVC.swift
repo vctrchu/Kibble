@@ -2,89 +2,127 @@
 //  PetInfoVC.swift
 //  Kibble
 //
-//  Created by VICTOR CHU on 2020-05-04.
+//  Created by VICTOR CHU on 2020-05-06.
 //  Copyright © 2020 Victor Chu. All rights reserved.
 //
 
 import UIKit
 
-class PetInfoVC: UITableViewController {
+class PetInfoVC: UIViewController {
+
+    // MARK: - Properties
+
+    private var petName: String?
+    private var petType: String?
+    private var petImage: UIImage?
+    private var imagePicker: UIImagePickerController!
+
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var petPhoto: UIImageView!
+    @IBOutlet weak var tapToChangeLabel: UILabel!
+    @IBOutlet weak var petnameTextField: UITextField! {
+        didSet {
+            petnameTextField.tintColor = UIColor.gray
+            petnameTextField.setIcon(#imageLiteral(resourceName: "PetnameIcon"))
+        }
+    }
+    @IBOutlet weak var typeOfPetTextField: UITextField! {
+        didSet {
+            typeOfPetTextField.tintColor = UIColor.gray
+            typeOfPetTextField.setIcon(#imageLiteral(resourceName: "TypeOfPetIcon"))
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        hideKeyboardWhenTappedAround()
     }
 
-    // MARK: - Table view data source
+    override func loadView() {
+        super.loadView()
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+        NSLayoutConstraint.activate([
+            petnameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
+            petnameTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
+            petnameTextField.topAnchor.constraint(equalTo: tapToChangeLabel.bottomAnchor, constant: 20.adjusted),
+            petnameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        petnameTextField.translatesAutoresizingMaskIntoConstraints = false
+        petnameTextField.text = petName
+        petnameTextField.placeholder = "pet name"
+        petnameTextField.font = Device.roundedFont(ofSize: .title1, weight: .medium)
+        petnameTextField.layer.cornerRadius = 10
+        petnameTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
+        view.addSubview(petnameTextField)
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+        NSLayoutConstraint.activate([
+            typeOfPetTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
+            typeOfPetTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
+            typeOfPetTextField.topAnchor.constraint(equalTo: petnameTextField.bottomAnchor, constant: 15.adjusted),
+            typeOfPetTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        typeOfPetTextField.translatesAutoresizingMaskIntoConstraints = false
+        typeOfPetTextField.text = petType
+        typeOfPetTextField.placeholder = "type of pet"
+        typeOfPetTextField.font = Device.roundedFont(ofSize: .title1, weight: .medium)
+        typeOfPetTextField.layer.cornerRadius = 10
+        typeOfPetTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
+        view.addSubview(typeOfPetTextField)
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
 
-        // Configure the cell...
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        petPhoto.layer.cornerRadius = petPhoto.frame.size.width/2
+        petPhoto.isUserInteractionEnabled = true
+        petPhoto.addGestureRecognizer(tapGestureRecognizer)
 
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        petPhoto.image = petImage
 
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    func setUpProperties(petname: String, petType: String, petImage: UIImage) {
+        self.petName = petname
+        self.petType = petType
+        self.petImage = petImage
     }
-    */
 
-    /*
-    // MARK: - Navigation
+    // MARK: - Target Methods
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
 
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
+            saveButton.shake()
+        } else {
+            DataService.instance.updatePetPhoto(LocalStorage.instance.currentUser.id, petPhoto.image!) { (url) in
+                let petData = ["name": self.petnameTextField.text!, "type": self.typeOfPetTextField.text!, "photoUrl": url.absoluteString]
+                DataService.instance.updatePetInfo(LocalStorage.instance.currentUser.currentPet, andPetData: petData)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+}
+
+extension PetInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            petPhoto.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

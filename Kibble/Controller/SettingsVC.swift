@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import MessageUI
 import StoreKit
 
@@ -14,7 +15,6 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
     // MARK: - Properties
     @IBOutlet weak var petCodeLabel: UILabel!
-    @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var logOutButton: UIButton!
 
     // MARK: - Init
@@ -23,74 +23,95 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
         // Set petcode cell
         petCodeLabel.text = "Pet code: " + LocalStorage.instance.currentUser.currentPet
-
-        // Set notification switch
-        let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
-        if isRegisteredForRemoteNotifications {
-            notificationSwitch.isOn = true
-            UIApplication.shared.registerForRemoteNotifications()
-        } else {
-            notificationSwitch.isOn = false
-            UIApplication.shared.unregisterForRemoteNotifications()
-        }
-
-        notificationSwitch.addTarget(self, action: #selector(switchStateChanged), for: .touchUpInside)
+        //logOutButton.addTarget(self, action: #selector(logOutPressed), for: .touchUpInside)
     }
 
-    @objc func switchStateChanged(_ switch: UISwitch) {
-        if notificationSwitch.isOn {
+    @objc func logOutPressed(){
+           let alert = UIAlertController(title: "Are you sure you want to log out of Kibble?", message: nil, preferredStyle: UIAlertController.Style.alert)
+           let logoutFailure = UIAlertController(title: "Logout failed. Please try again or check your connection", message: nil, preferredStyle: .alert)
 
-        } else {
+           alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+               alert.dismiss(animated: true, completion: nil)
+           }))
 
-        }
-    }
+           alert.addAction(UIAlertAction(title: "Logout", style: UIAlertAction.Style.default, handler: { (action) in
+               do {
+                   try Auth.auth().signOut()
+               } catch {
+                   print(error)
+                   self.present(logoutFailure, animated: true, completion: nil)
+               }
+           }))
 
-    @objc func logOutPressed() {
+           logoutFailure.addAction(UIAlertAction(title: "Dimiss", style: UIAlertAction.Style.default, handler: { (action) in
+               alert.dismiss(animated: true, completion: nil)
+           }))
 
-    }
+           present(alert, animated: true, completion: nil)
+       }
 
     // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
 
+        // Pet Code
         if indexPath.row == 0 && indexPath.section == 0 {
-            // Pet Code
             let text = LocalStorage.instance.currentUser.currentPet
             let textToShare = [ text ]
             let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             self.present(activityViewController, animated: true, completion: nil)
-        } else if indexPath.row == 1 && indexPath.section == 0 {
-            // Manage members
+        }
+
+        // Manage members
+        else if indexPath.row == 1 && indexPath.section == 0 {
             DataService.instance.retrieveAllMemberNames(forPetId: LocalStorage.instance.currentUser.currentPet) { (names) in
                 let membersVC = self.storyboard?.instantiateViewController(withIdentifier: "MembersVC") as? MembersVC
                 membersVC?.setup(names: names)
                 self.present(membersVC!, animated: true, completion: nil)
             }
-            //performSegue(withIdentifier: "MembersSegue", sender: self)
-        } else if indexPath.row == 2 && indexPath.section == 0 {
-            // Edit pet info
-            performSegue(withIdentifier: "PetInfoSegue", sender: self)
-        } else if indexPath.row == 3 && indexPath.section == 0 {
-            // Switch pets
+        }
+
+        // Edit pet info
+        else if indexPath.row == 2 && indexPath.section == 0 {
+            DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
+                var petImage = UIImage()
+                if let imageUrlString = pet.photoUrl {
+                    let imageUrl = URL(string: imageUrlString)!
+                    let imageData = try! Data(contentsOf: imageUrl)
+                    let image = UIImage(data: imageData)
+                    petImage = image!
+                } else {
+                    petImage = #imageLiteral(resourceName: "dog")
+                }
+
+                let petInfoVC = self.storyboard?.instantiateViewController(identifier: "PetInfoVC") as! PetInfoVC
+                petInfoVC.setUpProperties(petname: pet.name, petType: pet.type, petImage: petImage)
+                self.present(petInfoVC, animated: true, completion: nil)
+            }
+
+        }
+
+        // Switch pets
+        else if indexPath.row == 3 && indexPath.section == 0 {
             performSegue(withIdentifier: "SwitchPetsSegue", sender: self)
-        } else if indexPath.row == 0 && indexPath.section == 2 {
-            // Contact us
+        }
+
+        // Contact us
+        else if indexPath.row == 0 && indexPath.section == 1 {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["victorchu1996@gmail.com"])
             mail.setSubject("Kibble iOS: Message from User")
             present(mail, animated: true)
-        } else if indexPath.row == 1 && indexPath.section == 2 {
-            // Rate kibble
+        }
+
+        // Rate kibble
+        else if indexPath.row == 1 && indexPath.section == 1 {
             SKStoreReviewController.requestReview()
         }
         cell.isSelected = false
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

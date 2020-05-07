@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 // Gets base URL of Firebase database
 let DB_BASE = Database.database().reference()
@@ -51,14 +52,14 @@ class DataService {
                 let id = petInfo.key
                 guard let name = petInfo.childSnapshot(forPath: "name").value as? String else { continue }
                 guard let type = petInfo.childSnapshot(forPath: "type").value as? String else { continue }
-                let petId = PetId(id, name, type)
-                LocalStorage.instance.petIds[id] = petId
+                let newPet = Pet(id, name, type, nil)
+                LocalStorage.instance.petIds[id] = newPet
                 print(LocalStorage.instance.petIds[id]!)
             }
         }
     }
 
-    func updatePetInfo(withPetId petId: String, andPetData petData: Dictionary<String,Any>) {
+    func createPetInfo(withPetId petId: String, andPetData petData: Dictionary<String,Any>) {
         var isIdUnique = false
         var currentId = petId
         // Time Complexity: O(n)
@@ -71,8 +72,12 @@ class DataService {
             }
         }
         REF_PET_INFO.child(currentId).updateChildValues(petData)
-        let petId = PetId(currentId, petData["name"] as! String, petData["type"] as! String)
-        LocalStorage.instance.petIds[currentId] = petId
+        //let petId = Pet(currentId, petData["name"] as! String, petData["type"] as! String)
+        //LocalStorage.instance.petIds[currentId] = petId
+    }
+
+    func updatePetInfo(_ petId: String, andPetData petData: Dictionary<String,Any>) {
+        REF_PET_INFO.child(petId).updateChildValues(petData)
     }
 
     func updateUser(withUid uid: String, withUserData userData: Dictionary <String, Any>) {
@@ -109,6 +114,28 @@ class DataService {
 
     func updatePetMembers(withPetId petId: String, andMemberData memberData: Dictionary<String,Any>) {
         REF_PET_MEMBERS.child(petId).updateChildValues(memberData)
+    }
+
+    func updatePetPhoto(_ userUid: String,_ image: UIImage, completion: @escaping ((_ url: URL) -> ())) {
+        let storageRef = Storage.storage().reference().child("user/\(userUid)")
+
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        storageRef.putData(imageData, metadata: metaData) { (metadata, error) in
+            if let error = error {
+                print(error)
+            }
+            storageRef.downloadURL(completion: { (url, error) in
+                if error != nil {
+                    print("Failed to download url:", error!)
+                    return
+                } else {
+                    completion(url!)
+                }
+
+            })
+        }
     }
 
     // MARK: - Retrieval Methods
@@ -188,10 +215,24 @@ class DataService {
     func retrieveMembers(forPetId petId: String, handler: @escaping (_ members: [String:Any]) -> ()) {
         REF_PET_MEMBERS.child(petId).observe(.value) { (memberSnapshot) in
             guard let dict = memberSnapshot.value as? [String:Any] else {
-                print("Could not retive members for pet id")
+                print("Could not retreive members for pet id")
                 return
             }
             handler(dict)
+        }
+    }
+
+    func retrievePet(_ petId: String, completion: @escaping (_ pet: Pet) -> ()) {
+        REF_PET_INFO.child(petId).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dict = snapshot.value as? [String:Any] else {
+                print("Could not retrieve pet name")
+                return
+            }
+            let name = dict["name"] as! String
+            let type = dict["type"] as! String
+            let url = dict["photoUrl"] as! String
+            let newPet = Pet(petId, name, type, url)
+            completion(newPet)
         }
     }
 

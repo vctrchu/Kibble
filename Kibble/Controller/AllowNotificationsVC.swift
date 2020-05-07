@@ -111,7 +111,7 @@ class AllowNotificationsVC: UIViewController {
 
         DataService.instance.addPetToUser(forUid: uid, withPetId: petId)
         DataService.instance.updateUser(withUid: uid, withUserData: ["currentPet": petId])
-        DataService.instance.updatePetInfo(withPetId: petId, andPetData: petData)
+        DataService.instance.createPetInfo(withPetId: petId, andPetData: petData)
         
         DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {
             DataService.instance.updateDefaultPetMealNotifications(withPetId: self.petId, withMealName: self.mealName, andNotificationData: notificationData) {}

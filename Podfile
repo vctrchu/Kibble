@@ -9,6 +9,7 @@ target 'Kibble' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
 pod 'GoogleSignIn'
 
 pod 'LayoutHelper'

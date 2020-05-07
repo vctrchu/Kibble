@@ -20,7 +20,7 @@ class MealsVC: UIViewController {
 
     let petImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
-        image.image = #imageLiteral(resourceName: "cat")
+        image.image = #imageLiteral(resourceName: "dog")
         image.contentMode = UIView.ContentMode.scaleAspectFill
         image.layer.masksToBounds = false
         image.layer.cornerRadius = image.frame.height / 2
@@ -84,6 +84,9 @@ class MealsVC: UIViewController {
     }
 
     func retrieveMealData() {
+//        DataService.instance.retrieveUserFullName(withUid: LocalStorage.instance.currentUser.id) { (name) in
+//            self.petnameLabel.text = name
+//        }
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
         DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
             DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
@@ -120,39 +123,8 @@ class MealsVC: UIViewController {
     }
 
     @objc func settingsButtonPressed() {
-        // Creating a navigation controller with VC1 at the root of the navigation stack.
-        //let settingsVC = self.storyboard!.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
-        //let navController = UINavigationController(rootViewController: settingsVC)
-        //self.present(settingsVC, animated:true, completion: nil)
         performSegue(withIdentifier: "SettingsSegue", sender: self)
-
     }
-    
-    @objc func tempLogOut(){
-        let alert = UIAlertController(title: "Are you sure you want to log out of Kibble?", message: nil, preferredStyle: UIAlertController.Style.alert)
-        let logoutFailure = UIAlertController(title: "Logout failed. Please try again or check your connection", message: nil, preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-
-        alert.addAction(UIAlertAction(title: "Logout", style: UIAlertAction.Style.default, handler: { (action) in
-            do {
-                try Auth.auth().signOut()
-            } catch {
-                print(error)
-                self.present(logoutFailure, animated: true, completion: nil)
-            }
-        }))
-
-        logoutFailure.addAction(UIAlertAction(title: "Dimiss", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-
-        present(alert, animated: true, completion: nil)
-    }
-
-    
 
 }
 
@@ -223,7 +195,8 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         return options
     }
 
-    // Header constraints and items added
+    //MARK: - Table View Header Set Up
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect.zero)
         headerView.backgroundColor = UIColor.clear
@@ -231,6 +204,18 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         headerView.addSubview(membersButton)
         headerView.addSubview(petImage)
         headerView.addSubview(petnameLabel)
+
+        DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
+            self.petnameLabel.text = pet.name
+            if let imageUrlString = pet.photoUrl {
+                let imageUrl = URL(string: imageUrlString)!
+                let imageData = try! Data(contentsOf: imageUrl)
+                let image = UIImage(data: imageData)
+                self.petImage.image = image
+            } else {
+                self.petImage.image = #imageLiteral(resourceName: "dog")
+            }
+        }
 
         petImage.translatesAutoresizingMaskIntoConstraints = false
         let topPetImage = petImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20.adjusted)
@@ -240,8 +225,6 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         headerView.addConstraints([topPetImage, centerPetImage, widthPetImage, heightPetImage])
 
         petnameLabel.translatesAutoresizingMaskIntoConstraints = false
-        let currentPet = LocalStorage.instance.currentUser.currentPet
-        petnameLabel.text = LocalStorage.instance.petIds[currentPet]?.name
         let centerXPetLabel = petnameLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         let topPetLabel = petnameLabel.topAnchor.constraint(equalTo: petImage.bottomAnchor, constant: 5.adjusted)
         headerView.addConstraints([centerXPetLabel, topPetLabel])
