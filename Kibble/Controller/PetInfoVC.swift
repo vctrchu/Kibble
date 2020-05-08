@@ -11,10 +11,6 @@ import UIKit
 class PetInfoVC: UIViewController {
 
     // MARK: - Properties
-
-    private var petName: String?
-    private var petType: String?
-    private var petImage: UIImage?
     private var imagePicker: UIImagePickerController!
 
     @IBOutlet weak var saveButton: UIButton!
@@ -36,19 +32,39 @@ class PetInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+
+        DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
+            var petImage = UIImage()
+            if let imageUrlString = pet.photoUrl {
+                let imageUrl = URL(string: imageUrlString)!
+                let imageData = try! Data(contentsOf: imageUrl)
+                let image = UIImage(data: imageData)
+                petImage = image!
+            } else {
+                petImage = #imageLiteral(resourceName: "dog")
+            }
+            self.petnameTextField.text = pet.name
+            self.typeOfPetTextField.text = pet.type
+            self.petPhoto.image = petImage
+            self.petPhoto.fadeIn(duration: 0.25, delay: 0) { (Bool) in
+                self.petnameTextField.fadeIn(duration: 0.25, delay: 0) { (Bool) in
+                    self.typeOfPetTextField.fadeIn(duration: 0.25, delay: 0) { (Bool) in
+                    }
+                }
+            }
+        }
     }
 
     override func loadView() {
         super.loadView()
-
         NSLayoutConstraint.activate([
             petnameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
             petnameTextField.widthAnchor.constraint(equalToConstant: 301.adjusted),
             petnameTextField.topAnchor.constraint(equalTo: tapToChangeLabel.bottomAnchor, constant: 20.adjusted),
             petnameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        petnameTextField.alpha = 0
         petnameTextField.translatesAutoresizingMaskIntoConstraints = false
-        petnameTextField.text = petName
         petnameTextField.placeholder = "pet name"
         petnameTextField.font = Device.roundedFont(ofSize: .title1, weight: .medium)
         petnameTextField.layer.cornerRadius = 10
@@ -61,8 +77,8 @@ class PetInfoVC: UIViewController {
             typeOfPetTextField.topAnchor.constraint(equalTo: petnameTextField.bottomAnchor, constant: 15.adjusted),
             typeOfPetTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        typeOfPetTextField.alpha = 0
         typeOfPetTextField.translatesAutoresizingMaskIntoConstraints = false
-        typeOfPetTextField.text = petType
         typeOfPetTextField.placeholder = "type of pet"
         typeOfPetTextField.font = Device.roundedFont(ofSize: .title1, weight: .medium)
         typeOfPetTextField.layer.cornerRadius = 10
@@ -78,15 +94,7 @@ class PetInfoVC: UIViewController {
         petPhoto.layer.cornerRadius = petPhoto.frame.size.width/2
         petPhoto.isUserInteractionEnabled = true
         petPhoto.addGestureRecognizer(tapGestureRecognizer)
-
-        petPhoto.image = petImage
-
-    }
-
-    func setUpProperties(petname: String, petType: String, petImage: UIImage) {
-        self.petName = petname
-        self.petType = petType
-        self.petImage = petImage
+        petPhoto.alpha = 0
     }
 
     // MARK: - Target Methods

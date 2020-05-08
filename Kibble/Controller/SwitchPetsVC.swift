@@ -2,7 +2,7 @@
 //  SwitchPetsVC.swift
 //  Kibble
 //
-//  Created by VICTOR CHU on 2020-05-04.
+//  Created by VICTOR CHU on 2020-05-07.
 //  Copyright © 2020 Victor Chu. All rights reserved.
 //
 
@@ -10,81 +10,65 @@ import UIKit
 
 class SwitchPetsVC: UITableViewController {
 
+    // MARK: - Properties
+
+    private var pets = [Pet]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(MemberCell.self, forCellReuseIdentifier: "cellId")
+        setup()
+    }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    override func loadView() {
+        super.loadView()
+        tableView.tableFooterView = UIView()
+    }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    func setup() {
+        DataService.instance.retrieveAllPetsForUser(withUid: LocalStorage.instance.currentUser.id) { (allPetIds) in
+            let group = DispatchGroup()
+            for (key, _) in allPetIds {
+                group.enter()
+                DataService.instance.retrievePet(key) { (pet) in
+                    self.pets.append(pet)
+                    group.leave()
+                }
+            }
+            group.notify(queue: .main) {
+                
+                print("All requests finished")
+                print(self.pets.count)
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return pets.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let pet = pets[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MemberCell
 
-        // Configure the cell...
-
+        var petImage = UIImage()
+        if let imageUrlString = pet.photoUrl {
+            let imageUrl = URL(string: imageUrlString)!
+            let imageData = try! Data(contentsOf: imageUrl)
+            let image = UIImage(data: imageData)
+            petImage = image!
+        } else {
+            petImage = #imageLiteral(resourceName: "dog")
+        }
+        cell.configurePetCell(name: pet.name, image: petImage)
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

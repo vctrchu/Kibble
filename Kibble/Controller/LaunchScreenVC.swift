@@ -45,7 +45,7 @@ class LaunchScreenVC: UIViewController {
     
     private func presentMealsVC() {
         let uid = Auth.auth().currentUser!.uid
-        DataService.instance.retrieveAllPetsForUser(withUid: uid)
+        DataService.instance.retrieveAllPetsForUser(withUid: uid) { ([String : Any]) in }
         DataService.instance.downloadPetIds()
         DataService.instance.retrieveAllUserInfo(withUid: uid) {
             let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC

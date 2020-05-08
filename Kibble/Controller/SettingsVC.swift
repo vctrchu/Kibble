@@ -75,22 +75,8 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
         // Edit pet info
         else if indexPath.row == 2 && indexPath.section == 0 {
-            DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
-                var petImage = UIImage()
-                if let imageUrlString = pet.photoUrl {
-                    let imageUrl = URL(string: imageUrlString)!
-                    let imageData = try! Data(contentsOf: imageUrl)
-                    let image = UIImage(data: imageData)
-                    petImage = image!
-                } else {
-                    petImage = #imageLiteral(resourceName: "dog")
-                }
-
-                let petInfoVC = self.storyboard?.instantiateViewController(identifier: "PetInfoVC") as! PetInfoVC
-                petInfoVC.setUpProperties(petname: pet.name, petType: pet.type, petImage: petImage)
-                self.present(petInfoVC, animated: true, completion: nil)
-            }
-
+            let petInfoVC = self.storyboard?.instantiateViewController(identifier: "PetInfoVC") as! PetInfoVC
+            self.present(petInfoVC, animated: true, completion: nil)
         }
 
         // Switch pets

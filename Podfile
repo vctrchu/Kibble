@@ -19,5 +19,6 @@ pod 'Motion'
 pod 'SimpleAnimation'
 pod 'Pastel'
 pod 'SwipeCellKit'
+pod 'NVActivityIndicatorView'
 
 end

@@ -173,13 +173,13 @@ class DataService {
         }
     }
 
-    func retrieveAllPetsForUser(withUid uid: String) {
+    func retrieveAllPetsForUser(withUid uid: String, completion: @escaping (_ currentPet: [String: Any]) -> ()) {
         REF_USERS.child("\(uid)/pets").observe(.value) { (petSnapshot) in
             guard let dict = petSnapshot.value as? [String:Any] else {
                 print("Could not retrive all pets for user")
                 return
             }
-            LocalStorage.instance.userAllPets = dict
+            completion(dict)
         }
     }
 
@@ -230,7 +230,7 @@ class DataService {
             }
             let name = dict["name"] as! String
             let type = dict["type"] as! String
-            let url = dict["photoUrl"] as! String
+            let url = dict["photoUrl"] as? String
             let newPet = Pet(petId, name, type, url)
             completion(newPet)
         }

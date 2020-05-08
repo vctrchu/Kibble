@@ -20,7 +20,6 @@ class MealsVC: UIViewController {
 
     let petImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
-        image.image = #imageLiteral(resourceName: "dog")
         image.contentMode = UIView.ContentMode.scaleAspectFill
         image.layer.masksToBounds = false
         image.layer.cornerRadius = image.frame.height / 2
@@ -62,7 +61,7 @@ class MealsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionHeaderHeight = 200
-        retrieveMealData()
+        retrieveMealData(firstRun: true)
     }
 
     override func loadView() {
@@ -71,6 +70,7 @@ class MealsVC: UIViewController {
         addMealButton.addTarget(self, action: #selector(addMealButtonPressed), for: .touchUpInside)
         tableView.register(MealCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorColor = UIColor.clear
+        tableView.alpha = 0
         tableView.addSubview(refreshControl)
         self.view.addSubview(tableView)
         self.view.addSubview(addMealButton)
@@ -83,10 +83,7 @@ class MealsVC: UIViewController {
         ])
     }
 
-    func retrieveMealData() {
-//        DataService.instance.retrieveUserFullName(withUid: LocalStorage.instance.currentUser.id) { (name) in
-//            self.petnameLabel.text = name
-//        }
+    func retrieveMealData(firstRun: Bool) {
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
         DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
             DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
@@ -99,21 +96,15 @@ class MealsVC: UIViewController {
                                   animations: { self.tableView.reloadData() })
                 self.refreshControl.endRefreshing()
             }
+            self.addMealButton.isHidden = false
+            if (firstRun) {
+                self.tableView.fadeIn(duration: 1, delay: 0.2) { (Bool) in }
+            }
         }
     }
 
-    func refreshLocalData() {
-        LocalStorage.instance.currentPetMeals = mealArray
-        print(self.mealArray.count)
-        UIView.transition(with: self.tableView,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: { self.tableView.reloadData() })
-        self.refreshControl.endRefreshing()
-    }
-
     @objc func mealDataRefresh() {
-        retrieveMealData()
+        retrieveMealData(firstRun: false)
     }
 
     @objc func addMealButtonPressed() {
@@ -167,7 +158,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
                 let petId = LocalStorage.instance.currentUser.currentPet
                 let mealName = self.mealArray[indexPath.row].name
                 DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"true"]) {
-                    self.retrieveMealData()
+                    self.retrieveMealData(firstRun: false)
                 }
             }
             let cell = tableView.cellForRow(at: indexPath)!
@@ -178,7 +169,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
                 let petId = LocalStorage.instance.currentUser.currentPet
                 let mealName = self.mealArray[indexPath.row].name
                 DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"false"]) {
-                    self.retrieveMealData()
+                    self.retrieveMealData(firstRun: false)
                 }
             }
             undoAction.backgroundColor = #colorLiteral(red: 1, green: 0.3400763623, blue: 0.3629676378, alpha: 1)
@@ -201,9 +192,10 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
         let headerView = UIView(frame: CGRect.zero)
         headerView.backgroundColor = UIColor.clear
         headerView.addSubview(settingsButton)
-        headerView.addSubview(membersButton)
         headerView.addSubview(petImage)
         headerView.addSubview(petnameLabel)
+
+        settingsButton.isHidden = true
 
         DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
             self.petnameLabel.text = pet.name
@@ -215,6 +207,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
             } else {
                 self.petImage.image = #imageLiteral(resourceName: "dog")
             }
+            self.settingsButton.isHidden = false
         }
 
         petImage.translatesAutoresizingMaskIntoConstraints = false
@@ -245,6 +238,6 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
 
 extension MealsVC: AddMealDelegate {
     func refreshTableView() {
-        retrieveMealData()
+        retrieveMealData(firstRun: false)
     }
 }
