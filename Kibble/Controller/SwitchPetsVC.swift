@@ -75,6 +75,15 @@ class SwitchPetsVC: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pet = pets[indexPath.row]
+        let uid = Auth.auth().currentUser!.uid
+        DataService.instance.updateUser(withUid: uid, withUserData: ["currentPet": pet.id])
+        DataService.instance.addPetToUser(forUid: uid, withPetId: pet.id)
+        DataService.instance.updatePetMembers(withPetId: pet.id, andMemberData: [uid: Auth.auth().currentUser!.displayName])
+        dismiss(animated: true, completion: nil)
+    }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
