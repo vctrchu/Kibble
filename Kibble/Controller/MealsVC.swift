@@ -16,7 +16,10 @@ class MealsVC: UIViewController {
     
     @IBOutlet weak var addMealButton: UIButton!
     @IBOutlet var pastelView: PastelView!
+
     private let refreshControl = UIRefreshControl()
+    private var mealArray = [Meal]()
+    //private let refreshManager = RefreshManager.shared
 
     let petImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
@@ -54,7 +57,6 @@ class MealsVC: UIViewController {
         return tv
     }()
 
-    private var mealArray = [Meal]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,8 +90,6 @@ class MealsVC: UIViewController {
         DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
             DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
                 self.mealArray = retreivedMeals
-                LocalStorage.instance.currentPetMeals = retreivedMeals
-                print(self.mealArray.count)
                 UIView.transition(with: self.tableView,
                                   duration: 0.5,
                                   options: .transitionCrossDissolve,
@@ -155,10 +155,11 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if orientation == .left {
             let doneAction = SwipeAction(style: .destructive, title: "Done") { action, indexPath in
-                let petId = LocalStorage.instance.currentUser.currentPet
-                let mealName = self.mealArray[indexPath.row].name
-                DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"true"]) {
-                    self.retrieveMealData(firstRun: false)
+                DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+                    let mealName = self.mealArray[indexPath.row].name
+                    DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"true"]) {
+                        self.retrieveMealData(firstRun: false)
+                    }
                 }
             }
             let cell = tableView.cellForRow(at: indexPath)!
@@ -166,10 +167,11 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
             return [doneAction]
         } else if orientation == .right {
             let undoAction = SwipeAction(style: .destructive, title: "Undo") { action, indexPath in
-                let petId = LocalStorage.instance.currentUser.currentPet
-                let mealName = self.mealArray[indexPath.row].name
-                DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"false"]) {
-                    self.retrieveMealData(firstRun: false)
+                DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+                    let mealName = self.mealArray[indexPath.row].name
+                    DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"false"]) {
+                        self.retrieveMealData(firstRun: false)
+                    }
                 }
             }
             undoAction.backgroundColor = #colorLiteral(red: 1, green: 0.3400763623, blue: 0.3629676378, alpha: 1)
@@ -197,17 +199,22 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
 
         settingsButton.isHidden = true
 
-        DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
-            self.petnameLabel.text = pet.name
-            if let imageUrlString = pet.photoUrl {
-                let imageUrl = URL(string: imageUrlString)!
-                let imageData = try! Data(contentsOf: imageUrl)
-                let image = UIImage(data: imageData)
-                self.petImage.image = image
-            } else {
-                self.petImage.image = #imageLiteral(resourceName: "dog")
+
+        DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+            DataService.instance.retrievePet(petId) { (returnedPet) in
+                if let pet = returnedPet {
+                    self.petnameLabel.text = pet.name
+                    if let imageUrlString = pet.photoUrl {
+                        let imageUrl = URL(string: imageUrlString)!
+                        let imageData = try! Data(contentsOf: imageUrl)
+                        let image = UIImage(data: imageData)
+                        self.petImage.image = image
+                    } else {
+                        self.petImage.image = #imageLiteral(resourceName: "dog")
+                    }
+                    self.settingsButton.isHidden = false
+                }
             }
-            self.settingsButton.isHidden = false
         }
 
         petImage.translatesAutoresizingMaskIntoConstraints = false

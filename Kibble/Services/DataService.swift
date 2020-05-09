@@ -72,9 +72,17 @@ class DataService {
             }
         }
         REF_PET_INFO.child(currentId).updateChildValues(petData)
-        //let petId = Pet(currentId, petData["name"] as! String, petData["type"] as! String)
-        //LocalStorage.instance.petIds[currentId] = petId
     }
+
+    // MARK: - Refresh Method
+
+    func setAllMealsIsFedToFalse(_ petId: String, completion: @escaping(() -> ())) {
+        // go into pet id
+        // loop through each meal and update isFed to false
+
+    }
+
+    // MARK: - Update Methods
 
     func updatePetInfo(_ petId: String, andPetData petData: Dictionary<String,Any>) {
         REF_PET_INFO.child(petId).updateChildValues(petData)
@@ -157,11 +165,6 @@ class DataService {
                 print("Could not retrieve user info")
                 return
             }
-            LocalStorage.instance.currentUser = User(withId: uid,
-                                                     withName: userDict["fullName"] as! String,
-                                                     withEmail: userDict["email"] as! String,
-                                                     withCurrentPet: userDict["currentPet"] as! String,
-                                                     withPets: userDict["pets"] as! Dictionary<String,Any>)
             handler()
         }
     }
@@ -177,6 +180,16 @@ class DataService {
         REF_USERS.child("\(uid)/pets").observe(.value) { (petSnapshot) in
             guard let dict = petSnapshot.value as? [String:Any] else {
                 print("Could not retrive all pets for user")
+                return
+            }
+            completion(dict)
+        }
+    }
+
+    func retrieveAllMealsForPet(_ petId: String, completion: @escaping (_ currentPet: [String: Any]) -> ()) {
+        REF_PET_MEALS.child((petId)).observe(.value) { (petSnapshot) in
+            guard let dict = petSnapshot.value as? [String:Any] else {
+                print("Could not retrive all meals for pet")
                 return
             }
             completion(dict)
@@ -222,17 +235,17 @@ class DataService {
         }
     }
 
-    func retrievePet(_ petId: String, completion: @escaping (_ pet: Pet) -> ()) {
+    func retrievePet(_ petId: String, completion: @escaping (_ pet: Pet?) -> ()) {
         REF_PET_INFO.child(petId).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dict = snapshot.value as? [String:Any] else {
-                print("Could not retrieve pet name")
-                return
+            if let dict = snapshot.value as? [String:Any] {
+                let name = dict["name"] as! String
+                let type = dict["type"] as! String
+                let url = dict["photoUrl"] as? String
+                let newPet = Pet(petId, name, type, url)
+                completion(newPet)
+            } else {
+                completion(nil)
             }
-            let name = dict["name"] as! String
-            let type = dict["type"] as! String
-            let url = dict["photoUrl"] as? String
-            let newPet = Pet(petId, name, type, url)
-            completion(newPet)
         }
     }
 

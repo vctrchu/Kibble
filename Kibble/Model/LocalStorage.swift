@@ -26,13 +26,5 @@ class LocalStorage {
         get { return _currentPetMeals }
     }
 
-    var currentUser: User {
-        set { _currentUser = newValue }
-        get { return _currentUser }
-    }
 
-    var userAllPets: Dictionary<String,Any> {
-        set { _userAllPets = newValue }
-        get { return _userAllPets }
-    }
 }

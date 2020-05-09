@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class SwitchPetsVC: UITableViewController {
 
     // MARK: - Properties
-
     private var pets = [Pet]()
 
     override func viewDidLoad() {
@@ -23,15 +23,21 @@ class SwitchPetsVC: UITableViewController {
     override func loadView() {
         super.loadView()
         tableView.tableFooterView = UIView()
+        tableView.alpha = 0
     }
 
     func setup() {
-        DataService.instance.retrieveAllPetsForUser(withUid: LocalStorage.instance.currentUser.id) { (allPetIds) in
+
+        // TODO: - Add loading indicator... currently settings page pauses before this is loaded..
+
+        DataService.instance.retrieveAllPetsForUser(withUid: Auth.auth().currentUser!.uid) { (allPetIds) in
             let group = DispatchGroup()
             for (key, _) in allPetIds {
                 group.enter()
-                DataService.instance.retrievePet(key) { (pet) in
-                    self.pets.append(pet)
+                DataService.instance.retrievePet(key) { (returnedPet) in
+                    if let pet = returnedPet {
+                        self.pets.append(pet)
+                    }
                     group.leave()
                 }
             }
@@ -40,6 +46,7 @@ class SwitchPetsVC: UITableViewController {
                 print("All requests finished")
                 print(self.pets.count)
                 self.tableView.reloadData()
+                self.tableView.fadeIn(duration: 0.25, delay: 0, completion: nil)
             }
         }
     }

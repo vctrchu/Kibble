@@ -75,8 +75,8 @@ class SignInVC: UIViewController {
             signInGoogle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
-        //        signInGoogle.addTarget(self, action: #selector(googleSignInTapped), for: .touchUpInside)
-        signInGoogle.addTarget(self, action: #selector(presentNextVC), for: .touchUpInside)
+        signInGoogle.addTarget(self, action: #selector(googleSignInTapped), for: .touchUpInside)
+        //signInGoogle.addTarget(self, action: #selector(presentNextVC), for: .touchUpInside)
         self.view.addSubview(signInGoogle)
     }
 
@@ -178,10 +178,24 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
                 }
                 print("********* SUCCESSFULLY SIGNED INTO FIREBASE WTIH APPLE **********")
 
-                let userData: Dictionary<String, Any> = ["email": appleIDCredential.email!,
-                                                         "fullName": (appleIDCredential.fullName?.givenName)! + " " + (appleIDCredential.fullName?.familyName)!]
-                DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
-                self.presentNextVC()
+                if let email = appleIDCredential.email {
+                    // User has never signed in with this appleId once
+                    let userData: Dictionary<String, Any> = ["email": email,
+                                                             "fullName": (appleIDCredential.fullName?.givenName)! + " " + (appleIDCredential.fullName?.familyName)!]
+                    DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
+                    self.presentNextVC()
+                } else {
+                    let uid = Auth.auth().currentUser!.uid
+                    DataService.instance.retrieveAllPetsForUser(withUid: uid) { ([String : Any]) in }
+                    DataService.instance.downloadPetIds()
+                    DataService.instance.retrieveAllUserInfo(withUid: uid) {
+                        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+                        mealsVC.modalPresentationStyle = .fullScreen
+                        mealsVC.isMotionEnabled = true
+                        mealsVC.motionTransitionType = .fade
+                        self.present(mealsVC, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }

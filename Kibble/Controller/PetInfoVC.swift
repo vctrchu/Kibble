@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PetInfoVC: UIViewController {
 
@@ -33,24 +34,25 @@ class PetInfoVC: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
 
-        DataService.instance.retrievePet(LocalStorage.instance.currentUser.currentPet) { (pet) in
-            var petImage = UIImage()
-            if let imageUrlString = pet.photoUrl {
-                let imageUrl = URL(string: imageUrlString)!
-                let imageData = try! Data(contentsOf: imageUrl)
-                let image = UIImage(data: imageData)
-                petImage = image!
-            } else {
-                petImage = #imageLiteral(resourceName: "dog")
-            }
-            self.petnameTextField.text = pet.name
-            self.typeOfPetTextField.text = pet.type
-            self.petPhoto.image = petImage
-            self.petPhoto.fadeIn(duration: 0.25, delay: 0) { (Bool) in
-                self.petnameTextField.fadeIn(duration: 0.25, delay: 0) { (Bool) in
-                    self.typeOfPetTextField.fadeIn(duration: 0.25, delay: 0) { (Bool) in
+        DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+            DataService.instance.retrievePet(petId) { (returnedPet) in
+                var petImage = UIImage()
+                if let pet = returnedPet {
+                    if let imageUrlString = pet.photoUrl {
+                        let imageUrl = URL(string: imageUrlString)!
+                        let imageData = try! Data(contentsOf: imageUrl)
+                        let image = UIImage(data: imageData)
+                        petImage = image!
+                    } else {
+                        petImage = #imageLiteral(resourceName: "dog")
                     }
+                    self.petnameTextField.text = pet.name
+                    self.typeOfPetTextField.text = pet.type
                 }
+                self.petPhoto.image = petImage
+                self.petPhoto.fadeIn(duration: 0.25, delay: 0, completion: nil)
+                self.petnameTextField.fadeIn(duration: 0.25, delay: 0, completion: nil)
+                self.typeOfPetTextField.fadeIn(duration: 0.25, delay: 0, completion: nil)
             }
         }
     }
@@ -107,10 +109,12 @@ class PetInfoVC: UIViewController {
         if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
             saveButton.shake()
         } else {
-            DataService.instance.updatePetPhoto(LocalStorage.instance.currentUser.id, petPhoto.image!) { (url) in
-                let petData = ["name": self.petnameTextField.text!, "type": self.typeOfPetTextField.text!, "photoUrl": url.absoluteString]
-                DataService.instance.updatePetInfo(LocalStorage.instance.currentUser.currentPet, andPetData: petData)
-                self.dismiss(animated: true, completion: nil)
+            DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+                DataService.instance.updatePetPhoto(petId, self.petPhoto.image!) { (url) in
+                    let petData = ["name": self.petnameTextField.text!, "type": self.typeOfPetTextField.text!, "photoUrl": url.absoluteString]
+                    DataService.instance.updatePetInfo(petId, andPetData: petData)
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }

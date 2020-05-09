@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AddMealDelegate {
     func refreshTableView()
@@ -145,16 +146,17 @@ class AddMealVC: UIViewController {
 
     func dismissVC() {
         let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let petId = LocalStorage.instance.currentUser.currentPet
         let mealData = ["isFed": "false", "type": mealType]
         let notificationData: Dictionary<String, Any> = ["notification" : reminderTime]
-        DataService.instance.updatePetMeals(withPetId: petId , withMealName: mealName, andMealData: mealData) {}
-        DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {
-            DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {}
-        }
-        DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
-            self.dismiss(animated: true) {
-                self.delegate?.refreshTableView()
+        DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+            DataService.instance.updatePetMeals(withPetId: petId , withMealName: mealName, andMealData: mealData) {}
+            DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: mealName, andMealData: mealData) {
+                DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {}
+            }
+            DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: mealName, andNotificationData: notificationData) {
+                self.dismiss(animated: true) {
+                    self.delegate?.refreshTableView()
+                }
             }
         }
     }

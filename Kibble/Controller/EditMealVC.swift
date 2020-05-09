@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol EditMealDelegate {
     func refreshTableView()
@@ -199,10 +200,12 @@ class EditMealVC: UIViewController {
         }))
 
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
-            DataService.instance.deleteDefaultMeal(petId: LocalStorage.instance.currentUser.currentPet, mealName: self.mealName) {}
-            DataService.instance.deleteMeal(id: LocalStorage.instance.currentUser.currentPet, mealName: self.mealName) {
-                self.delegate?.refreshTableView()
-                self.dismiss(animated: true, completion: nil)
+            DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+                DataService.instance.deleteDefaultMeal(petId: petId, mealName: self.mealName) {}
+                DataService.instance.deleteMeal(id: petId, mealName: self.mealName) {
+                    self.delegate?.refreshTableView()
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }))
 
@@ -236,19 +239,21 @@ class EditMealVC: UIViewController {
 
     func dismissVC() {
         let newMealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let petId = LocalStorage.instance.currentUser.currentPet
         let mealData = ["isFed": "false", "type": mealType]
         let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
-        DataService.instance.deleteDefaultMeal(petId: petId, mealName: mealName) {
-            DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: newMealName, andMealData: mealData) {
-                DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {}
+
+        DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+            DataService.instance.deleteDefaultMeal(petId: petId, mealName: self.mealName) {
+                DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: newMealName, andMealData: mealData) {
+                    DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {}
+                }
             }
-        }
-        DataService.instance.deleteMeal(id: petId, mealName: mealName) {
-            DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {
-                DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
-                    self.dismiss(animated: true) {
-                        self.delegate?.refreshTableView()
+            DataService.instance.deleteMeal(id: petId, mealName: self.mealName) {
+                DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {
+                    DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
+                        self.dismiss(animated: true) {
+                            self.delegate?.refreshTableView()
+                        }
                     }
                 }
             }
