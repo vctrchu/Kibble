@@ -10,16 +10,17 @@ import UIKit
 import Firebase
 import Pastel
 import SwipeCellKit
+import UserNotifications
 
 @available(iOS 13.0, *)
 class MealsVC: UIViewController {
+
+    // MARK: - Properties
     
     @IBOutlet weak var addMealButton: UIButton!
     @IBOutlet var pastelView: PastelView!
-
     private let refreshControl = UIRefreshControl()
     private var mealArray = [Meal]()
-    //private let refreshManager = RefreshManager.shared
 
     let petImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
@@ -57,6 +58,7 @@ class MealsVC: UIViewController {
         return tv
     }()
 
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +92,7 @@ class MealsVC: UIViewController {
         DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
             DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
                 self.mealArray = retreivedMeals
+                self.setUpLocalNotifcations()
                 UIView.transition(with: self.tableView,
                                   duration: 0.5,
                                   options: .transitionCrossDissolve,
@@ -102,6 +105,52 @@ class MealsVC: UIViewController {
             }
         }
     }
+
+    func setUpLocalNotifcations() {
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        for meal in mealArray {
+            let time = meal.notification
+            if time != "none" {
+
+                let content = UNMutableNotificationContent()
+                content.title = "Time to feed your pet \(meal.name)!"
+                content.sound = UNNotificationSound.default
+
+                // Convert 12hr string to 12hr date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:mm a"
+                let date12Hr = dateFormatter.date(from: time)
+                // Convert 12hr date to 24hr string
+                dateFormatter.dateFormat = "HH:mm"
+                let string24Hr = dateFormatter.string(from: date12Hr!)
+                print(string24Hr)
+                // 24hr string to 24hr date
+                let date24Hr = dateFormatter.date(from: string24Hr)
+
+                var calendar = Calendar(identifier: .gregorian)
+                let hour = calendar.component(.hour, from: date24Hr!)
+                let minute = calendar.component(.minute, from: date24Hr!)
+                print("\(hour) + \(minute)")
+
+                var dateComponents = DateComponents()
+                dateComponents.hour = hour
+                dateComponents.minute = minute
+
+                
+
+                // show this notification for meal times from now
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+                // choose a random identifier
+                let request = UNNotificationRequest(identifier: meal.name, content: content, trigger: trigger)
+                notificationCenter.add(request)
+            }
+        }
+    }
+
+
+    // MARK: - Add Target Methods
 
     @objc func mealDataRefresh() {
         retrieveMealData(firstRun: false)
@@ -118,6 +167,8 @@ class MealsVC: UIViewController {
     }
 
 }
+
+// MARK: - Table View Delegate
 
 @available(iOS 13.0, *)
 extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {

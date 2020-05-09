@@ -10,9 +10,13 @@ import UIKit
 
 class MemberCell: UITableViewCell {
 
-    let defaultImage = UIImageView()
-    let nameLabel = UILabel()
+    // MARK: - Properties
 
+    private let defaultImage = UIImageView()
+    private let nameLabel = UILabel()
+
+    // MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 

@@ -34,6 +34,7 @@ class EditMealVC: UIViewController {
     @IBOutlet weak var dryButton: UIButton!
     @IBOutlet weak var wetButton: UIButton!
     @IBOutlet weak var treatButton: UIButton!
+    @IBOutlet weak var turnOffNotifications: UIButton!
 
     var mealName: String = ""
     var mealType: String = ""
@@ -48,16 +49,19 @@ class EditMealVC: UIViewController {
         setup(name: mealName, type: mealType, notification: reminderTime)
     }
 
+    //MARK: - Auto Constraints
+
     override func loadView() {
         super.loadView()
-        self.view.addSubview(deleteButton)
-        self.view.addSubview(cancelButton)
-        self.view.addSubview(addMealTitle)
-        self.view.addSubview(mealNameTextField)
-        self.view.addSubview(typeFoodStackView)
-        self.view.addSubview(typeOfFoodTitle)
-        self.view.addSubview(addReminderButton)
-        self.view.addSubview(saveButton)
+        view.addSubview(deleteButton)
+        view.addSubview(cancelButton)
+        view.addSubview(addMealTitle)
+        view.addSubview(mealNameTextField)
+        view.addSubview(typeFoodStackView)
+        view.addSubview(typeOfFoodTitle)
+        view.addSubview(addReminderButton)
+        view.addSubview(turnOffNotifications)
+        view.addSubview(saveButton)
 
         deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
@@ -65,8 +69,8 @@ class EditMealVC: UIViewController {
         addMealTitle.translatesAutoresizingMaskIntoConstraints = false
         addMealTitle.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            addMealTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100.adjusted),
-            addMealTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            addMealTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.adjusted),
+            addMealTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
 
         mealNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +83,7 @@ class EditMealVC: UIViewController {
         mealNameTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
         NSLayoutConstraint.activate([
             mealNameTextField.topAnchor.constraint(equalTo: addMealTitle.bottomAnchor, constant: 20.adjusted),
-            mealNameTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            mealNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mealNameTextField.heightAnchor.constraint(equalToConstant: 60.adjusted),
             mealNameTextField.widthAnchor.constraint(equalToConstant: 301.adjusted)
         ])
@@ -88,14 +92,14 @@ class EditMealVC: UIViewController {
         typeOfFoodTitle.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
             typeOfFoodTitle.topAnchor.constraint(equalTo: mealNameTextField.bottomAnchor, constant: 20.adjusted),
-            typeOfFoodTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            typeOfFoodTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
 
         typeFoodStackView.translatesAutoresizingMaskIntoConstraints = false
         typeFoodStackView.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
             typeFoodStackView.topAnchor.constraint(equalTo: typeOfFoodTitle.bottomAnchor, constant: 20.adjusted),
-            typeFoodStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            typeFoodStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
         addReminderButton.translatesAutoresizingMaskIntoConstraints = false
@@ -105,14 +109,23 @@ class EditMealVC: UIViewController {
         addReminderButton.addTarget(self, action: #selector(addReminderPressed), for: .touchUpInside)
         NSLayoutConstraint.activate([
             addReminderButton.topAnchor.constraint(equalTo: typeFoodStackView.bottomAnchor, constant: 20.adjusted),
-            addReminderButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            addReminderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+
+        turnOffNotifications.translatesAutoresizingMaskIntoConstraints = false
+               turnOffNotifications.setTitle("Turn off notifications", for: .normal)
+               turnOffNotifications.setTitleColor(UIColor.white.withAlphaComponent(0.8), for: .normal)
+               turnOffNotifications.addTarget(self, action: #selector(turnOffNotificationsPressed), for: .touchUpInside)
+               NSLayoutConstraint.activate([
+                   turnOffNotifications.topAnchor.constraint(equalTo: addReminderButton.bottomAnchor, constant: 20.adjusted),
+                   turnOffNotifications.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+               ])
 
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: addReminderButton.bottomAnchor, constant: 20.adjusted),
-            saveButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            saveButton.topAnchor.constraint(equalTo: turnOffNotifications.bottomAnchor, constant: 20.adjusted),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
 
@@ -153,6 +166,11 @@ class EditMealVC: UIViewController {
     }
 
     // MARK: - Target Selectors
+
+    @objc func turnOffNotificationsPressed() {
+        reminderTime = "none"
+        addReminderButton.setTitle("Add Reminder", for: .normal)
+    }
     
     @objc func addReminderPressed() {
         let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderVC

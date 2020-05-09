@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 import Motion
 import SimpleAnimation
 import Pastel
 
 @available(iOS 13.0, *)
 class AddYourFirstMealVC: UIViewController {
+
+    // MARK: - Properties
 
     @IBOutlet var pastelView: PastelView!
     @IBOutlet weak var almostThereTitle: UIImageView!
@@ -31,13 +34,16 @@ class AddYourFirstMealVC: UIViewController {
     @IBOutlet weak var orTitle: UIImageView!
     @IBOutlet weak var joinExistingScheduleButton: UIButton!
 
-    var petId = ""
-    var petData = Dictionary<String, Any>()
-    var mealType = ""
+    private var petCodeTextField: UITextField?
+    private var petId = ""
+    private var mealType = ""
+    private var petData = Dictionary<String, Any>()
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGenstures()
+        addGestures()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -61,6 +67,13 @@ class AddYourFirstMealVC: UIViewController {
             }
         }
     }
+
+    func setupVariables(petId: String, petData: [String:Any]) {
+        self.petId = petId
+        self.petData = petData
+    }
+
+    // MARK: - Auto Constraints
 
     override func loadView() {
         super.loadView()
@@ -133,6 +146,7 @@ class AddYourFirstMealVC: UIViewController {
 
         joinExistingScheduleButton.translatesAutoresizingMaskIntoConstraints = false
         joinExistingScheduleButton.contentMode = UIView.ContentMode.scaleAspectFit
+        joinExistingScheduleButton.addTarget(self, action: #selector(joinExistingSchedulePressed), for: .touchUpInside)
         joinExistingScheduleButton.alpha = 0
         NSLayoutConstraint.activate([
             joinExistingScheduleButton.topAnchor.constraint(equalTo: orTitle.bottomAnchor, constant: 20.adjusted),
@@ -141,7 +155,9 @@ class AddYourFirstMealVC: UIViewController {
         self.view.addSubview(joinExistingScheduleButton)
     }
 
-    func addGenstures() {
+    // MARK: - Gesutures
+
+    func addGestures() {
         self.hideKeyboardWhenTappedAround()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
@@ -157,6 +173,8 @@ class AddYourFirstMealVC: UIViewController {
         treatFoodButton.addTarget(self, action: #selector(foodTypeTapped), for: .touchUpInside)
         saveMealButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
     }
+
+    // MARK: - Add Target Methods
 
     @objc func foodTypeTapped(_ button: UIButton) {
         switch button {
@@ -193,15 +211,43 @@ class AddYourFirstMealVC: UIViewController {
         } else {
             let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as? AllowNotificationsVC
-            allowNotificationsVC?.modalPresentationStyle = .fullScreen
-            allowNotificationsVC?.isMotionEnabled = true
-            allowNotificationsVC?.motionTransitionType = .slide(direction: .left)
-            allowNotificationsVC?.petId = petId
-            allowNotificationsVC?.petData = petData
-            allowNotificationsVC?.mealName = mealName
-            allowNotificationsVC?.mealType = mealType
-            self.present(allowNotificationsVC!, animated: true, completion: nil)
+            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as! AllowNotificationsVC
+            allowNotificationsVC.modalPresentationStyle = .fullScreen
+            allowNotificationsVC.isMotionEnabled = true
+            allowNotificationsVC.motionTransitionType = .slide(direction: .left)
+            allowNotificationsVC.setupVariables(petId: petId, petData: petData, mealName: mealName, mealType: mealType)
+            self.present(allowNotificationsVC, animated: true, completion: nil)
+        }
+    }
+
+    @objc func joinExistingSchedulePressed() {
+        let alertController = UIAlertController(title: "Enter pet code", message: nil, preferredStyle: .alert)
+
+        let joinAction = UIAlertAction(title: "Join", style: .default) { (joinHandler) in
+            // 1. Retreive petID, else alert user the id is wrong
+            if let enteredPetId = self.petCodeTextField?.text {
+                DataService.instance.retrievePet(enteredPetId) { (returnedPet) in
+                    if let pet = returnedPet {
+                        // 2. Update userID current petId to the entered petID
+                        let uid = Auth.auth().currentUser!.uid
+                        DataService.instance.addPetToUser(forUid: uid, withPetId: pet.id)
+                        DataService.instance.updatePetMembers(withPetId: pet.id, andMemberData: [uid: Auth.auth().currentUser!.displayName])
+                        DataService.instance.updateUserCompletion(uid, ["currentPet": pet.id]) {
+                            // present mealsVC once database is updated....
+                            let mealsVC = self.storyboard?.instantiateViewController(identifier: "MealsVC") as! MealsVC
+                            mealsVC.modalPresentationStyle = .fullScreen
+                            mealsVC.motionTransitionType = .fade
+                            self.present(mealsVC, animated: true, completion: nil)
+                        }
+
+                    } else {
+                        let errorAlertController = UIAlertController(title: "Invalid pet code", message: "Please try again", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        errorAlertController.addAction(okAction)
+                        self.present(errorAlertController, animated: true, completion: nil)
+                    }
+                }
+            }
         }
     }
 }

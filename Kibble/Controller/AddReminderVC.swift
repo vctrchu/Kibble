@@ -15,6 +15,8 @@ protocol AddNotificationDelegate {
 
 class AddReminderVC: UIViewController {
 
+    //MARK: - Properties
+
     @IBOutlet weak var addReminderTitle: UIImageView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var addButton: UIButton!
@@ -22,10 +24,14 @@ class AddReminderVC: UIViewController {
 
     var delegate: AddNotificationDelegate?
     var time: String?
+
+    //MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    //MARK: - Auto Constraints
 
     override func loadView() {
         super.loadView()
@@ -65,6 +71,8 @@ class AddReminderVC: UIViewController {
         ])
 
     }
+
+    //MARK: - Add Target Methods
 
     @objc func cancelButtonPressed() {
         dismiss(animated: true, completion: nil)

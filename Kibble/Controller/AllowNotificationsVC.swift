@@ -12,16 +12,20 @@ import Firebase
 
 class AllowNotificationsVC: UIViewController {
 
+    // MARK: - Properties
+
     @IBOutlet weak var notificationTitle: UIImageView!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var noThanksButton: UIButton!
     @IBOutlet weak var yesNotifyMeButton: UIButton!
     @IBOutlet weak var timePickerView: UIDatePicker!
 
-    var petId = ""
-    var petData = Dictionary<String,Any>()
-    var mealName = ""
-    var mealType = ""
+    private var petId = ""
+    private var petData = Dictionary<String,Any>()
+    private var mealName = ""
+    private var mealType = ""
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,18 +60,20 @@ class AllowNotificationsVC: UIViewController {
 
     }
 
-    func addButtonFunctionality() {
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        noThanksButton.addTarget(self, action: #selector(noThanksPressed), for: .touchUpInside)
-        yesNotifyMeButton.addTarget(self, action: #selector(yesNotifyMePressed), for: .touchUpInside)
+    func setupVariables(petId: String, petData: [String:Any], mealName: String, mealType: String) {
+        self.petId = petId
+        self.petData = petData
+        self.mealName = mealName
+        self.mealType = mealType
     }
 
-    func getTimePickerValue() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        return dateFormatter.string(from: timePickerView.date)
+    // MARK: - Add Target Methods
+
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == .right {
+            motionTransitionType = .slide(direction: .right)
+            dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc func noThanksPressed() {
@@ -91,6 +97,8 @@ class AllowNotificationsVC: UIViewController {
                 }
         }
     }
+
+    // MARK: - Move to next VC Methods
 
     func moveToMealsVC() {
         let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC")
@@ -126,10 +134,17 @@ class AllowNotificationsVC: UIViewController {
         }
     }
 
-    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == .right {
-            motionTransitionType = .slide(direction: .right)
-            dismiss(animated: true, completion: nil)
-        }
+    func getTimePickerValue() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        return dateFormatter.string(from: timePickerView.date)
+    }
+
+    func addButtonFunctionality() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        noThanksButton.addTarget(self, action: #selector(noThanksPressed), for: .touchUpInside)
+        yesNotifyMeButton.addTarget(self, action: #selector(yesNotifyMePressed), for: .touchUpInside)
     }
 }

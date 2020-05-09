@@ -564,6 +564,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlF-xM-BMl">
+                                <rect key="frame" x="164" y="405" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -580,6 +585,7 @@
                         <outlet property="mealNameTextField" destination="h7c-12-EWv" id="agm-DH-z0b"/>
                         <outlet property="saveButton" destination="WHq-CH-77H" id="0lm-0f-Gy4"/>
                         <outlet property="treatButton" destination="B91-sk-21n" id="aSO-iC-D5A"/>
+                        <outlet property="turnOffNotifications" destination="rlF-xM-BMl" id="56i-mQ-Hot"/>
                         <outlet property="typeFoodStackView" destination="8MI-le-dGC" id="pXm-z3-5cH"/>
                         <outlet property="typeOfFoodTitle" destination="Igd-ge-35P" id="a3I-Kg-NmV"/>
                         <outlet property="wetButton" destination="oMW-r5-smR" id="cdR-c5-MAj"/>
@@ -702,6 +708,11 @@
                                 </constraints>
                                 <state key="normal" image="deleteButton"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuX-3y-M5P">
+                                <rect key="frame" x="165" y="411" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -721,6 +732,7 @@
                         <outlet property="mealNameTextField" destination="0cH-yW-R3B" id="dEI-3e-ezb"/>
                         <outlet property="saveButton" destination="Zv3-JT-aa3" id="oFk-mR-ZuI"/>
                         <outlet property="treatButton" destination="l3s-Z2-OF9" id="lJT-a8-WvV"/>
+                        <outlet property="turnOffNotifications" destination="vuX-3y-M5P" id="zi4-sy-Woa"/>
                         <outlet property="typeFoodStackView" destination="RBt-CW-fzF" id="Co7-56-8ST"/>
                         <outlet property="typeOfFoodTitle" destination="zSE-2D-xhI" id="FiK-Zf-PJz"/>
                         <outlet property="wetButton" destination="SjE-Yo-qiy" id="qx7-O7-wCh"/>
@@ -764,7 +776,6 @@
         <!--Switch PetsVC-->
         <scene sceneID="fI0-pk-YKj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jCU-oG-chm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="SwitchPetsVC" id="EZd-un-evD" customClass="SwitchPetsVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZK1-TB-yhv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -793,6 +804,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jCU-oG-chm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2702" y="1538"/>
         </scene>

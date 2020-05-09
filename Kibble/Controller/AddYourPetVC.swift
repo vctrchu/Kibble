@@ -13,6 +13,8 @@ import Pastel
 @available(iOS 13.0, *)
 class AddYourPetVC: UIViewController {
 
+    // MARK: - Properties
+
     @IBOutlet var pastelView: PastelView!
     @IBOutlet weak var addYourPetTitleImage: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
@@ -30,6 +32,8 @@ class AddYourPetVC: UIViewController {
     }
 
     var lastPastelView: PastelView?
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +59,8 @@ class AddYourPetVC: UIViewController {
             }
         }
     }
+
+    // MARK: - Auto Constraints
 
     override func loadView() {
         super.loadView()
@@ -110,6 +116,8 @@ class AddYourPetVC: UIViewController {
 
     }
 
+    // MARK: - Add Target Methods
+
     @objc func nextButtonPressed() {
         if petnameTextField.text?.isReallyEmpty ?? true || typeOfPetTextField.text?.isReallyEmpty ?? true {
             nextButton.shake()
@@ -124,13 +132,13 @@ class AddYourPetVC: UIViewController {
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true
             addFirstMealVC?.motionTransitionType = .fade
-            addFirstMealVC?.petId = petID
-            addFirstMealVC?.petData = petData
+            addFirstMealVC?.setupVariables(petId: petID, petData: petData)
             self.present(addFirstMealVC!, animated: true, completion: nil)
         }
     }
 }
 
+// Keyboard return key moves to next text field
 @available(iOS 13.0, *)
 extension AddYourPetVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

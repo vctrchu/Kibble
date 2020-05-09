@@ -18,7 +18,6 @@
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB3940A82442A395003AD374 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3940A72442A395003AD374 /* Nonce.swift */; };
-		FB414EAB244FFAEF00807085 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EAA244FFAEF00807085 /* LocalStorage.swift */; };
 		FB414EAD244FFB5B00807085 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EAC244FFB5B00807085 /* Pet.swift */; };
 		FB414EAF2451362E00807085 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EAE2451362E00807085 /* MealCell.swift */; };
 		FB414EB12452460C00807085 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB02452460C00807085 /* Meal.swift */; };
@@ -35,7 +34,6 @@
 		FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderVC.swift */; };
 		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
 		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
-		FBC4086A2439565600DC3ACE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC408692439565600DC3ACE /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +53,6 @@
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB3940A62442983D003AD374 /* Kibble.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kibble.entitlements; sourceTree = "<group>"; };
 		FB3940A72442A395003AD374 /* Nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonce.swift; sourceTree = "<group>"; };
-		FB414EAA244FFAEF00807085 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		FB414EAC244FFB5B00807085 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		FB414EAE2451362E00807085 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		FB414EB02452460C00807085 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 		FBB37C2F24565FDC000E723B /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 		FBBC84222382E2BE00BD55A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		FBC408692439565600DC3ACE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +124,7 @@
 				FB3940A62442983D003AD374 /* Kibble.entitlements */,
 				FB2B2F792324A73F004AE08D /* AppDelegate.swift */,
 				FBBC84222382E2BE00BD55A9 /* Extensions.swift */,
+				FB3940A72442A395003AD374 /* Nonce.swift */,
 				FB62A5B123850B9500FB5557 /* Services */,
 				FB2B2F8B2324B065004AE08D /* Model */,
 				FB2B2F8C2324B06E004AE08D /* View */,
@@ -144,8 +141,6 @@
 		FB2B2F8B2324B065004AE08D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB414EAA244FFAEF00807085 /* LocalStorage.swift */,
-				FBC408692439565600DC3ACE /* User.swift */,
 				FB414EAC244FFB5B00807085 /* Pet.swift */,
 				FB414EB02452460C00807085 /* Meal.swift */,
 			);
@@ -193,7 +188,6 @@
 			children = (
 				FB62A5AF23850B8A00FB5557 /* DataService.swift */,
 				FBC40867243955D500DC3ACE /* AuthService.swift */,
-				FB3940A72442A395003AD374 /* Nonce.swift */,
 				FB5931BB2466687700349A53 /* RefreshManager.swift */,
 			);
 			path = Services;
@@ -332,7 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBC4086A2439565600DC3ACE /* User.swift in Sources */,
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
 				FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */,
 				FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */,
@@ -350,7 +343,6 @@
 				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
 				FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */,
 				FB5931BA2464E46900349A53 /* SwitchPetsVC.swift in Sources */,
-				FB414EAB244FFAEF00807085 /* LocalStorage.swift in Sources */,
 				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
 				FB5931B624625DDC00349A53 /* MemberCell.swift in Sources */,
 				FB5931B82463979600349A53 /* PetInfoVC.swift in Sources */,

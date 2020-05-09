@@ -30,6 +30,8 @@ class PetInfoVC: UIViewController {
         }
     }
 
+    //MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()

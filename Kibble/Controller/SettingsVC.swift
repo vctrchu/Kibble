@@ -109,9 +109,6 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
             let alertController = UIAlertController(title: "Enter pet code", message: nil, preferredStyle: .alert)
 
             let joinAction = UIAlertAction(title: "Join", style: .default) { (joinHandler) in
-                //var success = false
-                // start a loading indicator here
-
                 // 1. Retreive petID, else alert user the id is wrong
                 if let enteredPetId = self.petCodeTextField?.text {
                     DataService.instance.retrievePet(enteredPetId) { (returnedPet) in

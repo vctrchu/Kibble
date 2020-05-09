@@ -15,12 +15,16 @@ import Pastel
 @available(iOS 13.0, *)
 class SignInVC: UIViewController {
 
+    // MARK: - Properties
+
     @IBOutlet weak var kibbleMainIcon: UIImageView!
     @IBOutlet weak var signInApple: UIButton!
     @IBOutlet weak var signInGoogle: UIButton!
     @IBOutlet var pastelView: PastelView!
 
     fileprivate var currentNonce: String?
+
+    // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +45,8 @@ class SignInVC: UIViewController {
             }
         }
     }
+
+    // MARK: - Auto Constraints
 
     override func loadView() {
         super.loadView()
@@ -117,6 +123,8 @@ class SignInVC: UIViewController {
     }
 }
 
+// MARK: - Google Sign In Delegate
+
 @available(iOS 13.0, *)
 extension SignInVC: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -139,6 +147,8 @@ extension SignInVC: GIDSignInDelegate {
         }
     }
 }
+
+// MARK: - Apple Sign In Delegate
 
 @available(iOS 13.0, *)
 extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {

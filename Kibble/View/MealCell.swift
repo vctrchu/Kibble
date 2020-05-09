@@ -12,9 +12,13 @@ import SwipeCellKit
 @available(iOS 13.0, *)
 class MealCell: SwipeTableViewCell {
 
-    let typeImage = UIImageView()
-    let nameLabel = UILabel()
-    let cellView = UIView()
+    // MARK: - Properties
+
+    private let typeImage = UIImageView()
+    private let nameLabel = UILabel()
+    private let cellView = UIView()
+
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
