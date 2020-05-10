@@ -249,5 +249,27 @@ class AddYourFirstMealVC: UIViewController {
                 }
             }
         }
+
+        joinAction.isEnabled = false
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+
+        alertController.addTextField { (textField) in
+              self.petCodeTextField = textField
+              self.petCodeTextField?.placeholder = "ABC123"
+
+              // Observe the UITextFieldTextDidChange notification to be notified in the below block when text is changed
+              NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                  {_ in
+                      var enableTextField = true
+                      if textField.text?.isReallyEmpty ?? true {
+                          enableTextField = false
+                      }
+                      joinAction.isEnabled = enableTextField
+              })
+          }
+        alertController.addAction(joinAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
