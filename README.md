@@ -1,5 +1,7 @@
 
 ![screenshot](https://github.com/vctrchu/Kibble/blob/master/ReadmeAssets/KibbleCoverImage.png)
+##
+![screenshot](https://github.com/vctrchu/Kibble/blob/master/ReadmeAssets/KibbleGif.gif)
 
 ## Key Features
 
