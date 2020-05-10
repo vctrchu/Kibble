@@ -17,7 +17,7 @@
 
 ## Download
 
-You can [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0) the latest version of Kibble on the Apple app store.
+You can [download]() the latest version of Kibble on the Apple app store.
 
 ## Credits
 
