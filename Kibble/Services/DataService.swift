@@ -39,8 +39,7 @@ class DataService {
      Possible fix I can think of: Remove all unused elements from dictionary except the ones associated with the current user.
      */
     func downloadPetIds() {
-        REF_PET_INFO.observeSingleEvent(of: .value) { (petInfoSnapshot) in
-
+        REF_PET_INFO.observe(.value) { (petInfoSnapshot) in
             guard let petInfoSnapshot = petInfoSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for petInfo in petInfoSnapshot {
                 let id = petInfo.key
@@ -48,7 +47,6 @@ class DataService {
                 guard let type = petInfo.childSnapshot(forPath: "type").value as? String else { continue }
                 let newPet = Pet(id, name, type, nil)
                 self.petIds[id] = newPet
-                print(self.petIds[id])
             }
         }
     }
