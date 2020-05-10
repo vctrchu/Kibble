@@ -20,26 +20,10 @@ You can [download](https://github.com/amitmerchant1990/electron-markdownify/rele
 
 This software uses the following open source packages:
 
-- [Electron](http://electron.atom.io/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
+- [Google Firebase](https://firebase.google.com/)
+- [Pastel](https://github.com/cruisediary/Pastel)
+- [Motion](https://github.com/CosmicMind/Motion)
+- [SimpleAnimation](https://github.com/keithito/SimpleAnimation)
+- [SwipeCellKit](https://github.com/SwipeCellKit/SwipeCellKit)
+- [Flaticon](https://www.flaticon.com/)
 
-
-pod 'Firebase/Analytics'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'Firebase/Storage'
-pod 'GoogleSignIn'
-
-pod 'LayoutHelper'
-pod 'TransitionButton'
-pod 'IHKeyboardAvoiding'
-pod 'Motion'
-pod 'SimpleAnimation'
-pod 'Pastel'
-pod 'SwipeCellKit'
-pod 'NVActivityIndicatorView'
