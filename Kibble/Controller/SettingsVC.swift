@@ -30,7 +30,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
         // Set petcode cell
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-            self.petCodeLabel.text = "Pet code: " + petId
+            self.petCodeLabel.text = "Pet code: " + petId!
         }
         logOutButton.addTarget(self, action: #selector(logOutPressed), for: .touchUpInside)
     }
@@ -84,7 +84,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
         // Manage members
         else if indexPath.row == 1 && indexPath.section == 0 {
             DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-                DataService.instance.retrieveAllMemberNames(forPetId: petId) { (names) in
+                DataService.instance.retrieveAllMemberNames(forPetId: petId!) { (names) in
                     let membersVC = self.storyboard?.instantiateViewController(withIdentifier: "MembersVC") as? MembersVC
                     membersVC?.setup(names: names)
                     self.present(membersVC!, animated: true, completion: nil)

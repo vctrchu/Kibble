@@ -37,7 +37,7 @@ class PetInfoVC: UIViewController {
         hideKeyboardWhenTappedAround()
 
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-            DataService.instance.retrievePet(petId) { (returnedPet) in
+            DataService.instance.retrievePet(petId!) { (returnedPet) in
                 var petImage = UIImage()
                 if let pet = returnedPet {
                     if let imageUrlString = pet.photoUrl {
@@ -112,9 +112,9 @@ class PetInfoVC: UIViewController {
             saveButton.shake()
         } else {
             DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-                DataService.instance.updatePetPhoto(petId, self.petPhoto.image!) { (url) in
+                DataService.instance.updatePetPhoto(petId!, self.petPhoto.image!) { (url) in
                     let petData = ["name": self.petnameTextField.text!, "type": self.typeOfPetTextField.text!, "photoUrl": url.absoluteString]
-                    DataService.instance.updatePetInfo(petId, andPetData: petData)
+                    DataService.instance.updatePetInfo(petId!, andPetData: petData)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

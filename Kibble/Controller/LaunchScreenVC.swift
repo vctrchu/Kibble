@@ -19,7 +19,21 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentMealsVC()
+            //Auth.auth().currentUser == nil && ? self.presentSignInVC() : self.presentMealsVC()
+            // User is signed in and has at least one pet
+            if Auth.auth().currentUser != nil {
+                DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
+                    if petId != nil {
+                        self.presentMealsVC()
+                    } else {
+                        // User is signed in but has no pets to show on MealsVC
+                        self.presentAddFirstMealVC()
+                    }
+                }
+            } else {
+                // User is not logged in yet
+                self.presentSignInVC()
+            }
         }
     }
 
@@ -33,22 +47,25 @@ class LaunchScreenVC: UIViewController {
     }
 
     private func presentMealsVC() {
-        let uid = Auth.auth().currentUser!.uid
-        DataService.instance.retrieveAllPetsForUser(withUid: uid) { ([String : Any]) in }
-        DataService.instance.downloadPetIds()
-        DataService.instance.retrieveAllUserInfo(withUid: uid) {
-            let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
-            mealsVC.modalPresentationStyle = .fullScreen
-            mealsVC.isMotionEnabled = true
-            mealsVC.motionTransitionType = .fade
-            self.present(mealsVC, animated: true, completion: nil)
-        }
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+        mealsVC.modalPresentationStyle = .fullScreen
+        mealsVC.isMotionEnabled = true
+        mealsVC.motionTransitionType = .fade
+        self.present(mealsVC, animated: true, completion: nil)
     }
     
     private func presentSignInVC() {
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC")
-        signinVC?.modalPresentationStyle = .fullScreen
-        self.present(signinVC!, animated: true, completion: nil)
+        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+        signinVC.modalPresentationStyle = .fullScreen
+        signinVC.motionTransitionType = .fade
+        self.present(signinVC, animated: true, completion: nil)
+    }
+
+    private func presentAddFirstMealVC() {
+        let addYourFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as! AddYourFirstMealVC
+        addYourFirstMealVC.modalPresentationStyle = .fullScreen
+        addYourFirstMealVC.motionTransitionType = .fade
+        self.present(addYourFirstMealVC, animated: true, completion: nil)
     }
 
 }

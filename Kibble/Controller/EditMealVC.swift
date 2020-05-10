@@ -219,8 +219,8 @@ class EditMealVC: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
             DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-                DataService.instance.deleteDefaultMeal(petId: petId, mealName: self.mealName) {}
-                DataService.instance.deleteMeal(id: petId, mealName: self.mealName) {
+                DataService.instance.deleteDefaultMeal(petId: petId!, mealName: self.mealName) {}
+                DataService.instance.deleteMeal(id: petId!, mealName: self.mealName) {
                     self.delegate?.refreshTableView()
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -261,14 +261,14 @@ class EditMealVC: UIViewController {
         let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
 
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-            DataService.instance.deleteDefaultMeal(petId: petId, mealName: self.mealName) {
-                DataService.instance.updateDefaultPetMeals(withPetId: petId, withMealName: newMealName, andMealData: mealData) {
-                    DataService.instance.updateDefaultPetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {}
+            DataService.instance.deleteDefaultMeal(petId: petId!, mealName: self.mealName) {
+                DataService.instance.updateDefaultPetMeals(withPetId: petId!, withMealName: newMealName, andMealData: mealData) {
+                    DataService.instance.updateDefaultPetMealNotifications(withPetId: petId!, withMealName: newMealName, andNotificationData: notificationData) {}
                 }
             }
-            DataService.instance.deleteMeal(id: petId, mealName: self.mealName) {
-                DataService.instance.updatePetMeals(withPetId: petId , withMealName: newMealName, andMealData: mealData) {
-                    DataService.instance.updatePetMealNotifications(withPetId: petId, withMealName: newMealName, andNotificationData: notificationData) {
+            DataService.instance.deleteMeal(id: petId!, mealName: self.mealName) {
+                DataService.instance.updatePetMeals(withPetId: petId! , withMealName: newMealName, andMealData: mealData) {
+                    DataService.instance.updatePetMealNotifications(withPetId: petId!, withMealName: newMealName, andNotificationData: notificationData) {
                         self.dismiss(animated: true) {
                             self.delegate?.refreshTableView()
                         }

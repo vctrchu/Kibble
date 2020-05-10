@@ -167,10 +167,13 @@ class DataService {
         }
     }
 
-    func retrieveCurrentPet(forUid uid: String, handler: @escaping (_ currentPet: String) -> ()) {
+    func retrieveCurrentPet(forUid uid: String, handler: @escaping (_ currentPet: String?) -> ()) {
         REF_USERS.child("\(uid)/currentPet").observe(.value) { (currentPetSnapshot) in
-            let currentPetId = currentPetSnapshot.value as! String
-            handler(currentPetId)
+            if let currentPetId = currentPetSnapshot.value as? String {
+                handler(currentPetId)
+            } else {
+                handler(nil)
+            }
         }
     }
 

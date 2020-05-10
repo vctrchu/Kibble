@@ -91,7 +91,7 @@ class MealsVC: UIViewController {
     func retrieveMealData(firstRun: Bool) {
         guard let uid = Auth.auth().currentUser?.uid else { fatalError("Current user uid is nil") }
         DataService.instance.retrieveCurrentPet(forUid: uid) { (petId) in
-            DataService.instance.retrieveAllPetMeals(forPetId: petId) { (retreivedMeals) in
+            DataService.instance.retrieveAllPetMeals(forPetId: petId!) { (retreivedMeals) in
                 self.mealArray = retreivedMeals
                 self.setUpLocalNotifcations()
                 UIView.transition(with: self.tableView,
@@ -217,7 +217,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
             let doneAction = SwipeAction(style: .destructive, title: "Done") { action, indexPath in
                 DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
                     let mealName = self.mealArray[indexPath.row].name
-                    DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"true"]) {
+                    DataService.instance.updatePetMeals(withPetId: petId!, withMealName: mealName, andMealData: ["isFed":"true"]) {
                         self.retrieveMealData(firstRun: false)
                     }
                 }
@@ -229,7 +229,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
             let undoAction = SwipeAction(style: .destructive, title: "Undo") { action, indexPath in
                 DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
                     let mealName = self.mealArray[indexPath.row].name
-                    DataService.instance.updatePetMeals(withPetId: petId, withMealName: mealName, andMealData: ["isFed":"false"]) {
+                    DataService.instance.updatePetMeals(withPetId: petId!, withMealName: mealName, andMealData: ["isFed":"false"]) {
                         self.retrieveMealData(firstRun: false)
                     }
                 }
@@ -261,7 +261,7 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCel
 
 
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-            DataService.instance.retrievePet(petId) { (returnedPet) in
+            DataService.instance.retrievePet(petId!) { (returnedPet) in
                 if let pet = returnedPet {
                     self.petnameLabel.text = pet.name
                     if let imageUrlString = pet.photoUrl {
