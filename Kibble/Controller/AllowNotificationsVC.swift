@@ -108,20 +108,7 @@ class AllowNotificationsVC: UIViewController {
 
     @objc func yesNotifyMePressed(_ button: UIButton) {
         print("\(getTimePickerValue())")
-        // Implement after tablview meals is working
-        UNUserNotificationCenter.current() // 1
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, error in
-                print("Permission granted: \(granted)")
-                // 1. Check if permission granted
-                // 2. Attempt registration for remote notifications on the main thread
-                DispatchQueue.main.async {
-                    if granted {
-                        UIApplication.shared.registerForRemoteNotifications()
-                    }
-                    self?.sendData(withNotification: true)
-                }
-        }
+        sendData(withNotification: true)
     }
 
     // MARK: - Move to next VC Methods
