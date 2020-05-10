@@ -118,7 +118,7 @@ class AddMealVC: UIViewController {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.contentMode = UIView.ContentMode.scaleAspectFit
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: turnOffNotifications.bottomAnchor, constant: 100.adjusted),
+            saveButton.topAnchor.constraint(equalTo: turnOffNotifications.bottomAnchor, constant: 20.adjusted),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }

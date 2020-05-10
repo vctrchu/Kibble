@@ -62,6 +62,7 @@ class MealsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForPushNotifications()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionHeaderHeight = 200
@@ -147,6 +148,14 @@ class MealsVC: UIViewController {
                 notificationCenter.add(request)
             }
         }
+    }
+
+    func registerForPushNotifications() {
+      UNUserNotificationCenter.current() // 1
+        .requestAuthorization(options: [.alert, .sound, .badge]) { // 2
+          granted, error in
+          print("Permission granted: \(granted)") // 3
+      }
     }
 
 

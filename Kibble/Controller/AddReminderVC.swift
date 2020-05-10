@@ -80,27 +80,7 @@ class AddReminderVC: UIViewController {
 
     @objc func addButtonPressed() {
         print("\(getTimePickerValue())")
-        if UIApplication.shared.isRegisteredForRemoteNotifications {
-            delegate?.addNotification(withTime: getTimePickerValue())
-        } else {
-            let alert = UIAlertController(title: "Unable to add reminder",
-                                          message: "For meal reminders to work, you must allow notifications.",
-                                          preferredStyle: UIAlertController.Style.alert)
-
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(okAction)
-
-            let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { _ in
-                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    })
-                }
-            })
-            alert.addAction(settingsAction)
-
-            self.present(alert, animated: true, completion: nil)
-        }
+        delegate?.addNotification(withTime: getTimePickerValue())
     }
 
 
