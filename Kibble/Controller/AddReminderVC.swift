@@ -83,7 +83,6 @@ class AddReminderVC: UIViewController {
         delegate?.addNotification(withTime: getTimePickerValue())
     }
 
-
     func getTimePickerValue() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.short
