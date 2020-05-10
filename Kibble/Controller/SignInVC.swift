@@ -139,11 +139,19 @@ extension SignInVC: GIDSignInDelegate {
                 print(error?.localizedDescription)
                 return
             }
-            let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
-            let userData: Dictionary<String, Any> = ["email": googleUser.profile.name!,
-                                                     "fullName": googleUser.profile.email!]
-            DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
-            self.presentNextVC()
+            if (authResult?.additionalUserInfo!.isNewUser)! {
+                let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
+                let userData: Dictionary<String, Any> = ["email": googleUser.profile.name!,
+                                                         "fullName": googleUser.profile.email!]
+                DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
+                self.presentNextVC()
+            } else {
+                let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+                mealsVC.modalPresentationStyle = .fullScreen
+                mealsVC.isMotionEnabled = true
+                mealsVC.motionTransitionType = .fade
+                self.present(mealsVC, animated: true, completion: nil)
+            }
         }
     }
 }

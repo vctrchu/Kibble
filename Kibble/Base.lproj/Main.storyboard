@@ -433,7 +433,7 @@
         <scene sceneID="2QJ-zE-Lg3">
             <objects>
                 <viewController storyboardIdentifier="AllowNotificationsVC" id="K4M-ix-1LX" customClass="AllowNotificationsVC" customModule="Kibble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Sl2-Yl-45c">
+                    <view key="view" contentMode="scaleToFill" id="Sl2-Yl-45c" customClass="PastelView" customModule="Pastel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -459,13 +459,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
-                        <color key="backgroundColor" red="0.067450501019999998" green="0.664267838" blue="0.98435097930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="9oc-tM-tYX"/>
                     </view>
                     <connections>
                         <outlet property="buttonStackView" destination="JCg-jF-Ik4" id="1gZ-Uh-Kx0"/>
                         <outlet property="noThanksButton" destination="LM7-K3-KsK" id="OYC-0q-DYO"/>
                         <outlet property="notificationTitle" destination="aax-Iy-DJr" id="boi-6H-wZE"/>
+                        <outlet property="pastelView" destination="Sl2-Yl-45c" id="F26-WA-CBk"/>
                         <outlet property="timePickerView" destination="I2p-K2-J7x" id="f78-kh-vCp"/>
                         <outlet property="yesNotifyMeButton" destination="FjK-yR-Oyi" id="ZnU-R5-dBq"/>
                     </connections>

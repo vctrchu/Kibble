@@ -19,7 +19,8 @@ class LaunchScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentMealsVC()
+            //Auth.auth().currentUser == nil ? self.presentSignInVC() : self.presentMealsVC()
+            self.presentSignInVC()
         }
     }
 
@@ -32,14 +33,6 @@ class LaunchScreenVC: UIViewController {
         pastelView.startAnimation()
     }
 
-    private func presentTestVC() {
-        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNotifictionsVC")
-        mealsVC?.modalPresentationStyle = .fullScreen
-        mealsVC?.isMotionEnabled = true
-        mealsVC?.motionTransitionType = .fade
-        self.present(mealsVC!, animated: true, completion: nil)
-    }
-    
     private func presentMealsVC() {
         let uid = Auth.auth().currentUser!.uid
         DataService.instance.retrieveAllPetsForUser(withUid: uid) { ([String : Any]) in }

@@ -9,11 +9,13 @@
 import UIKit
 import UserNotifications
 import Firebase
+import Pastel
 
 class AllowNotificationsVC: UIViewController {
 
     // MARK: - Properties
 
+    @IBOutlet var pastelView: PastelView!
     @IBOutlet weak var notificationTitle: UIImageView!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var noThanksButton: UIButton!
@@ -30,12 +32,34 @@ class AllowNotificationsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addButtonFunctionality()
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        pastelView.animationDuration = 3
+        pastelView.setColors([#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1),#colorLiteral(red: 0.3843137255, green: 0.1529411765, blue: 0.4549019608, alpha: 1),#colorLiteral(red: 0.09019607843, green: 0.9176470588, blue: 0.8509803922, alpha: 1),#colorLiteral(red: 0.3764705882, green: 0.4705882353, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2588235294, green: 0.9019607843, blue: 0.5843137255, alpha: 1),#colorLiteral(red: 0.231372549, green: 0.6980392157, blue: 0.7215686275, alpha: 1)])
+        pastelView.startAnimation()
+        notificationTitle.fadeIn(duration: 1, delay: 0) { (Bool) in
+            self.timePickerView.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                self.buttonStackView.fadeIn(duration: 0.5, delay: 0) { (Bool) in
+                }
+            }
+        }
     }
 
     override func loadView() {
         super.loadView()
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [#colorLiteral(red: 0.9882352941, green: 0.8901960784, blue: 0.5411764706, alpha: 1),#colorLiteral(red: 0.9529411765, green: 0.5058823529, blue: 0.5058823529, alpha: 1)]
+        gradientLayer.frame = view.bounds
+        pastelView.layer.insertSublayer(gradientLayer, at: 0)
+
         notificationTitle.translatesAutoresizingMaskIntoConstraints = false
         notificationTitle.contentMode = UIView.ContentMode.scaleAspectFill
+        notificationTitle.alpha = 0
         NSLayoutConstraint.activate([
             notificationTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             notificationTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.adjusted),
@@ -45,6 +69,7 @@ class AllowNotificationsVC: UIViewController {
         timePickerView.datePickerMode = .time
         timePickerView.setValue(UIColor.white, forKey: "textColor")
         timePickerView.translatesAutoresizingMaskIntoConstraints = false
+        timePickerView.alpha = 0
         NSLayoutConstraint.activate([
             timePickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             timePickerView.topAnchor.constraint(equalTo: notificationTitle.bottomAnchor, constant: 40.adjusted)
@@ -52,6 +77,7 @@ class AllowNotificationsVC: UIViewController {
         self.view.addSubview(timePickerView)
 
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.alpha = 0
         NSLayoutConstraint.activate([
             buttonStackView.topAnchor.constraint(equalTo: timePickerView.bottomAnchor, constant: 40.adjusted),
             buttonStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)

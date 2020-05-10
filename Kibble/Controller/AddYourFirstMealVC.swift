@@ -214,7 +214,7 @@ class AddYourFirstMealVC: UIViewController {
             let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as! AllowNotificationsVC
             allowNotificationsVC.modalPresentationStyle = .fullScreen
             allowNotificationsVC.isMotionEnabled = true
-            allowNotificationsVC.motionTransitionType = .slide(direction: .left)
+            allowNotificationsVC.motionTransitionType = .fade
             allowNotificationsVC.setupVariables(petId: petId, petData: petData, mealName: mealName, mealType: mealType)
             self.present(allowNotificationsVC, animated: true, completion: nil)
         }
