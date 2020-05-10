@@ -1,4 +1,4 @@
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+![screenshot](https://github.com/vctrchu/Kibble/blob/master/ReadmeAssets/KibbleCoverImage.png)
 
 ## Key Features
 
