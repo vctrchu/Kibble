@@ -17,7 +17,7 @@
 
 ## Download
 
-You can [download]() the latest version of Kibble on the Apple app store.
+You can [download]() the latest version of Kibble on the Apple app store. (pending app store approval)
 
 ## Credits
 
