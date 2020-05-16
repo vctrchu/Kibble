@@ -27,7 +27,7 @@ class LaunchScreenVC: UIViewController {
                         self.presentMealsVC()
                     } else {
                         // User is signed in but has no pets to show on MealsVC
-                        self.presentAddFirstMealVC()
+                        self.presentSignInVC()
                     }
                 }
             } else {

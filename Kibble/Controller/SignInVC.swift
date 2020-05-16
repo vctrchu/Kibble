@@ -121,6 +121,14 @@ class SignInVC: UIViewController {
         addYourPetVC.motionTransitionType = .fade
         self.present(addYourPetVC, animated: true, completion: nil)
     }
+
+    func presentMealsVC() {
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+        mealsVC.modalPresentationStyle = .fullScreen
+        mealsVC.isMotionEnabled = true
+        mealsVC.motionTransitionType = .fade
+        self.present(mealsVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Google Sign In Delegate
@@ -141,16 +149,14 @@ extension SignInVC: GIDSignInDelegate {
             }
             if (authResult?.additionalUserInfo!.isNewUser)! {
                 let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
-                let userData: Dictionary<String, Any> = ["email": googleUser.profile.name!,
-                                                         "fullName": googleUser.profile.email!]
+                let userData: Dictionary<String, Any> = ["email": googleUser.profile.email,
+                                                         "fullName": googleUser.profile.name]
                 DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
                 self.presentNextVC()
             } else {
-                let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
-                mealsVC.modalPresentationStyle = .fullScreen
-                mealsVC.isMotionEnabled = true
-                mealsVC.motionTransitionType = .fade
-                self.present(mealsVC, animated: true, completion: nil)
+                DataService.instance.retrieveCurrentPet(forUid: user.uid) { (pet) in
+                    pet != nil ? self.presentMealsVC() : self.presentNextVC()
+                }
             }
         }
     }
@@ -203,15 +209,8 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
                     DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
                     self.presentNextVC()
                 } else {
-                    let uid = Auth.auth().currentUser!.uid
-                    DataService.instance.retrieveAllPetsForUser(withUid: uid) { ([String : Any]) in }
-                    DataService.instance.downloadPetIds()
-                    DataService.instance.retrieveAllUserInfo(withUid: uid) {
-                        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
-                        mealsVC.modalPresentationStyle = .fullScreen
-                        mealsVC.isMotionEnabled = true
-                        mealsVC.motionTransitionType = .fade
-                        self.present(mealsVC, animated: true, completion: nil)
+                    DataService.instance.retrieveCurrentPet(forUid: user.uid) { (pet) in
+                        pet != nil ? self.presentMealsVC() : self.presentNextVC()
                     }
                 }
             }

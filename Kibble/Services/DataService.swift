@@ -92,12 +92,6 @@ class DataService {
         }
     }
 
-    func updateAllPetMeals(_ petId: String, mealData: Dictionary<String,Any>, completion: @escaping () -> ()) {
-        REF_PET_MEALS.child(petId).updateChildValues(mealData) { (error, snapshot) in
-            completion()
-        }
-    }
-
     func updateDefaultPetMeals(withPetId petId: String, withMealName mealName: String, andMealData mealData: Dictionary<String,Any>, handler: @escaping () -> ()) {
         REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData) { (error, snapshot) in
             handler()
@@ -155,16 +149,6 @@ class DataService {
         }
     }
 
-    func retrieveAllUserInfo(withUid uid: String, handler: @escaping () -> ()) {
-        REF_USERS.child(uid).observe(.value) { (userSnapShot) in
-            guard let userDict = userSnapShot.value as? [String : Any] else {
-                print("Could not retrieve user info")
-                return
-            }
-            handler()
-        }
-    }
-
     func retrieveCurrentPet(forUid uid: String, handler: @escaping (_ currentPet: String?) -> ()) {
         REF_USERS.child("\(uid)/currentPet").observe(.value) { (currentPetSnapshot) in
             if let currentPetId = currentPetSnapshot.value as? String {
@@ -189,16 +173,6 @@ class DataService {
         REF_USERS.child("\(uid)/pets").observe(.value) { (petSnapshot) in
             guard let dict = petSnapshot.value as? [String:Any] else {
                 print("Could not retrive all pets for user")
-                return
-            }
-            completion(dict)
-        }
-    }
-
-    func retrieveAllMealsForPet(_ petId: String, completion: @escaping (_ currentPet: [String: Any]) -> ()) {
-        REF_PET_MEALS.child((petId)).observe(.value) { (petSnapshot) in
-            guard let dict = petSnapshot.value as? [String:Any] else {
-                print("Could not retrive all meals for pet")
                 return
             }
             completion(dict)
@@ -231,16 +205,6 @@ class DataService {
                 petMeals.append(newMeal)
             }
             handler(petMeals)
-        }
-    }
-
-    func retrieveMembers(forPetId petId: String, handler: @escaping (_ members: [String:Any]) -> ()) {
-        REF_PET_MEMBERS.child(petId).observe(.value) { (memberSnapshot) in
-            guard let dict = memberSnapshot.value as? [String:Any] else {
-                print("Could not retreive members for pet id")
-                return
-            }
-            handler(dict)
         }
     }
 
