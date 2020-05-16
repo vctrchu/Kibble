@@ -138,8 +138,6 @@ class MealsVC: UIViewController {
                 dateComponents.hour = hour
                 dateComponents.minute = minute
 
-                
-
                 // show this notification for meal times from now
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 

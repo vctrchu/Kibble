@@ -33,7 +33,6 @@
 		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
 		FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderVC.swift */; };
 		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
-		FBC40868243955D500DC3ACE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC40867243955D500DC3ACE /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +67,6 @@
 		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		FBB37C2F24565FDC000E723B /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 		FBBC84222382E2BE00BD55A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		FBC40867243955D500DC3ACE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				FB62A5AF23850B8A00FB5557 /* DataService.swift */,
-				FBC40867243955D500DC3ACE /* AuthService.swift */,
 				FB5931BB2466687700349A53 /* RefreshManager.swift */,
 			);
 			path = Services;
@@ -335,7 +332,6 @@
 				FB414EB12452460C00807085 /* Meal.swift in Sources */,
 				FB414EB3245399F800807085 /* AddMealVC.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
-				FBC40868243955D500DC3ACE /* AuthService.swift in Sources */,
 				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
 				FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */,
 				FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */,

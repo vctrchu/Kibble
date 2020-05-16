@@ -31,15 +31,12 @@ class AddYourPetVC: UIViewController {
         }
     }
 
-    var lastPastelView: PastelView?
-
     // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
         petnameTextField.delegate = self
         typeOfPetTextField.delegate = self
-        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -112,6 +109,7 @@ class AddYourPetVC: UIViewController {
         nextButton.alpha = 0
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.contentMode = UIView.ContentMode.scaleAspectFit
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         self.view.addSubview(nextButton)
 
     }

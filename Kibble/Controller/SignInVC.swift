@@ -82,7 +82,6 @@ class SignInVC: UIViewController {
             signInGoogle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100.adjusted)
         ])
         signInGoogle.addTarget(self, action: #selector(googleSignInTapped), for: .touchUpInside)
-        //signInGoogle.addTarget(self, action: #selector(presentNextVC), for: .touchUpInside)
         self.view.addSubview(signInGoogle)
     }
 
@@ -113,7 +112,6 @@ class SignInVC: UIViewController {
         GIDSignIn.sharedInstance().signIn()
     }
 
-    //    func presentNextVC() {
     @objc func presentNextVC() {
         let addYourPetVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC") as! AddYourPetVC
         addYourPetVC.modalPresentationStyle = .fullScreen
@@ -147,6 +145,8 @@ extension SignInVC: GIDSignInDelegate {
                 print(error?.localizedDescription)
                 return
             }
+
+            // Let's check if it's the first time logging in
             if (authResult?.additionalUserInfo!.isNewUser)! {
                 let googleUser: GIDGoogleUser = GIDSignIn.sharedInstance()!.currentUser
                 let userData: Dictionary<String, Any> = ["email": googleUser.profile.email,
@@ -154,6 +154,7 @@ extension SignInVC: GIDSignInDelegate {
                 DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
                 self.presentNextVC()
             } else {
+                // Check if the user has finished onboarding and has created at least one pet
                 DataService.instance.retrieveCurrentPet(forUid: user.uid) { (pet) in
                     pet != nil ? self.presentMealsVC() : self.presentNextVC()
                 }

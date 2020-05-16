@@ -10,19 +10,14 @@ import UIKit
 
 class Device {
 
+    // Generate a random petID
     static func randomString() -> String {
         let length = 6;
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
 
-    // Base width in point, use iPhone 6
-    static let base: CGFloat = 375
-
-    static var ratio: CGFloat {
-        return UIScreen.main.bounds.width / base
-    }
-
+    // Round SF font
     @available(iOS 13.0, *)
     static func roundedFont(ofSize style: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
         // Will be SF Compact or standard SF in case of failure.
@@ -32,6 +27,15 @@ class Device {
         } else {
             return UIFont.preferredFont(forTextStyle: style)
         }
+    }
+
+// MARK:- Device Size Auto Constraints
+
+    // Base width in point, use iPhone 6
+    static let base: CGFloat = 375
+
+    static var ratio: CGFloat {
+        return UIScreen.main.bounds.width / base
     }
 }
 
@@ -52,6 +56,8 @@ extension Int {
         return CGFloat(self) * Device.ratio
     }
 }
+
+// MARK:- Other
 
 extension String {
     var isReallyEmpty: Bool {

@@ -23,12 +23,7 @@ class LaunchScreenVC: UIViewController {
             // User is signed in and has at least one pet
             if Auth.auth().currentUser != nil {
                 DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-                    if petId != nil {
-                        self.presentMealsVC()
-                    } else {
-                        // User is signed in but has no pets to show on MealsVC
-                        self.presentSignInVC()
-                    }
+                    petId != nil ? self.presentMealsVC() : self.presentSignInVC()
                 }
             } else {
                 // User is not logged in yet
