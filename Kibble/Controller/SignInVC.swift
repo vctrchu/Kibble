@@ -208,7 +208,9 @@ extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAu
                     let userData: Dictionary<String, Any> = ["email": email,
                                                              "fullName": (appleIDCredential.fullName?.givenName)! + " " + (appleIDCredential.fullName?.familyName)!]
                     DataService.instance.updateUser(withUid: user.uid, withUserData: userData)
-                    self.presentNextVC()
+                    DataService.instance.retrieveCurrentPet(forUid: user.uid) { (pet) in
+                        pet != nil ? self.presentMealsVC() : self.presentNextVC()
+                    }
                 } else {
                     DataService.instance.retrieveCurrentPet(forUid: user.uid) { (pet) in
                         pet != nil ? self.presentMealsVC() : self.presentNextVC()

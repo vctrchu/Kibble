@@ -144,8 +144,9 @@ class DataService {
                 print("Could not retrieve full name")
                 return
             }
-            let fullName = dict["fullName"] as! String
-            handler(fullName)
+            if let fullName = dict["fullName"] as? String {
+                handler(fullName)
+            }
         }
     }
 
@@ -190,19 +191,14 @@ class DataService {
                     return
                 }
                 let name = mealSnap.key
-                let isFed = dict["isFed"] as! String
-                let type = dict["type"] as! String
-                var notification = "none"
-                if let tempNotif = dict["notification"] {
-                    notification = tempNotif as! String
+                if let isFed = dict["isFed"] as? String, let type = dict["type"] as? String {
+                    var notification = "none"
+                    if let tempNotif = dict["notification"] {
+                        notification = tempNotif as! String
+                    }
+                    let newMeal = Meal(name: name, type: type, isFed: isFed, notification: notification)
+                    petMeals.append(newMeal)
                 }
-                print(name)
-                print(isFed)
-                print(type)
-                print(notification)
-                print("*****")
-                let newMeal = Meal(name: name, type: type, isFed: isFed, notification: notification)
-                petMeals.append(newMeal)
             }
             handler(petMeals)
         }
@@ -211,11 +207,10 @@ class DataService {
     func retrievePet(_ petId: String, completion: @escaping (_ pet: Pet?) -> ()) {
         REF_PET_INFO.child(petId).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String:Any] {
-                let name = dict["name"] as! String
-                let type = dict["type"] as! String
-                let url = dict["photoUrl"] as? String
-                let newPet = Pet(petId, name, type, url)
-                completion(newPet)
+                if let name = dict["name"] as? String, let type = dict["type"] as? String, let url = dict["photoUrl"] as? String {
+                    let newPet = Pet(petId, name, type, url)
+                    completion(newPet)
+                }
             } else {
                 completion(nil)
             }
@@ -228,8 +223,9 @@ class DataService {
             let names = snapshot.children
             for name in names {
                 let nameSnap = name as! DataSnapshot
-                let name = nameSnap.value as! String
-                namesArray.append(name)
+                if let name = nameSnap.value as? String {
+                    namesArray.append(name)
+                }
             }
             handler(namesArray)
         }
