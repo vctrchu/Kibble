@@ -17,9 +17,7 @@
 
 ## Download
 
-You can [download]() the latest version of Kibble on the Apple app store. (pending app store approval)
-
-## Credits
+You can [download](https://apps.apple.com/app/id1512612546) the latest version of Kibble on the Apple app store.
 
 This software uses the following open source packages:
 
