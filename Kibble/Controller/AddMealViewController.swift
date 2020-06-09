@@ -173,9 +173,6 @@ class AddMealViewController: UIViewController {
         let notificationData: Dictionary<String, Any> = ["notification" : reminderTime]
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
             DataService.instance.updatePetMeals(withPetId: petId! , withMealName: mealName, andMealData: mealData) {}
-            DataService.instance.updateDefaultPetMeals(withPetId: petId!, withMealName: mealName, andMealData: mealData) {
-                DataService.instance.updateDefaultPetMealNotifications(withPetId: petId!, withMealName: mealName, andNotificationData: notificationData) {}
-            }
             DataService.instance.updatePetMealNotifications(withPetId: petId!, withMealName: mealName, andNotificationData: notificationData) {
                 self.dismiss(animated: true) {
                     self.delegate?.refreshTableView()

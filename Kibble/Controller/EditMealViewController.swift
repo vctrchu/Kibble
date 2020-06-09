@@ -267,11 +267,6 @@ class EditMealViewController: UIViewController {
         let notificationData: Dictionary<String, Any> = ["notification" : self.reminderTime]
 
         DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-            DataService.instance.deleteDefaultMeal(petId: petId!, mealName: self.mealName) {
-                DataService.instance.updateDefaultPetMeals(withPetId: petId!, withMealName: newMealName, andMealData: mealData) {
-                    DataService.instance.updateDefaultPetMealNotifications(withPetId: petId!, withMealName: newMealName, andNotificationData: notificationData) {}
-                }
-            }
             DataService.instance.deleteMeal(id: petId!, mealName: self.mealName) {
                 DataService.instance.updatePetMeals(withPetId: petId! , withMealName: newMealName, andMealData: mealData) {
                     DataService.instance.updatePetMealNotifications(withPetId: petId!, withMealName: newMealName, andNotificationData: notificationData) {

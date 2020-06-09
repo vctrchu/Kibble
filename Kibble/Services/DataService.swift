@@ -20,14 +20,12 @@ class DataService {
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_PET_INFO = DB_BASE.child("petInfo")
     private var _REF_PET_MEALS = DB_BASE.child("petMeals")
-    private var _REF_PET_DEFAULT_MEALS = DB_BASE.child("petDefaultMeals")
     private var _REF_PET_MEMBERS = DB_BASE.child("petMembers")
 
     var REF_BASE: DatabaseReference { return _REF_BASE }
     var REF_USERS: DatabaseReference { return _REF_USERS }
     var REF_PET_INFO: DatabaseReference { return _REF_PET_INFO }
     var REF_PET_MEALS: DatabaseReference { return _REF_PET_MEALS }
-    var REF_PET_DEFAULT_MEALS: DatabaseReference { return _REF_PET_DEFAULT_MEALS }
     var REF_PET_MEMBERS: DatabaseReference { return _REF_PET_MEMBERS }
 
     private var petIds = Dictionary<String,Pet>()
@@ -91,20 +89,8 @@ class DataService {
         }
     }
 
-    func updateDefaultPetMeals(withPetId petId: String, withMealName mealName: String, andMealData mealData: Dictionary<String,Any>, handler: @escaping () -> ()) {
-        REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(mealData) { (error, snapshot) in
-            handler()
-        }
-    }
-
     func updatePetMealNotifications(withPetId petId: String, withMealName mealName: String, andNotificationData notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
         REF_PET_MEALS.child("\(petId)/\(mealName)").updateChildValues(notificationData) { (error, snapshot) in
-            handler()
-        }
-    }
-
-    func updateDefaultPetMealNotifications(withPetId petId: String, withMealName mealName: String, andNotificationData notificationData: Dictionary<String,Any>, handler: @escaping () -> ()) {
-        REF_PET_DEFAULT_MEALS.child("\(petId)/\(mealName)").updateChildValues(notificationData) { (error, snapshot) in
             handler()
         }
     }
@@ -159,15 +145,6 @@ class DataService {
         }
     }
 
-    func retrieveDefaultPetMeal(_ petId: String, completion: @escaping (_ defaultMeal: [String: Any]) -> ()) {
-        REF_PET_DEFAULT_MEALS.child(petId).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dict = snapshot.value as? [String:Any] else {
-                print("Could not retrieve default pet meal")
-                return
-            }
-            completion(dict)
-        }
-    }
 
     func retrieveAllPetsForUser(withUid uid: String, completion: @escaping (_ currentPet: [String: Any]) -> ()) {
         REF_USERS.child("\(uid)/pets").observe(.value) { (petSnapshot) in
@@ -244,9 +221,4 @@ class DataService {
         }
     }
 
-    func deleteDefaultMeal(petId: String, mealName: String, handler: @escaping () -> ()) {
-        REF_PET_DEFAULT_MEALS.child(petId).removeValue { (error, snapshot) in
-            handler()
-        }
-    }
 }
