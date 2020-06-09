@@ -13,7 +13,7 @@ import SimpleAnimation
 import Pastel
 
 @available(iOS 13.0, *)
-class AddYourFirstMealVC: UIViewController {
+class AddYourFirstMealViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -211,7 +211,7 @@ class AddYourFirstMealVC: UIViewController {
         } else {
             let mealName = mealNameTextField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as! AllowNotificationsVC
+            let allowNotificationsVC = self.storyboard?.instantiateViewController(withIdentifier: "AllowNotificationsVC") as! AllowNotificationsViewController
             allowNotificationsVC.modalPresentationStyle = .fullScreen
             allowNotificationsVC.isMotionEnabled = true
             allowNotificationsVC.motionTransitionType = .fade
@@ -234,7 +234,7 @@ class AddYourFirstMealVC: UIViewController {
                         DataService.instance.updatePetMembers(withPetId: pet.id, andMemberData: [uid: Auth.auth().currentUser!.displayName])
                         DataService.instance.updateUserCompletion(uid, ["currentPet": pet.id]) {
                             // present mealsVC once database is updated....
-                            let mealsVC = self.storyboard?.instantiateViewController(identifier: "MealsVC") as! MealsVC
+                            let mealsVC = self.storyboard?.instantiateViewController(identifier: "MealsVC") as! MealsViewController
                             mealsVC.modalPresentationStyle = .fullScreen
                             mealsVC.motionTransitionType = .fade
                             self.present(mealsVC, animated: true, completion: nil)
@@ -252,7 +252,6 @@ class AddYourFirstMealVC: UIViewController {
 
         joinAction.isEnabled = false
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
 
         alertController.addTextField { (textField) in
               self.petCodeTextField = textField

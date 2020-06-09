@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SwitchPetsVC: UITableViewController {
+class SwitchPetsViewController: UITableViewController {
 
     // MARK: - Properties
     private var pets = [Pet]()
@@ -71,7 +71,7 @@ class SwitchPetsVC: UITableViewController {
         } else {
             petImage = #imageLiteral(resourceName: "dog")
         }
-        cell.configurePetCell(name: pet.name, image: petImage)
+        cell.configureCell(name: pet.name, image: petImage)
         return cell
     }
 

@@ -11,7 +11,7 @@ import UserNotifications
 import Firebase
 import Pastel
 
-class AllowNotificationsVC: UIViewController {
+class AllowNotificationsViewController: UIViewController {
 
     // MARK: - Properties
 

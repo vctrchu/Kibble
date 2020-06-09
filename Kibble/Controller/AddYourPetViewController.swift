@@ -11,7 +11,7 @@ import SimpleAnimation
 import Pastel
 
 @available(iOS 13.0, *)
-class AddYourPetVC: UIViewController {
+class AddYourPetViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -126,7 +126,7 @@ class AddYourPetVC: UIViewController {
             let petData: Dictionary<String, Any> = ["name": petname,
                                                     "type": typeOfPet]
 
-            let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as? AddYourFirstMealVC
+            let addFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as? AddYourFirstMealViewController
             addFirstMealVC?.modalPresentationStyle = .fullScreen
             addFirstMealVC?.isMotionEnabled = true
             addFirstMealVC?.motionTransitionType = .fade
@@ -138,7 +138,7 @@ class AddYourPetVC: UIViewController {
 
 // Keyboard return key moves to next text field
 @available(iOS 13.0, *)
-extension AddYourPetVC : UITextFieldDelegate {
+extension AddYourPetViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == petnameTextField {
             textField.resignFirstResponder()

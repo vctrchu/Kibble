@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class PetInfoVC: UIViewController {
+class PetInfoViewController: UIViewController {
 
     // MARK: - Properties
     private var imagePicker: UIImagePickerController!
@@ -127,7 +127,7 @@ class PetInfoVC: UIViewController {
 
 }
 
-extension PetInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)

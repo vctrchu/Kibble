@@ -35,8 +35,7 @@ class DataService {
     /*
      Brute force: checking if a petId exists already on firebase
      Time and space compleixty: O(n)
-     This is not good because as n gets large we are storing all these into our app memory which we will never use besides to check if a petId exists.
-     Possible fix I can think of: Remove all unused elements from dictionary except the ones associated with the current user.
+     This is not best since as n gets large we are storing all the petIds into our app memory which we will never use besides to check if a petId exists.
      */
     func downloadPetIds() {
         REF_PET_INFO.observe(.value) { (petInfoSnapshot) in
@@ -207,11 +206,17 @@ class DataService {
     func retrievePet(_ petId: String, completion: @escaping (_ pet: Pet?) -> ()) {
         REF_PET_INFO.child(petId).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String:Any] {
-                if let name = dict["name"] as? String, let type = dict["type"] as? String, let url = dict["photoUrl"] as? String {
+                if let name = dict["name"] as? String, let type = dict["type"] as? String {
+                    var url: String?
+                    if dict["photoUrl"] != nil {
+                        url = dict["photoUrl"] as! String
+                    }
                     let newPet = Pet(petId, name, type, url)
+
                     completion(newPet)
                 }
             } else {
+                print("no pet")
                 completion(nil)
             }
         }

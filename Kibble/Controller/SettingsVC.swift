@@ -11,11 +11,7 @@ import Firebase
 import MessageUI
 import StoreKit
 
-//protocol SettingsDelegate {
-//    func refreshTableView()
-//}
-
-class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
+class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     // MARK: - Properties
     @IBOutlet weak var petCodeLabel: UILabel!
@@ -50,7 +46,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
                     UserDefaults.standard.set(nil, forKey: "appleAuthorizedUserIdKey")
                 }
                 try Auth.auth().signOut()
-                let signInVC = self.storyboard?.instantiateViewController(identifier: "SignInVC") as! SignInVC
+                let signInVC = self.storyboard?.instantiateViewController(identifier: "SignInVC") as! SignInViewController
                 signInVC.modalPresentationStyle = .fullScreen
                 self.present(signInVC, animated: true, completion: nil)
             } catch {
@@ -85,7 +81,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
         else if indexPath.row == 1 && indexPath.section == 0 {
             DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
                 DataService.instance.retrieveAllMemberNames(forPetId: petId!) { (names) in
-                    let membersVC = self.storyboard?.instantiateViewController(withIdentifier: "MembersVC") as? MembersVC
+                    let membersVC = self.storyboard?.instantiateViewController(withIdentifier: "MembersVC") as? MembersViewController
                     membersVC?.setup(names: names)
                     self.present(membersVC!, animated: true, completion: nil)
                 }
@@ -94,13 +90,13 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
         // Edit pet info
         else if indexPath.row == 2 && indexPath.section == 0 {
-            let petInfoVC = self.storyboard?.instantiateViewController(identifier: "PetInfoVC") as! PetInfoVC
+            let petInfoVC = self.storyboard?.instantiateViewController(identifier: "PetInfoVC") as! PetInfoViewController
             self.present(petInfoVC, animated: true, completion: nil)
         }
 
         // Switch pets
         else if indexPath.row == 3 && indexPath.section == 0 {
-            let switchPetsVC = self.storyboard?.instantiateViewController(withIdentifier: "SwitchPetsVC") as? SwitchPetsVC
+            let switchPetsVC = self.storyboard?.instantiateViewController(withIdentifier: "SwitchPetsVC") as? SwitchPetsViewController
             self.present(switchPetsVC!, animated: true, completion: nil)
         }
 
@@ -153,7 +149,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
         // Create new pet
         else if indexPath.row == 5 && indexPath.section == 0 {
-            let addPetVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC") as! AddYourPetVC
+            let addPetVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC") as! AddYourPetViewController
             addPetVC.modalPresentationStyle = .fullScreen
             self.present(addPetVC, animated: true, completion: nil)
         }

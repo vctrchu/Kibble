@@ -12,14 +12,13 @@ import Motion
 import Pastel
 
 // This is a custom class which delays the presentation of the next viewcontroller.
-class LaunchScreenVC: UIViewController {
+class LaunchScreenViewController: UIViewController {
     
     @IBOutlet var pastelView: PastelView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            //Auth.auth().currentUser == nil && ? self.presentSignInVC() : self.presentMealsVC()
             // User is signed in and has at least one pet
             if Auth.auth().currentUser != nil {
                 DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
@@ -42,7 +41,7 @@ class LaunchScreenVC: UIViewController {
     }
 
     private func presentMealsVC() {
-        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsViewController
         mealsVC.modalPresentationStyle = .fullScreen
         mealsVC.isMotionEnabled = true
         mealsVC.motionTransitionType = .fade
@@ -50,14 +49,14 @@ class LaunchScreenVC: UIViewController {
     }
     
     private func presentSignInVC() {
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInViewController
         signinVC.modalPresentationStyle = .fullScreen
         signinVC.motionTransitionType = .fade
         self.present(signinVC, animated: true, completion: nil)
     }
 
     private func presentAddFirstMealVC() {
-        let addYourFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as! AddYourFirstMealVC
+        let addYourFirstMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourFirstMealVC") as! AddYourFirstMealViewController
         addYourFirstMealVC.modalPresentationStyle = .fullScreen
         addYourFirstMealVC.motionTransitionType = .fade
         self.present(addYourFirstMealVC, animated: true, completion: nil)

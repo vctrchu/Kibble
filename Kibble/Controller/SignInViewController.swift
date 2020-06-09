@@ -13,7 +13,7 @@ import GoogleSignIn
 import Pastel
 
 @available(iOS 13.0, *)
-class SignInVC: UIViewController {
+class SignInViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -113,7 +113,7 @@ class SignInVC: UIViewController {
     }
 
     @objc func presentNextVC() {
-        let addYourPetVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC") as! AddYourPetVC
+        let addYourPetVC = self.storyboard?.instantiateViewController(withIdentifier: "AddYourPetVC") as! AddYourPetViewController
         addYourPetVC.modalPresentationStyle = .fullScreen
         addYourPetVC.isMotionEnabled = true
         addYourPetVC.motionTransitionType = .fade
@@ -121,7 +121,7 @@ class SignInVC: UIViewController {
     }
 
     func presentMealsVC() {
-        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsVC
+        let mealsVC = self.storyboard?.instantiateViewController(withIdentifier: "MealsVC") as! MealsViewController
         mealsVC.modalPresentationStyle = .fullScreen
         mealsVC.isMotionEnabled = true
         mealsVC.motionTransitionType = .fade
@@ -132,7 +132,7 @@ class SignInVC: UIViewController {
 // MARK: - Google Sign In Delegate
 
 @available(iOS 13.0, *)
-extension SignInVC: GIDSignInDelegate {
+extension SignInViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print(error.localizedDescription)
@@ -166,7 +166,7 @@ extension SignInVC: GIDSignInDelegate {
 // MARK: - Apple Sign In Delegate
 
 @available(iOS 13.0, *)
-extension SignInVC : ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+extension SignInViewController : ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         // return current view to put up authorization screen

@@ -164,7 +164,7 @@ class MealsViewController: UIViewController {
     }
 
     @objc func addMealButtonPressed() {
-        let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC") as! AddMealVC
+        let addMealVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMealVC") as! AddMealViewController
         addMealVC.delegate = self
         self.present(addMealVC, animated: true, completion: nil)
     }
@@ -199,7 +199,7 @@ extension MealsViewController: UITableViewDelegate, UITableViewDataSource, Swipe
     // Edit Meal
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let meal = mealArray[indexPath.row]
-        let editMealVC = self.storyboard?.instantiateViewController(identifier: "EditMealVC") as! EditMealVC
+        let editMealVC = self.storyboard?.instantiateViewController(identifier: "EditMealVC") as! EditMealViewController
         editMealVC.delegate = self
         editMealVC.setupVariables(name: meal.name, type: meal.type, notification: meal.notification)
         self.present(editMealVC, animated: true, completion: nil)
@@ -295,7 +295,7 @@ extension MealsViewController: UITableViewDelegate, UITableViewDataSource, Swipe
 
 }
 
-extension MealsViewController: AddMealDelegate {
+extension MealsViewController: AddMealViewControllerDelegate {
     func refreshTableView() {
         retrieveMealData(firstRun: false)
     }

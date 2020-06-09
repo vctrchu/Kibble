@@ -9,11 +9,11 @@
 import UIKit
 import UserNotifications
 
-protocol AddNotificationDelegate {
+protocol AddNotificationViewControllerDelegate {
     func addNotification(withTime time: String)
 }
 
-class AddReminderVC: UIViewController {
+class AddReminderViewController: UIViewController {
 
     //MARK: - Properties
 
@@ -22,7 +22,7 @@ class AddReminderVC: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
-    var delegate: AddNotificationDelegate?
+    var delegate: AddNotificationViewControllerDelegate?
     var time: String?
 
     //MARK: - Init

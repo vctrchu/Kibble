@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MembersVC: UITableViewController {
+class MembersViewController: UITableViewController {
 
     // MARK: - Properties
 
@@ -32,14 +32,13 @@ class MembersVC: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return members.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let name = members[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! MemberCell
-        cell.configureCell(name: name)
+        cell.configureCell(name: name, image: nil)
         return cell
     }
 

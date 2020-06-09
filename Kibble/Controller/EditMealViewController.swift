@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 
-protocol EditMealDelegate {
+protocol EditMealViewControllerDelegate {
     func refreshTableView()
 }
 
 @available(iOS 13.0, *)
-class EditMealVC: UIViewController {
+class EditMealViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -39,14 +39,14 @@ class EditMealVC: UIViewController {
     var mealName: String = ""
     var mealType: String = ""
     var reminderTime: String = "none"
-    var delegate: AddMealDelegate?
+    var delegate: AddMealViewControllerDelegate?
 
     // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addGenstures()
-        setup(name: mealName, type: mealType, notification: reminderTime)
+        initializeVariables(name: mealName, type: mealType, notification: reminderTime)
     }
 
     //MARK: - Auto Constraints
@@ -143,7 +143,7 @@ class EditMealVC: UIViewController {
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
     }
 
-    func setup(name: String, type: String, notification: String) {
+    func initializeVariables(name: String, type: String, notification: String) {
         mealNameTextField.text = name
         if (notification != "none") {
             addReminderButton.setTitle("Remind me at: " + notification, for: .normal)
@@ -165,6 +165,12 @@ class EditMealVC: UIViewController {
         }
     }
 
+    func setupVariables(name: String, type: String, notification: String) {
+        mealName = name
+        mealType = type
+        reminderTime = notification
+    }
+
     // MARK: - Target Selectors
 
     @objc func turnOffNotificationsPressed() {
@@ -173,7 +179,7 @@ class EditMealVC: UIViewController {
     }
     
     @objc func addReminderPressed() {
-        let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderVC
+        let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderViewController
         addReminderVC.delegate = self
         self.present(addReminderVC, animated: true, completion: nil)
     }
@@ -283,7 +289,7 @@ class EditMealVC: UIViewController {
     // MARK: - Add Notification Delegate
 
 @available(iOS 13.0, *)
-extension EditMealVC: AddNotificationDelegate {
+extension EditMealViewController: AddNotificationViewControllerDelegate {
     func addNotification(withTime time: String) {
         self.dismiss(animated: true) {
             self.reminderTime = time

@@ -8,30 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		F876BAFCE282774C27CDA752 /* Pods_Kibble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A2170B5A828563CE3421D3 /* Pods_Kibble.framework */; };
-		FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */; };
-		FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D59245A641700CB8141 /* EditMealVC.swift */; };
+		FB002C6224456E2400541FF0 /* AddYourFirstMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB002C6124456E2400541FF0 /* AddYourFirstMealViewController.swift */; };
+		FB098D5A245A641700CB8141 /* EditMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D59245A641700CB8141 /* EditMealViewController.swift */; };
 		FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB098D5B245E55E600CB8141 /* SettingsVC.swift */; };
-		FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */; };
-		FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetVC.swift */; };
+		FB2223E524462CC500F4ECB1 /* AllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2223E424462CC500F4ECB1 /* AllowNotificationsViewController.swift */; };
+		FB291EFA23D26134001BC23C /* AddYourPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB291EF923D26134001BC23C /* AddYourPetViewController.swift */; };
 		FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F792324A73F004AE08D /* AppDelegate.swift */; };
-		FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* SignInVC.swift */; };
+		FB2B2F7C2324A73F004AE08D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B2F7B2324A73F004AE08D /* SignInViewController.swift */; };
 		FB2B2F7F2324A73F004AE08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F7D2324A73F004AE08D /* Main.storyboard */; };
 		FB2B2F812324A740004AE08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2B2F802324A740004AE08D /* Assets.xcassets */; };
 		FB3940A82442A395003AD374 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3940A72442A395003AD374 /* Nonce.swift */; };
 		FB414EAD244FFB5B00807085 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EAC244FFB5B00807085 /* Pet.swift */; };
 		FB414EAF2451362E00807085 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EAE2451362E00807085 /* MealCell.swift */; };
 		FB414EB12452460C00807085 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB02452460C00807085 /* Meal.swift */; };
-		FB414EB3245399F800807085 /* AddMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB2245399F800807085 /* AddMealVC.swift */; };
-		FB437A582328445900A54BC7 /* MealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsVC.swift */; };
+		FB414EB3245399F800807085 /* AddMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB414EB2245399F800807085 /* AddMealViewController.swift */; };
+		FB437A582328445900A54BC7 /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB437A572328445900A54BC7 /* MealsViewController.swift */; };
 		FB5931B624625DDC00349A53 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B524625DDC00349A53 /* MemberCell.swift */; };
-		FB5931B82463979600349A53 /* PetInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B72463979600349A53 /* PetInfoVC.swift */; };
-		FB5931BA2464E46900349A53 /* SwitchPetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B92464E46900349A53 /* SwitchPetsVC.swift */; };
-		FB5931BC2466687700349A53 /* RefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931BB2466687700349A53 /* RefreshManager.swift */; };
+		FB5931B82463979600349A53 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B72463979600349A53 /* PetInfoViewController.swift */; };
+		FB5931BA2464E46900349A53 /* SwitchPetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5931B92464E46900349A53 /* SwitchPetsViewController.swift */; };
 		FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62A5AF23850B8A00FB5557 /* DataService.swift */; };
-		FB9134A824611314005B139A /* MembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9134A724611314005B139A /* MembersVC.swift */; };
+		FB9134A824611314005B139A /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9134A724611314005B139A /* MembersViewController.swift */; };
 		FBA1774D232B467200DD0169 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA1774C232B467200DD0169 /* GoogleService-Info.plist */; };
-		FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenVC.swift */; };
-		FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderVC.swift */; };
+		FBAE165423284E100092B1EB /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE165323284E100092B1EB /* LaunchScreenViewController.swift */; };
+		FBB37C3024565FDC000E723B /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37C2F24565FDC000E723B /* AddReminderViewController.swift */; };
 		FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBC84222382E2BE00BD55A9 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,14 +38,14 @@
 		651A97F2FA579D21B2BDB87C /* Pods-Kibble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.release.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.release.xcconfig"; sourceTree = "<group>"; };
 		B6A2170B5A828563CE3421D3 /* Pods_Kibble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kibble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30DD8ECFE9D088D44C953F5 /* Pods-Kibble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kibble.debug.xcconfig"; path = "Target Support Files/Pods-Kibble/Pods-Kibble.debug.xcconfig"; sourceTree = "<group>"; };
-		FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourFirstMealVC.swift; sourceTree = "<group>"; };
-		FB098D59245A641700CB8141 /* EditMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealVC.swift; sourceTree = "<group>"; };
+		FB002C6124456E2400541FF0 /* AddYourFirstMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourFirstMealViewController.swift; sourceTree = "<group>"; };
+		FB098D59245A641700CB8141 /* EditMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMealViewController.swift; sourceTree = "<group>"; };
 		FB098D5B245E55E600CB8141 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsVC.swift; sourceTree = "<group>"; };
-		FB291EF923D26134001BC23C /* AddYourPetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetVC.swift; sourceTree = "<group>"; };
+		FB2223E424462CC500F4ECB1 /* AllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsViewController.swift; sourceTree = "<group>"; };
+		FB291EF923D26134001BC23C /* AddYourPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYourPetViewController.swift; sourceTree = "<group>"; };
 		FB2B2F762324A73F004AE08D /* Kibble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kibble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2B2F792324A73F004AE08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB2B2F7B2324A73F004AE08D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		FB2B2F7B2324A73F004AE08D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FB2B2F7E2324A73F004AE08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB2B2F802324A740004AE08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2B2F852324A740004AE08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,17 +54,16 @@
 		FB414EAC244FFB5B00807085 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		FB414EAE2451362E00807085 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		FB414EB02452460C00807085 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
-		FB414EB2245399F800807085 /* AddMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealVC.swift; sourceTree = "<group>"; };
-		FB437A572328445900A54BC7 /* MealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVC.swift; sourceTree = "<group>"; };
+		FB414EB2245399F800807085 /* AddMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealViewController.swift; sourceTree = "<group>"; };
+		FB437A572328445900A54BC7 /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		FB5931B524625DDC00349A53 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
-		FB5931B72463979600349A53 /* PetInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoVC.swift; sourceTree = "<group>"; };
-		FB5931B92464E46900349A53 /* SwitchPetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPetsVC.swift; sourceTree = "<group>"; };
-		FB5931BB2466687700349A53 /* RefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshManager.swift; sourceTree = "<group>"; };
+		FB5931B72463979600349A53 /* PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoViewController.swift; sourceTree = "<group>"; };
+		FB5931B92464E46900349A53 /* SwitchPetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPetsViewController.swift; sourceTree = "<group>"; };
 		FB62A5AF23850B8A00FB5557 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		FB9134A724611314005B139A /* MembersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersVC.swift; sourceTree = "<group>"; };
+		FB9134A724611314005B139A /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
 		FBA1774C232B467200DD0169 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FBAE165323284E100092B1EB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
-		FBB37C2F24565FDC000E723B /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
+		FBAE165323284E100092B1EB /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		FBB37C2F24565FDC000E723B /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		FBBC84222382E2BE00BD55A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,19 +155,19 @@
 		FB2B2F8D2324B072004AE08D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FBAE165323284E100092B1EB /* LaunchScreenVC.swift */,
-				FB2B2F7B2324A73F004AE08D /* SignInVC.swift */,
-				FB291EF923D26134001BC23C /* AddYourPetVC.swift */,
-				FB002C6124456E2400541FF0 /* AddYourFirstMealVC.swift */,
-				FB2223E424462CC500F4ECB1 /* AllowNotificationsVC.swift */,
-				FB437A572328445900A54BC7 /* MealsVC.swift */,
-				FB414EB2245399F800807085 /* AddMealVC.swift */,
-				FBB37C2F24565FDC000E723B /* AddReminderVC.swift */,
-				FB098D59245A641700CB8141 /* EditMealVC.swift */,
+				FBAE165323284E100092B1EB /* LaunchScreenViewController.swift */,
+				FB2B2F7B2324A73F004AE08D /* SignInViewController.swift */,
+				FB291EF923D26134001BC23C /* AddYourPetViewController.swift */,
+				FB002C6124456E2400541FF0 /* AddYourFirstMealViewController.swift */,
+				FB2223E424462CC500F4ECB1 /* AllowNotificationsViewController.swift */,
+				FB437A572328445900A54BC7 /* MealsViewController.swift */,
+				FB414EB2245399F800807085 /* AddMealViewController.swift */,
+				FBB37C2F24565FDC000E723B /* AddReminderViewController.swift */,
+				FB098D59245A641700CB8141 /* EditMealViewController.swift */,
 				FB098D5B245E55E600CB8141 /* SettingsVC.swift */,
-				FB9134A724611314005B139A /* MembersVC.swift */,
-				FB5931B72463979600349A53 /* PetInfoVC.swift */,
-				FB5931B92464E46900349A53 /* SwitchPetsVC.swift */,
+				FB9134A724611314005B139A /* MembersViewController.swift */,
+				FB5931B72463979600349A53 /* PetInfoViewController.swift */,
+				FB5931B92464E46900349A53 /* SwitchPetsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				FB62A5AF23850B8A00FB5557 /* DataService.swift */,
-				FB5931BB2466687700349A53 /* RefreshManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -324,27 +321,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB62A5B023850B8A00FB5557 /* DataService.swift in Sources */,
-				FB098D5A245A641700CB8141 /* EditMealVC.swift in Sources */,
+				FB098D5A245A641700CB8141 /* EditMealViewController.swift in Sources */,
 				FB098D5C245E55E600CB8141 /* SettingsVC.swift in Sources */,
-				FB9134A824611314005B139A /* MembersVC.swift in Sources */,
+				FB9134A824611314005B139A /* MembersViewController.swift in Sources */,
 				FB414EAD244FFB5B00807085 /* Pet.swift in Sources */,
-				FB2B2F7C2324A73F004AE08D /* SignInVC.swift in Sources */,
+				FB2B2F7C2324A73F004AE08D /* SignInViewController.swift in Sources */,
 				FB414EB12452460C00807085 /* Meal.swift in Sources */,
-				FB414EB3245399F800807085 /* AddMealVC.swift in Sources */,
+				FB414EB3245399F800807085 /* AddMealViewController.swift in Sources */,
 				FB2B2F7A2324A73F004AE08D /* AppDelegate.swift in Sources */,
-				FB437A582328445900A54BC7 /* MealsVC.swift in Sources */,
-				FB2223E524462CC500F4ECB1 /* AllowNotificationsVC.swift in Sources */,
-				FBB37C3024565FDC000E723B /* AddReminderVC.swift in Sources */,
+				FB437A582328445900A54BC7 /* MealsViewController.swift in Sources */,
+				FB2223E524462CC500F4ECB1 /* AllowNotificationsViewController.swift in Sources */,
+				FBB37C3024565FDC000E723B /* AddReminderViewController.swift in Sources */,
 				FB414EAF2451362E00807085 /* MealCell.swift in Sources */,
-				FBAE165423284E100092B1EB /* LaunchScreenVC.swift in Sources */,
-				FB002C6224456E2400541FF0 /* AddYourFirstMealVC.swift in Sources */,
-				FB5931BA2464E46900349A53 /* SwitchPetsVC.swift in Sources */,
+				FBAE165423284E100092B1EB /* LaunchScreenViewController.swift in Sources */,
+				FB002C6224456E2400541FF0 /* AddYourFirstMealViewController.swift in Sources */,
+				FB5931BA2464E46900349A53 /* SwitchPetsViewController.swift in Sources */,
 				FBBC84232382E2BE00BD55A9 /* Extensions.swift in Sources */,
 				FB5931B624625DDC00349A53 /* MemberCell.swift in Sources */,
-				FB5931B82463979600349A53 /* PetInfoVC.swift in Sources */,
-				FB291EFA23D26134001BC23C /* AddYourPetVC.swift in Sources */,
+				FB5931B82463979600349A53 /* PetInfoViewController.swift in Sources */,
+				FB291EFA23D26134001BC23C /* AddYourPetViewController.swift in Sources */,
 				FB3940A82442A395003AD374 /* Nonce.swift in Sources */,
-				FB5931BC2466687700349A53 /* RefreshManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorchu.Kibble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -521,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				LLVM_LTO = NO;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorchu.Kibble;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 
-protocol AddMealDelegate {
+protocol AddMealViewControllerDelegate {
     func refreshTableView()
 }
 
 @available(iOS 13.0, *)
-class AddMealVC: UIViewController {
+class AddMealViewController: UIViewController {
 
     //MARK: - Properties
 
@@ -37,7 +37,7 @@ class AddMealVC: UIViewController {
 
     private var mealType: String?
     private var reminderTime: String?
-    var delegate: AddMealDelegate?
+    var delegate: AddMealViewControllerDelegate?
 
     //MARK: - Init
 
@@ -126,7 +126,7 @@ class AddMealVC: UIViewController {
     //MARK: - Add Target Methods
 
     @objc func addReminderPressed() {
-        let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderVC
+        let addReminderVC = self.storyboard?.instantiateViewController(identifier: "AddReminderVC") as! AddReminderViewController
         addReminderVC.delegate = self
         self.present(addReminderVC, animated: true, completion: nil)
     }
@@ -222,7 +222,7 @@ class AddMealVC: UIViewController {
 }
 
 @available(iOS 13.0, *)
-extension AddMealVC: AddNotificationDelegate {
+extension AddMealViewController: AddNotificationViewControllerDelegate {
     func addNotification(withTime time: String) {
         self.dismiss(animated: true) {
             self.reminderTime = time

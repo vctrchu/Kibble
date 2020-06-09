@@ -49,14 +49,13 @@ class MemberCell: UITableViewCell {
     }
 
 
-    func configureCell(name: String) {
+    func configureCell(name: String, image: UIImage?) {
         nameLabel.text = name
-        defaultImage.image = #imageLiteral(resourceName: "Member")
-    }
-
-    func configurePetCell(name: String, image: UIImage) {
-        nameLabel.text = name
-        defaultImage.image = image
+        if image == nil {
+            defaultImage.image = #imageLiteral(resourceName: "Member")
+        } else {
+            defaultImage.image = image
+        }
     }
 
     required init?(coder: NSCoder) {
