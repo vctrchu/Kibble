@@ -225,7 +225,6 @@ class EditMealViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { (action) in
             DataService.instance.retrieveCurrentPet(forUid: Auth.auth().currentUser!.uid) { (petId) in
-                DataService.instance.deleteDefaultMeal(petId: petId!, mealName: self.mealName) {}
                 DataService.instance.deleteMeal(id: petId!, mealName: self.mealName) {
                     self.delegate?.refreshTableView()
                     self.dismiss(animated: true, completion: nil)

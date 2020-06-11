@@ -42,9 +42,13 @@ class PetInfoViewController: UIViewController {
                 if let pet = returnedPet {
                     if let imageUrlString = pet.photoUrl {
                         let imageUrl = URL(string: imageUrlString)!
-                        let imageData = try! Data(contentsOf: imageUrl)
-                        let image = UIImage(data: imageData)
-                        petImage = image!
+                        do {
+                            let imageData = try! Data(contentsOf: imageUrl)
+                            let image = UIImage(data: imageData)
+                            petImage = image!
+                        } catch {
+                            petImage = #imageLiteral(resourceName: "dog")
+                        }
                     } else {
                         petImage = #imageLiteral(resourceName: "dog")
                     }

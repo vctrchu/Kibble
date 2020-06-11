@@ -129,7 +129,6 @@
 				FB2B2F802324A740004AE08D /* Assets.xcassets */,
 				FB2B2F852324A740004AE08D /* Info.plist */,
 				FBA1774C232B467200DD0169 /* GoogleService-Info.plist */,
-				FB437A35232817AE00A54BC7 /* Fonts */,
 			);
 			path = Kibble;
 			sourceTree = "<group>";
@@ -170,13 +169,6 @@
 				FB5931B92464E46900349A53 /* SwitchPetsViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		FB437A35232817AE00A54BC7 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		FB62A5B123850B9500FB5557 /* Services */ = {

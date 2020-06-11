@@ -256,9 +256,14 @@ extension MealsViewController: UITableViewDelegate, UITableViewDataSource, Swipe
                     self.petnameLabel.text = pet.name
                     if let imageUrlString = pet.photoUrl {
                         let imageUrl = URL(string: imageUrlString)!
-                        let imageData = try! Data(contentsOf: imageUrl)
-                        let image = UIImage(data: imageData)
-                        self.petImage.image = image
+                        do {
+                            let imageData = try Data(contentsOf: imageUrl)
+                            let image = UIImage(data: imageData)
+                            self.petImage.image = image
+                        } catch {
+                            print ("error with header image")
+                            self.petImage.image = #imageLiteral(resourceName: "dog")
+                        }
                     } else {
                         self.petImage.image = #imageLiteral(resourceName: "dog")
                     }

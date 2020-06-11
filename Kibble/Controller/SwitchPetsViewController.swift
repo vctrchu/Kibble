@@ -27,9 +27,6 @@ class SwitchPetsViewController: UITableViewController {
     }
 
     func setup() {
-
-        // TODO: - Add loading indicator... currently settings page pauses before this is loaded..
-
         DataService.instance.retrieveAllPetsForUser(withUid: Auth.auth().currentUser!.uid) { (allPetIds) in
             let group = DispatchGroup()
             for (key, _) in allPetIds {
@@ -54,7 +51,6 @@ class SwitchPetsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return pets.count
     }
 
@@ -65,9 +61,13 @@ class SwitchPetsViewController: UITableViewController {
         var petImage = UIImage()
         if let imageUrlString = pet.photoUrl {
             let imageUrl = URL(string: imageUrlString)!
-            let imageData = try! Data(contentsOf: imageUrl)
-            let image = UIImage(data: imageData)
-            petImage = image!
+            do {
+                let imageData = try Data(contentsOf: imageUrl)
+                let image = UIImage(data: imageData)
+                petImage = image!
+            } catch {
+                petImage = #imageLiteral(resourceName: "dog")
+            }
         } else {
             petImage = #imageLiteral(resourceName: "dog")
         }

@@ -100,7 +100,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             self.present(switchPetsVC!, animated: true, completion: nil)
         }
 
-        // Show uialert() to join with textfield to enter a join code
+        // Show UIAlert() to join with textfield to enter a join code
         else if indexPath.row == 4 && indexPath.section == 0 {
             let alertController = UIAlertController(title: "Enter pet code", message: nil, preferredStyle: .alert)
 
@@ -156,6 +156,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 
         // Contact us
         else if indexPath.row == 0 && indexPath.section == 1 {
+            guard MFMailComposeViewController.canSendMail() else { return }
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["victorchu1996@gmail.com"])
